@@ -203,4 +203,34 @@
     `;
     document.body.appendChild(fab);
   }
+
+  if (!/admin\.html$/i.test(location.pathname)) {
+    const links = document.querySelector(".nav__links");
+    if (links && !links.querySelector('[href="admin.html"]')) {
+      const a = document.createElement("a");
+      a.href = "admin.html";
+      a.textContent = "Admin";
+      links.appendChild(a);
+    }
+    const meta = document.querySelector(".nav__meta");
+    if (meta && !meta.querySelector('[href="admin.html"]')) {
+      const a = document.createElement("a");
+      a.className = "nav__admin";
+      a.href = "admin.html";
+      a.textContent = "Admin";
+      meta.insertBefore(a, meta.firstChild);
+    }
+    const menuNav = document.querySelector(".menu__nav");
+    if (menuNav && !menuNav.querySelector('[href="admin.html"]')) {
+      const a = document.createElement("a");
+      a.href = "admin.html";
+      a.dataset.index = "05";
+      a.textContent = "Admin";
+      menuNav.appendChild(a);
+    }
+    document.querySelectorAll(".footer__copy").forEach((el) => {
+      if (el.querySelector('[href="admin.html"]')) return;
+      el.insertAdjacentHTML("beforeend", ' <a href="admin.html">Admin</a>');
+    });
+  }
 })();

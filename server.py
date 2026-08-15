@@ -359,8 +359,10 @@ class Handler(SimpleHTTPRequestHandler):
                     "name": item["name"],
                     "price": item["price"],
                     "image": item["image"],
+                    "images": item.get("images") or [item["image"]],
                     "tag": item["tag"],
                     "blurb": item["blurb"],
+                    "description": item.get("description") or item.get("blurb") or "",
                     "stock": item["stock"],
                 }
                 for item in load_products()

@@ -1569,10 +1569,51 @@ body.has-cursor .cursor {
   gap: 2rem;
 }
 
-.pdp__grid img {
+.pdp__media {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.pdp__grid img,
+.pdp__media figure img {
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
+}
+
+.pdp__thumbs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.pdp__thumb {
+  padding: 0;
+  border: 1px solid var(--line);
+  background: var(--bg-3);
+}
+
+.pdp__thumb.is-on {
+  border-color: var(--gold);
+}
+
+.pdp__thumb img {
+  aspect-ratio: 1;
+  display: block;
+}
+
+.pdp__copy {
+  margin-top: 1.6rem;
+  display: grid;
+  gap: 0.55rem;
+  color: var(--cream-dim);
+}
+
+.pdp__copy h2 {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--cream);
 }
 
 .pdp__price {
@@ -1610,6 +1651,14 @@ body.has-cursor .cursor {
 
 .paybox__steps a:hover {
   border-bottom-color: var(--gold);
+}
+
+.nav__admin {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-right: 0.8rem;
 }
 
 .admin__find {

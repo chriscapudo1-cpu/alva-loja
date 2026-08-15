@@ -916,7 +916,7 @@ def main() -> None:
                     "id": f"{prefix}-{n:03d}",
                     "name": name,
                     "cost": cost,
-                    "price": round(cost * 2, 2),
+                    "price": round(cost / 0.70, 2) if cost * 2 > 150 else round(cost * 2, 2),
                     "image": image,
                     "tag": cat,
                     "blurb": f"{cat} · envio após a confirmação do pagamento.",
