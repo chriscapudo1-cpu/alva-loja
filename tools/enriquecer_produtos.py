@@ -1,4 +1,4 @@
-"""Gera descrição e lista de fotos (capa + extras) para cada produto."""
+"""Gera descrição e a foto principal de cada produto (sem galeria extra)."""
 from __future__ import annotations
 
 import json
@@ -35,14 +35,13 @@ HINTS = [
 ]
 
 
-def extras_for(pid: str) -> list[str]:
-    found = []
-    for suffix in ("", "-2", "-3"):
-        name = f"{pid}{suffix}.jpg"
-        path = ALI / name
-        if path.exists() and path.stat().st_size > 4000:
-            found.append(f"assets/img/ali/{name}")
-    return found
+def cover_for(item: dict) -> str:
+    pid = item["id"]
+    main = item.get("image") or f"assets/img/ali/{pid}.jpg"
+    path = ALI / f"{pid}.jpg"
+    if path.exists() and path.stat().st_size > 4000:
+        return f"assets/img/ali/{pid}.jpg"
+    return main
 
 
 def describe(item: dict) -> str:
@@ -57,25 +56,20 @@ def describe(item: dict) -> str:
             break
     bits.append(
         f"O {name} sai da ALVA após a confirmação do pagamento. "
-        "Confira as fotos e os detalhes antes de colocar na sacola."
+        "Confira a foto e os detalhes antes de colocar na sacola."
     )
     return " ".join(bits)
 
 
 def main() -> None:
     products = json.loads(SRC.read_text(encoding="utf-8"))
-    multi = 0
     for item in products:
-        gallery = extras_for(item["id"])
-        if not gallery:
-            gallery = [item.get("image") or f"assets/img/ali/{item['id']}.jpg"]
-        item["image"] = gallery[0]
-        item["images"] = gallery
+        cover = cover_for(item)
+        item["image"] = cover
+        item["images"] = [cover]
         item["description"] = describe(item)
-        if len(gallery) > 1:
-            multi += 1
     SRC.write_text(json.dumps(products, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"{len(products)} produtos · {multi} com mais de uma foto")
+    print(f"{len(products)} produtos · só a foto principal")
 
 
 if __name__ == "__main__":

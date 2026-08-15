@@ -14,7 +14,7 @@
         return;
       }
       document.title = `${product.name} — ALVA`;
-      const gallery = (product.images && product.images.length ? product.images : [product.image]).filter(Boolean);
+      const gallery = [product.image].filter(Boolean);
       const thumbs = gallery
         .map(
           (src, index) =>
