@@ -1301,6 +1301,12 @@ body.has-cursor .cursor {
   gap: 1.6rem;
 }
 
+.shop__more {
+  display: flex;
+  justify-content: center;
+  margin: 2.4rem 0 0;
+}
+
 .product figure {
   overflow: hidden;
   aspect-ratio: 4 / 3;

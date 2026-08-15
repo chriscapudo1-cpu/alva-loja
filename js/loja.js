@@ -8,8 +8,10 @@
   const heading = document.getElementById("shopHeading");
   const lede = document.getElementById("shopLede");
   const params = new URLSearchParams(location.search);
+  const PAGE = 48;
   let current = params.get("cat") || "";
   let all = [];
+  let shown = PAGE;
 
   const card = (product) => {
     const el = document.createElement("article");
@@ -48,13 +50,20 @@
       .join("");
   };
 
+  const more = document.getElementById("shopMore");
+
   const paint = () => {
     const list = current ? all.filter((item) => item.tag === current) : all;
+    const slice = list.slice(0, shown);
     if (heading) heading.textContent = current || "Todas as categorias";
     if (lede) lede.textContent = `${list.length} produtos · envio após o pagamento`;
     if (grid) {
       grid.innerHTML = "";
-      list.forEach((product) => grid.appendChild(card(product)));
+      slice.forEach((product) => grid.appendChild(card(product)));
+    }
+    if (more) {
+      more.hidden = slice.length >= list.length;
+      more.querySelector("span").textContent = `Carregar mais (${list.length - slice.length} restantes)`;
     }
     chips?.querySelectorAll("[data-cat]").forEach((btn) => {
       btn.classList.toggle("is-on", btn.getAttribute("data-cat") === current);
@@ -69,8 +78,14 @@
     if (current) url.searchParams.set("cat", current);
     else url.searchParams.delete("cat");
     history.replaceState({}, "", url);
+    shown = PAGE;
     paint();
     window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  more?.addEventListener("click", () => {
+    shown += PAGE;
+    paint();
   });
 
   grid?.addEventListener("click", (event) => {
@@ -95,7 +110,7 @@
     .catch(() => {
       if (note) {
         note.hidden = false;
-        note.textContent = "Abra o site pelo servidor (python server.py) para carregar os 200 produtos.";
+        note.textContent = "Abra o site pelo servidor (python server.py) para carregar os produtos.";
       }
     });
 })();
