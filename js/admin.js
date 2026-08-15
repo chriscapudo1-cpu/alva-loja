@@ -154,6 +154,12 @@
     } else {
       status.textContent = "Ainda desligado. Sem o token, o pedido só entra como reserva.";
     }
+    const pixelStatus = document.getElementById("pixelStatus");
+    if (pixelStatus) {
+      pixelStatus.textContent = data.pixelId
+        ? `Ligado · ID ${data.pixelId}`
+        : "Ainda sem pixel. Cole o ID para os anúncios do Instagram e do Facebook.";
+    }
   };
 
   const loadPay = async (token) => {
@@ -223,6 +229,34 @@
   sessionStorage.removeItem(tokenKey);
   if (form) form.hidden = false;
   if (board) board.hidden = true;
+
+  document.getElementById("pixelForm")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const token = sessionStorage.getItem(tokenKey);
+    const pixelErr = document.getElementById("pixelErr");
+    const pixelOk = document.getElementById("pixelOk");
+    const input = document.getElementById("pixelId");
+    if (pixelErr) pixelErr.textContent = "";
+    if (pixelOk) pixelOk.hidden = true;
+    try {
+      const res = await fetch("/api/admin/pixel", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Admin-Token": token || "",
+        },
+        body: JSON.stringify({ pixelId: input?.value || "" }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Não salvou.");
+      const pixelStatus = document.getElementById("pixelStatus");
+      if (pixelStatus) pixelStatus.textContent = `Ligado · ID ${data.pixelId}`;
+      if (input) input.value = "";
+      if (pixelOk) pixelOk.hidden = false;
+    } catch (error) {
+      if (pixelErr) pixelErr.textContent = error.message;
+    }
+  });
 
   document.getElementById("catalogQ")?.addEventListener("input", paintCatalog);
   document.getElementById("catalogCat")?.addEventListener("change", paintCatalog);

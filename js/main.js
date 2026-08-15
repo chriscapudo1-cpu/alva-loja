@@ -221,6 +221,7 @@
     fetch("/api/config")
       .then((res) => res.json())
       .then((cfg) => {
+        window.AlvaPixel?.start(cfg.pixelId);
         const phone = String(cfg.whatsapp || "").replace(/\D/g, "");
         if (phone.length < 10) return;
         fab.href = `https://wa.me/${phone}?text=${msg}`;

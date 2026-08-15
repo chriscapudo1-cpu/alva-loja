@@ -61,6 +61,25 @@
           <button class="btn btn--solid" type="submit"><span>Salvar e testar</span></button>
         </form>
       </article>
+      <article class="paybox" id="pixelBox">
+        <p class="eyebrow">Anúncios</p>
+        <h2 class="admin__h" style="margin-top:0.4rem">Pixel da Meta</h2>
+        <p class="lede" id="pixelStatus">Ainda sem pixel.</p>
+        <ol class="paybox__steps">
+          <li>Abra o <a href="https://business.facebook.com/events_manager2" target="_blank" rel="noopener">Gerenciador de Eventos</a>.</li>
+          <li>Crie ou escolha um pixel e copie o <strong>ID</strong> (só números).</li>
+          <li>Cole aqui. O site passa a registrar visita, produto, sacola, checkout e compra.</li>
+        </ol>
+        <form class="form" id="pixelForm">
+          <div class="form__row">
+            <label for="pixelId">ID do pixel</label>
+            <input id="pixelId" name="pixelId" type="text" inputmode="numeric" autocomplete="off" placeholder="000000000000000" required />
+          </div>
+          <p class="form__err" id="pixelErr"></p>
+          <p class="form__ok" id="pixelOk" hidden>Pixel ligado. Os anúncios já enxergam a loja.</p>
+          <button class="btn btn--solid" type="submit"><span>Salvar pixel</span></button>
+        </form>
+      </article>
       <p class="admin__summary" id="summary"></p>
       <div class="admin__list" id="list"></div>
       <h2 class="admin__h">Mensagens do site</h2>
@@ -98,7 +117,7 @@
     </section>
   </main>
 
-  <script src="js/admin.js?v=9"></script>
+  <script src="js/admin.js?v=11"></script>
   <script>
     const year = document.getElementById("year");
     if (year) year.textContent = String(new Date().getFullYear());

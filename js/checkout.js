@@ -182,6 +182,16 @@
       }
       restoreBuyer();
       draw();
+      const checkoutItems = lines();
+      if (checkoutItems.length) {
+        window.AlvaPixel?.track("InitiateCheckout", {
+          content_ids: checkoutItems.map((item) => item.id),
+          contents: checkoutItems.map((item) => ({ id: item.id, quantity: item.qty })),
+          num_items: checkoutItems.reduce((sum, item) => sum + Number(item.qty), 0),
+          value: checkoutItems.reduce((sum, item) => sum + item.price * item.qty, 0),
+          currency: "BRL",
+        });
+      }
     })
     .catch(() => {
       if (hint) hint.textContent = "Abra pelo python server.py para finalizar o pedido.";

@@ -2,6 +2,49 @@
   const KEY = "lume-cart";
   const isAdmin = /admin\.html$/i.test(location.pathname);
 
+  window.AlvaPixel = {
+    queue: [],
+    track(event, payload) {
+      if (typeof window.fbq === "function") {
+        window.fbq("track", event, payload || {});
+        return;
+      }
+      this.queue.push([event, payload || {}]);
+    },
+    start(pixelId) {
+      const id = String(pixelId || "").replace(/\D/g, "");
+      if (!id || window.fbq) {
+        if (window.fbq) this.queue.splice(0).forEach(([event, payload]) => window.fbq("track", event, payload));
+        return;
+      }
+      const fbq = (window.fbq = function () {
+        fbq.callMethod ? fbq.callMethod.apply(fbq, arguments) : fbq.queue.push(arguments);
+      });
+      if (!window._fbq) window._fbq = fbq;
+      fbq.push = fbq;
+      fbq.loaded = true;
+      fbq.version = "2.0";
+      fbq.queue = [];
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = "https://connect.facebook.net/en_US/fbevents.js";
+      document.head.appendChild(script);
+      window.fbq("init", id);
+      window.fbq("track", "PageView");
+      this.queue.splice(0).forEach(([event, payload]) => window.fbq("track", event, payload));
+      if (!document.getElementById("alvaPixelImg")) {
+        const img = document.createElement("img");
+        img.id = "alvaPixelImg";
+        img.height = 1;
+        img.width = 1;
+        img.alt = "";
+        img.style.display = "none";
+        img.src = `https://www.facebook.com/tr?id=${id}&ev=PageView&noscript=1`;
+        document.body.appendChild(img);
+      }
+    },
+  };
+
   const brl = (value) =>
     Number(value).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
@@ -219,6 +262,14 @@
       write(items);
       const product = find(id);
       toast(product ? `${product.name} na sacola` : "Adicionado à sacola");
+      window.AlvaPixel?.track("AddToCart", {
+        content_ids: [id],
+        content_name: product?.name || id,
+        content_type: "product",
+        contents: [{ id, quantity: qty }],
+        value: Number(product?.price || 0) * qty,
+        currency: "BRL",
+      });
       open();
     },
     setQty(id, qty) {

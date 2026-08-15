@@ -42,6 +42,7 @@ PUBLIC_URL = os.environ.get("PUBLIC_URL", f"http://127.0.0.1:{PORT}").rstrip("/"
 MP_ACCESS_TOKEN = os.environ.get("MP_ACCESS_TOKEN", "").strip()
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "lume2026")
 WHATSAPP = os.environ.get("WHATSAPP", "").strip()
+META_PIXEL_ID = os.environ.get("META_PIXEL_ID", "").strip()
 SHIP_FREE_FROM = 200.0
 SHIP_PRICE = 18.9
 
@@ -202,6 +203,16 @@ def set_mp_token(token: str) -> None:
     write_env_key("MP_ACCESS_TOKEN", MP_ACCESS_TOKEN)
 
 
+def set_pixel_id(pixel_id: str) -> str:
+    global META_PIXEL_ID
+    clean = "".join(ch for ch in pixel_id if ch.isdigit())
+    if len(clean) < 10:
+        raise ValueError("Cole o ID do pixel da Meta (só números).")
+    META_PIXEL_ID = clean
+    write_env_key("META_PIXEL_ID", META_PIXEL_ID)
+    return META_PIXEL_ID
+
+
 def probe_mp(token: str) -> dict:
     req = Request(
         "https://api.mercadopago.com/users/me",
@@ -229,6 +240,7 @@ def payment_status() -> dict:
         "publicUrl": PUBLIC_URL,
         "freeFrom": SHIP_FREE_FROM,
         "shipPrice": SHIP_PRICE,
+        "pixelId": "".join(ch for ch in META_PIXEL_ID if ch.isdigit()),
     }
     if MP_ACCESS_TOKEN:
         try:
@@ -427,6 +439,7 @@ class Handler(SimpleHTTPRequestHandler):
                     "freeFrom": SHIP_FREE_FROM,
                     "shipPrice": SHIP_PRICE,
                     "whatsapp": "".join(ch for ch in WHATSAPP if ch.isdigit()),
+                    "pixelId": "".join(ch for ch in META_PIXEL_ID if ch.isdigit()),
                 }
             )
             return
@@ -715,6 +728,20 @@ class Handler(SimpleHTTPRequestHandler):
                 account = probe_mp(token)
                 set_mp_token(token)
                 self.send_json({"ok": True, **payment_status(), "account": account})
+            except ValueError as exc:
+                self.send_json({"error": str(exc)}, 400)
+            except Exception as exc:
+                self.send_json({"error": str(exc)}, 400)
+            return
+
+        if parsed.path == "/api/admin/pixel":
+            if not is_admin(self):
+                self.send_json({"error": "Não autorizado."}, 401)
+                return
+            try:
+                payload = json.loads(self.read_body().decode("utf-8") or "{}")
+                pixel_id = set_pixel_id(str(payload.get("pixelId") or ""))
+                self.send_json({"ok": True, "pixelId": pixel_id})
             except ValueError as exc:
                 self.send_json({"error": str(exc)}, 400)
             except Exception as exc:

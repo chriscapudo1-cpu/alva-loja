@@ -55,6 +55,10 @@
     const list = filtered();
     const slice = list.slice(0, shown);
     if (heading) heading.textContent = query ? `Busca: ${query}` : current || "Toda a loja";
+    if (query && query !== paint._lastSearch) {
+      paint._lastSearch = query;
+      window.AlvaPixel?.track("Search", { search_string: query });
+    }
     if (lede) {
       lede.textContent = `${list.length} ${list.length === 1 ? "peça" : "peças"} · Pix, cartão · frete grátis acima de R$ 200`;
     }

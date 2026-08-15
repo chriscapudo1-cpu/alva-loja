@@ -122,6 +122,14 @@
       qtyInput?.addEventListener("change", () => setQty(qtyInput.value));
       document.getElementById("addBtn")?.addEventListener("click", add);
       document.getElementById("stickyAdd")?.addEventListener("click", add);
+      window.AlvaPixel?.track("ViewContent", {
+        content_ids: [product.id],
+        content_name: product.name,
+        content_type: "product",
+        content_category: product.tag,
+        value: Number(product.price),
+        currency: "BRL",
+      });
     })
     .catch(() => {
       root.innerHTML = `<p class="lede">Abra pelo python server.py para ver o produto.</p>`;

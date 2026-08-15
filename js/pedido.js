@@ -72,6 +72,21 @@
               : ""
           }
         `;
+        if (status === "success" || status === "approved") {
+          const key = `alva-pixel-purchase-${order.id}`;
+          if (!sessionStorage.getItem(key)) {
+            sessionStorage.setItem(key, "1");
+            window.AlvaPixel?.track("Purchase", {
+              content_ids: (order.items || []).map((item) => item.id).filter(Boolean),
+              contents: (order.items || []).map((item) => ({
+                id: item.id,
+                quantity: item.qty,
+              })),
+              value: Number(order.total),
+              currency: "BRL",
+            });
+          }
+        }
       })
       .catch(() => {});
   }
