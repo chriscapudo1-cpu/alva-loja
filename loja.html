@@ -53,9 +53,14 @@
 
   <main id="conteudo" class="shop">
     <header class="shop__hero">
-      <p class="eyebrow reveal">alvaloja.store</p>
+      <p class="eyebrow reveal">ALVA · catálogo</p>
       <h1 class="display display--case reveal" id="shopHeading">Todas as categorias</h1>
       <p class="lede reveal" id="shopLede">1000 produtos em 10 categorias.</p>
+      <form class="shop__search reveal" id="shopSearch" action="loja.html" method="get">
+        <label class="skip" for="shopQ">Buscar produtos</label>
+        <input id="shopQ" name="q" type="search" placeholder="Buscar produto…" />
+        <button class="btn btn--solid" type="submit"><span>Buscar</span></button>
+      </form>
     </header>
     <div class="chips" id="catChips"></div>
     <p class="shop__note reveal" id="shopNote" hidden></p>

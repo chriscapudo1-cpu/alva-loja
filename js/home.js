@@ -23,7 +23,7 @@
     el.innerHTML = `
       <a class="product__media" href="produto.html?id=${encodeURIComponent(product.id)}">
         <figure>
-          <img src="${product.image}?v=6" alt="${product.name}" loading="lazy" />
+          <img src="${product.image}?v=7" alt="${product.name}" loading="lazy" />
         </figure>
       </a>
       <div class="product__meta">
@@ -31,8 +31,8 @@
         <h2><a href="produto.html?id=${encodeURIComponent(product.id)}">${product.name}</a></h2>
         <div class="product__row">
           <strong>${brl(product.price)}</strong>
-          <button class="btn" type="button" data-add="${product.id}">
-            <span>Colocar na sacola</span>
+          <button class="btn product__add" type="button" data-add="${product.id}">
+            <span>Sacola</span>
           </button>
         </div>
       </div>
@@ -58,7 +58,7 @@
           a.href = `loja.html?cat=${encodeURIComponent(tag)}`;
           a.innerHTML = `
             <figure>
-              <img src="${item.image}?v=2" alt="" />
+              <img src="${item.image}?v=7" alt="" />
             </figure>
             <div>
               <h3>${tag}</h3>

@@ -65,7 +65,11 @@
   const onScroll = () => {
     if (!nav) return;
     const y = window.scrollY;
-    const hide = y > lastY && y > 80 && !document.body.classList.contains("menu-open");
+    const hide =
+      window.innerWidth >= 720 &&
+      y > lastY &&
+      y > 80 &&
+      !document.body.classList.contains("menu-open");
     nav.classList.toggle("is-hidden", hide);
     nav.classList.toggle("is-solid", y > 24);
     lastY = y;

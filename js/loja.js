@@ -10,8 +10,11 @@
   const params = new URLSearchParams(location.search);
   const PAGE = 48;
   let current = params.get("cat") || "";
+  let query = (params.get("q") || "").trim();
   let all = [];
   let shown = PAGE;
+  const searchInput = document.getElementById("shopQ");
+  if (searchInput && query) searchInput.value = query;
 
   const card = (product) => {
     const el = document.createElement("article");
@@ -29,8 +32,8 @@
         <p>${product.blurb}</p>
         <div class="product__row">
           <strong>${brl(product.price)}</strong>
-          <button class="btn" type="button" data-add="${product.id}">
-            <span>Colocar na sacola</span>
+          <button class="btn product__add" type="button" data-add="${product.id}">
+            <span>Sacola</span>
           </button>
         </div>
       </div>
@@ -52,10 +55,20 @@
 
   const more = document.getElementById("shopMore");
 
+  const filtered = () => {
+    const q = query.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return all.filter((item) => {
+      if (current && item.tag !== current) return false;
+      if (!q) return true;
+      const hay = `${item.name} ${item.tag} ${item.blurb || ""}`.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      return hay.includes(q);
+    });
+  };
+
   const paint = () => {
-    const list = current ? all.filter((item) => item.tag === current) : all;
+    const list = filtered();
     const slice = list.slice(0, shown);
-    if (heading) heading.textContent = current || "Todas as categorias";
+    if (heading) heading.textContent = query ? `Busca: ${query}` : current || "Todas as categorias";
     if (lede) lede.textContent = `${list.length} produtos · envio após o pagamento`;
     if (grid) {
       grid.innerHTML = "";
@@ -88,13 +101,24 @@
     paint();
   });
 
+  document.getElementById("shopSearch")?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    query = (searchInput?.value || "").trim();
+    const url = new URL(location.href);
+    if (query) url.searchParams.set("q", query);
+    else url.searchParams.delete("q");
+    history.replaceState({}, "", url);
+    shown = PAGE;
+    paint();
+  });
+
   grid?.addEventListener("click", (event) => {
     const btn = event.target.closest("[data-add]");
     if (!btn) return;
     window.LumeCart.add(btn.getAttribute("data-add"), 1);
     btn.querySelector("span").textContent = "Na sacola";
     window.setTimeout(() => {
-      if (btn.querySelector("span")) btn.querySelector("span").textContent = "Colocar na sacola";
+      if (btn.querySelector("span")) btn.querySelector("span").textContent = "Sacola";
     }, 1400);
   });
 
