@@ -57,7 +57,7 @@ def describe(item: dict) -> str:
             break
     bits.append(
         f"O {name} sai da ALVA após a confirmação do pagamento. "
-        "Na página do fornecedor você confere cor, voltagem e prazo de envio."
+        "Confira as fotos e os detalhes antes de colocar na sacola."
     )
     return " ".join(bits)
 
