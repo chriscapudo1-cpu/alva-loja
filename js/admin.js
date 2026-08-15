@@ -8,6 +8,68 @@
   const summary = document.getElementById("summary");
   const loginErr = document.getElementById("loginErr");
   const tokenKey = "lume-admin-token";
+  let catalog = [];
+
+  const esc = (value) =>
+    String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;");
+
+  const fold = (value) =>
+    String(value || "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+
+  const paintCatalog = () => {
+    const box = document.getElementById("catalog");
+    const note = document.getElementById("catalogNote");
+    const q = fold(document.getElementById("catalogQ")?.value || "");
+    const cat = document.getElementById("catalogCat")?.value || "";
+    const ae = document.getElementById("catalogAe");
+    if (ae) {
+      const term = (document.getElementById("catalogQ")?.value || "").trim() || "dropshipping";
+      ae.href = `https://pt.aliexpress.com/w/wholesale-${encodeURIComponent(term)}.html`;
+    }
+    if (!box) return;
+    const list = catalog.filter((item) => {
+      if (cat && item.tag !== cat) return false;
+      if (!q) return true;
+      const hay = fold(
+        [item.id, item.name, item.tag, item.search, item.supplier, item.supplierUrl].join(" ")
+      );
+      return hay.includes(q);
+    });
+    box.innerHTML = list
+      .slice(0, 200)
+      .map((item) => {
+        const gain = Number(item.price) - Number(item.cost || 0);
+        const buy = item.supplierUrl
+          ? `<a href="${esc(item.supplierUrl)}" target="_blank" rel="noopener">AliExpress</a>`
+          : "—";
+        return `<tr>
+          <td>${esc(item.name)}</td>
+          <td>${esc(item.tag)}</td>
+          <td>${brl(item.cost)}</td>
+          <td>${brl(item.price)}</td>
+          <td>${brl(gain)}</td>
+          <td>${buy}</td>
+          <td><a href="produto.html?id=${encodeURIComponent(item.id)}">ver na loja</a></td>
+        </tr>`;
+      })
+      .join("");
+    if (note) {
+      const extra = list.length > 200 ? ` · mostrando 200 de ${list.length}` : "";
+      note.textContent = q || cat
+        ? `${list.length} resultado(s)${extra}`
+        : `${catalog.length} produtos no fornecedor${extra}`;
+    }
+    if (!list.length) {
+      box.innerHTML = `<tr><td colspan="7">Nenhum produto com essa busca.</td></tr>`;
+    }
+  };
 
   const when = (iso) => {
     try {
@@ -29,21 +91,17 @@
     fetch("/api/admin/catalog", { headers: { "X-Admin-Token": sessionStorage.getItem("lume-admin-token") || "" } })
       .then((res) => res.json())
       .then((data) => {
-        const box = document.getElementById("catalog");
-        if (!box || !data.products) return;
-        box.innerHTML = data.products
-          .map((item) => {
-            const gain = Number(item.price) - Number(item.cost || 0);
-            return `<tr>
-              <td>${item.name}</td>
-              <td>${brl(item.cost)}</td>
-              <td>${brl(item.price)}</td>
-              <td>${brl(gain)}</td>
-              <td><a href="${item.supplierUrl}" target="_blank" rel="noopener">AliExpress</a></td>
-              <td><a href="produto.html?id=${item.id}">ver na loja</a></td>
-            </tr>`;
-          })
-          .join("");
+        catalog = data.products || [];
+        const select = document.getElementById("catalogCat");
+        if (select && select.options.length <= 1) {
+          [...new Set(catalog.map((item) => item.tag).filter(Boolean))].forEach((tag) => {
+            const opt = document.createElement("option");
+            opt.value = tag;
+            opt.textContent = tag;
+            select.appendChild(opt);
+          });
+        }
+        paintCatalog();
       })
       .catch(() => {});
     list.innerHTML = orders
@@ -140,6 +198,9 @@
   sessionStorage.removeItem(tokenKey);
   if (form) form.hidden = false;
   if (board) board.hidden = true;
+
+  document.getElementById("catalogQ")?.addEventListener("input", paintCatalog);
+  document.getElementById("catalogCat")?.addEventListener("change", paintCatalog);
 
   form?.addEventListener("submit", async (event) => {
     event.preventDefault();

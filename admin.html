@@ -64,11 +64,25 @@
       <p class="admin__summary" id="summary"></p>
       <div class="admin__list" id="list"></div>
       <h2 class="admin__h">Fornecedores · venda = 2× o custo</h2>
+      <div class="admin__find">
+        <label class="admin__find-label" for="catalogQ">Buscar produto ou fornecedor</label>
+        <div class="admin__find-row">
+          <input id="catalogQ" type="search" placeholder="Ex.: coleira, airfryer, tech-001" autocomplete="off" />
+          <select id="catalogCat" aria-label="Categoria">
+            <option value="">Todas as categorias</option>
+          </select>
+          <a class="btn btn--solid" id="catalogAe" href="https://pt.aliexpress.com/w/wholesale.html" target="_blank" rel="noopener">
+            <span>Buscar no AliExpress</span>
+          </a>
+        </div>
+        <p class="admin__find-note" id="catalogNote">Carregando catálogo…</p>
+      </div>
       <div class="table-wrap">
         <table class="sheet">
           <thead>
             <tr>
               <th>Produto</th>
+              <th>Categoria</th>
               <th>Custo</th>
               <th>Venda</th>
               <th>Lucro</th>

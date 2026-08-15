@@ -1612,6 +1612,40 @@ body.has-cursor .cursor {
   border-bottom-color: var(--gold);
 }
 
+.admin__find {
+  margin: 0 0 1.1rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.admin__find-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.admin__find-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.admin__find-row input,
+.admin__find-row select {
+  min-height: 2.7rem;
+  padding: 0 0.8rem;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+  min-width: min(100%, 16rem);
+}
+
+.admin__find-note {
+  color: var(--cream-dim);
+  font-size: 0.88rem;
+}
+
 .table-wrap {
   overflow-x: auto;
 }
