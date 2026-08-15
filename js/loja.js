@@ -1,7 +1,4 @@
 (() => {
-  const brl = (value) =>
-    Number(value).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-
   const fold = (value) =>
     String(value || "")
       .toLowerCase()
@@ -25,30 +22,6 @@
   const searchInput = document.getElementById("shopQ");
   if (searchInput && query) searchInput.value = query;
   if (sortEl) sortEl.value = sort;
-
-  const card = (product) => {
-    const el = document.createElement("article");
-    el.className = "product reveal is-in";
-    el.id = product.id;
-    el.innerHTML = `
-      <a class="product__media" href="produto.html?id=${encodeURIComponent(product.id)}">
-        <figure>
-          <img src="${product.image}?v=8" alt="${product.name}" loading="lazy" />
-        </figure>
-      </a>
-      <div class="product__meta">
-        <span>${product.tag}</span>
-        <h2><a href="produto.html?id=${encodeURIComponent(product.id)}">${product.name}</a></h2>
-        <div class="product__row">
-          <strong>${brl(product.price)}</strong>
-          <button class="btn product__add" type="button" data-add="${product.id}">
-            <span>Sacola</span>
-          </button>
-        </div>
-      </div>
-    `;
-    return el;
-  };
 
   const paintChips = (categories) => {
     if (!chips) return;
@@ -81,11 +54,13 @@
   const paint = () => {
     const list = filtered();
     const slice = list.slice(0, shown);
-    if (heading) heading.textContent = query ? `Busca: ${query}` : current || "Todas as categorias";
-    if (lede) lede.textContent = `${list.length} produto${list.length === 1 ? "" : "s"} · envio após o pagamento`;
+    if (heading) heading.textContent = query ? `Busca: ${query}` : current || "Toda a loja";
+    if (lede) {
+      lede.textContent = `${list.length} ${list.length === 1 ? "peça" : "peças"} · Pix, cartão · frete grátis acima de R$ 200`;
+    }
     if (grid) {
       grid.innerHTML = "";
-      slice.forEach((product) => grid.appendChild(card(product)));
+      slice.forEach((product) => grid.appendChild(window.LumeCart.card(product)));
     }
     if (empty) {
       empty.hidden = list.length > 0;
@@ -96,7 +71,7 @@
     if (more) {
       more.hidden = slice.length >= list.length;
       if (list.length > slice.length) {
-        more.querySelector("span").textContent = `Carregar mais (${list.length - slice.length} restantes)`;
+        more.querySelector("span").textContent = `Ver mais (${list.length - slice.length})`;
       }
     }
     chips?.querySelectorAll("[data-cat]").forEach((btn) => {
@@ -113,6 +88,13 @@
     if (sort && sort !== "nome") url.searchParams.set("sort", sort);
     else url.searchParams.delete("sort");
     history.replaceState({}, "", url);
+  };
+
+  const applyQuery = (value) => {
+    query = (value || "").trim();
+    shown = PAGE;
+    writeUrl();
+    paint();
   };
 
   chips?.addEventListener("click", (event) => {
@@ -139,28 +121,24 @@
 
   document.getElementById("shopSearch")?.addEventListener("submit", (event) => {
     event.preventDefault();
-    query = (searchInput?.value || "").trim();
-    shown = PAGE;
-    writeUrl();
-    paint();
+    applyQuery(searchInput?.value);
+  });
+
+  let live;
+  searchInput?.addEventListener("input", () => {
+    clearTimeout(live);
+    live = setTimeout(() => applyQuery(searchInput.value), 180);
   });
 
   grid?.addEventListener("click", (event) => {
     const btn = event.target.closest("[data-add]");
     if (!btn) return;
     window.LumeCart.add(btn.getAttribute("data-add"), 1);
-    btn.querySelector("span").textContent = "Na sacola";
-    window.setTimeout(() => {
-      if (btn.querySelector("span")) btn.querySelector("span").textContent = "Sacola";
-    }, 1400);
   });
 
-  Promise.all([
-    fetch("/api/products").then((res) => res.json()),
-    fetch("/api/categories").then((res) => res.json()),
-  ])
-    .then(([catalog, cats]) => {
-      all = catalog.products || [];
+  Promise.all([window.LumeCart.ready(), fetch("/api/categories").then((res) => res.json())])
+    .then(([products, cats]) => {
+      all = products || [];
       paintChips(cats.categories || []);
       paint();
     })
