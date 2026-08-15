@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALVA — loja online</title>
+  <meta name="description" content="ALVA — 200 produtos em 10 categorias. Tech, casa, pet, moda e mais. Entrega após o pagamento." />
+  <meta name="theme-color" content="#0b0a09" />
+  <meta property="og:title" content="ALVA — loja online" />
+  <meta property="og:description" content="Objetos escolhidos para o dia a dia. 200 produtos, 10 categorias." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <a class="skip" href="#conteudo">Ir ao conteúdo</a>
+
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <span class="wordmark loader__mark">ALVA</span>
+      <div class="loader__bar" aria-hidden="true"><i></i></div>
+    </div>
+  </div>
+
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <span class="cursor__dot"></span>
+    <span class="cursor__ring"></span>
+    <span class="cursor__label"></span>
+  </div>
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <a class="wordmark nav__logo" href="index.html" aria-current="page">ALVA</a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="index.html" aria-current="page">Início</a>
+      <a href="loja.html">Loja</a>
+      <a href="loja.html?cat=Tech">Tech</a>
+      <a href="loja.html?cat=Casa">Casa</a>
+      <a href="loja.html?cat=Pet">Pet</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="nav__meta">
+      <a class="cart-link" href="checkout.html">Sacola <span class="cart-count" data-cart-count hidden>0</span></a>
+      <button class="nav__burger" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
+    </div>
+  </header>
+
+  <div class="menu" id="menu" hidden>
+    <nav class="menu__nav" aria-label="Mobile">
+      <a href="index.html" data-index="01">Início</a>
+      <a href="loja.html" data-index="02">Loja</a>
+      <a href="checkout.html" data-index="03">Sacola</a>
+      <a href="#contato" data-index="04">Contato</a>
+    </nav>
+    <p class="menu__note">alvaloja.store</p>
+  </div>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio">
+      <div class="hero__media">
+        <img src="assets/img/hero.jpg" alt="" />
+        <div class="hero__veil"></div>
+      </div>
+      <div class="hero__copy">
+        <p class="eyebrow reveal">alvaloja.store · loja online</p>
+        <h1 class="display reveal">
+          Objetos para<br />
+          o <em>dia a dia</em>,<br />
+          sem excesso.
+        </h1>
+        <div class="hero__foot reveal">
+          <p>200 produtos em 10 categorias. Você escolhe, paga e nós enviamos.</p>
+          <a class="btn btn--solid magnetic" href="loja.html">
+            <span>Entrar na loja</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="hero__scroll" aria-hidden="true">
+        <span>rolar</span>
+        <i></i>
+      </div>
+    </section>
+
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Tech</span><span>Casa</span><span>Pet</span><span>Moda</span><span>Carro</span><span>Beleza</span><span>Esporte</span><span>Bebê</span><span>Escritório</span><span>Cozinha</span>
+        <span>Tech</span><span>Casa</span><span>Pet</span><span>Moda</span><span>Carro</span><span>Beleza</span><span>Esporte</span><span>Bebê</span><span>Escritório</span><span>Cozinha</span>
+      </div>
+    </section>
+
+    <section class="home-cats" id="categorias">
+      <div class="section-head">
+        <p class="num reveal">01</p>
+        <div>
+          <h2 class="reveal">Categorias</h2>
+          <p class="lede reveal">Dez frentes. Cada uma com vinte peças.</p>
+        </div>
+      </div>
+      <div class="home-cats__grid" id="homeCats"></div>
+    </section>
+
+    <section class="home-feat" id="destaques">
+      <div class="section-head">
+        <p class="num reveal">02</p>
+        <div>
+          <h2 class="reveal">Em destaque</h2>
+          <p class="lede reveal">Uma seleção da semana. O catálogo completo está na loja.</p>
+        </div>
+      </div>
+      <div class="shop__grid home-feat__grid" id="homeFeat"></div>
+      <p class="home-feat__more reveal">
+        <a class="btn magnetic" href="loja.html">
+          <span>Ver os 200 produtos</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </p>
+    </section>
+
+    <section class="home-steps" id="como">
+      <div class="section-head">
+        <p class="num reveal">03</p>
+        <div>
+          <h2 class="reveal">Como funciona</h2>
+        </div>
+      </div>
+      <ol class="process__grid">
+        <li class="reveal">
+          <span>01</span>
+          <h3>Escolha</h3>
+          <p>Navegue por categoria, abra o produto e coloque na sacola. Frete R$ 18,90 — grátis a partir de R$ 200.</p>
+        </li>
+        <li class="reveal">
+          <span>02</span>
+          <h3>Pague</h3>
+          <p>Checkout com Mercado Pago. Pix, cartão ou o método que você já usa.</p>
+        </li>
+        <li class="reveal">
+          <span>03</span>
+          <h3>Receba</h3>
+          <p>Enviamos depois da confirmação do pagamento. Você acompanha o pedido pelo e-mail.</p>
+        </li>
+        <li class="reveal">
+          <span>04</span>
+          <h3>Fale conosco</h3>
+          <p>Dúvida de tamanho, prazo ou troca: escreva em Contato. Respondemos em dia útil.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="contact" id="contato">
+      <div class="contact__intro">
+        <p class="num reveal">04</p>
+        <h2 class="reveal">Fale com a ALVA.</h2>
+        <p class="lede reveal">Pedido, troca ou uma dúvida antes de comprar. Respondemos em até um dia útil.</p>
+        <ul class="contact__facts reveal">
+          <li>Brasil · envio nacional</li>
+          <li><a href="mailto:ola@alvaloja.store">ola@alvaloja.store</a></li>
+          <li><span id="clock">—</span> BRT</li>
+        </ul>
+      </div>
+
+      <form class="form" id="form" novalidate>
+        <div class="form__row">
+          <label for="nome">Nome</label>
+          <input id="nome" name="nome" type="text" autocomplete="name" required placeholder="Como podemos te chamar" />
+          <span class="form__err" data-for="nome"></span>
+        </div>
+        <div class="form__row">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" required placeholder="voce@email.com" />
+          <span class="form__err" data-for="email"></span>
+        </div>
+        <div class="form__row">
+          <label for="projeto">Mensagem</label>
+          <textarea id="projeto" name="projeto" rows="4" required placeholder="Número do pedido, produto ou a sua dúvida."></textarea>
+          <span class="form__err" data-for="projeto"></span>
+        </div>
+        <div class="form__row">
+          <label for="orcamento">Assunto</label>
+          <select id="orcamento" name="orcamento" required>
+            <option value="" disabled selected>Escolha um assunto</option>
+            <option>Dúvida sobre produto</option>
+            <option>Meu pedido</option>
+            <option>Troca ou devolução</option>
+            <option>Parceria</option>
+            <option>Outro</option>
+          </select>
+          <span class="form__err" data-for="orcamento"></span>
+        </div>
+        <button class="btn btn--solid magnetic" type="submit">
+          <span>Enviar mensagem</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="form__ok" id="formOk" hidden>Recebemos. Respondemos em até um dia útil.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="wordmark" href="index.html">ALVA</a>
+    <p>alvaloja.store</p>
+    <p class="footer__copy">© <span id="year"></span> ALVA. <a href="admin.html">Pedidos</a></p>
+  </footer>
+
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

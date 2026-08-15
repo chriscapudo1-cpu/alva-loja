@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: alva-loja
+    runtime: python
+    buildCommand: ""
+    startCommand: python -u server.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.8"
+      - key: HOST
+        value: 0.0.0.0
+      - key: PUBLIC_URL
+        value: https://alvaloja.store

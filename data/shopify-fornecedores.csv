@@ -1,0 +1,201 @@
+﻿sku;handle;produto;categoria;custo;venda;aliexpress;foto_local
+tech-001;fone-tws-pulse;Fone TWS Pulse;Tech;28,44;56,88;https://pt.aliexpress.com/item/1005010391183440.html;assets/img/ali/tech-001.jpg
+tech-002;fone-esportivo-gancho;Fone Esportivo Gancho;Tech;32,12;64,24;https://pt.aliexpress.com/item/1005010802856880.html;assets/img/ali/tech-002.jpg
+tech-003;fone-gamer-rgb;Fone Gamer RGB;Tech;38,33;76,66;https://pt.aliexpress.com/item/1005009841006834.html;assets/img/ali/tech-003.jpg
+tech-004;fone-conducao-ossea;Fone Condução Óssea;Tech;77,18;154,36;https://pt.aliexpress.com/item/1005006904617360.html;assets/img/ali/tech-004.jpg
+tech-005;smartwatch-x1;Smartwatch X1;Tech;61,12;122,24;https://pt.aliexpress.com/item/1005008908936664.html;assets/img/ali/tech-005.jpg
+tech-006;smartwatch-esportivo;Smartwatch Esportivo;Tech;69,93;139,86;https://pt.aliexpress.com/item/1005012242507031.html;assets/img/ali/tech-006.jpg
+tech-007;carregador-mag-15w;Carregador Mag 15W;Tech;35,22;70,44;https://pt.aliexpress.com/item/1005010796075440.html;assets/img/ali/tech-007.jpg
+tech-008;power-bank-20000mah;Power Bank 20000mAh;Tech;64,23;128,46;https://pt.aliexpress.com/item/1005009905569823.html;assets/img/ali/tech-008.jpg
+tech-009;cabo-usb-c-2m;Cabo USB-C 2m;Tech;9,84;19,68;https://pt.aliexpress.com/item/1005012775965431.html;assets/img/ali/tech-009.jpg
+tech-010;hub-usb-c-6-em-1;Hub USB-C 6 em 1;Tech;49,73;99,46;https://pt.aliexpress.com/item/1005007398525395.html;assets/img/ali/tech-010.jpg
+tech-011;capa-iphone-silicone;Capa iPhone Silicone;Tech;12,90;25,80;https://pt.aliexpress.com/w/wholesale-iphone+silicone+case.html;assets/img/ali/tech-011.jpg
+tech-012;capa-android-fosca;Capa Android Fosca;Tech;11,40;22,80;https://pt.aliexpress.com/w/wholesale-android+matte+phone+case.html;assets/img/ali/tech-012.jpg
+tech-013;pelicula-privacidade;Película Privacidade;Tech;9,32;18,64;https://pt.aliexpress.com/w/wholesale-privacy+screen+protector.html;assets/img/ali/tech-013.jpg
+tech-014;suporte-mesa-articulado;Suporte Mesa Articulado;Tech;17,61;35,22;https://pt.aliexpress.com/w/wholesale-desktop+phone+stand+adjustable.html;assets/img/ali/tech-014.jpg
+tech-015;mini-projetor-portatil;Mini Projetor Portátil;Tech;145,04;290,08;https://pt.aliexpress.com/w/wholesale-mini+portable+projector.html;assets/img/ali/tech-015.jpg
+tech-016;teclado-bluetooth-slim;Teclado Bluetooth Slim;Tech;54,39;108,78;https://pt.aliexpress.com/w/wholesale-slim+bluetooth+keyboard.html;assets/img/ali/tech-016.jpg
+tech-017;mouse-silencioso;Mouse Silencioso;Tech;26,42;52,84;https://pt.aliexpress.com/w/wholesale-silent+wireless+mouse.html;assets/img/ali/tech-017.jpg
+tech-018;webcam-full-hd;Webcam Full HD;Tech;68,38;136,76;https://pt.aliexpress.com/w/wholesale-webcam+1080p+autofocus.html;assets/img/ali/tech-018.jpg
+tech-019;luminaria-anel-led;Luminária Anel LED;Tech;45,07;90,14;https://pt.aliexpress.com/w/wholesale-ring+light+10+inch.html;assets/img/ali/tech-019.jpg
+tech-020;adaptador-hdmi-4k;Adaptador HDMI 4K;Tech;22,27;44,54;https://pt.aliexpress.com/w/wholesale-hdmi+adapter+4k+usb+c.html;assets/img/ali/tech-020.jpg
+casa-021;capa-de-sofa-2-lugares;Capa de Sofá 2 Lugares;Casa;38,23;76,46;https://pt.aliexpress.com/w/wholesale-sofa+cover+2+seater+stretch.html;assets/img/ali/casa-021.jpg
+casa-022;capa-de-sofa-3-lugares;Capa de Sofá 3 Lugares;Casa;46,10;92,20;https://pt.aliexpress.com/w/wholesale-sofa+cover+3+seater+stretch.html;assets/img/ali/casa-022.jpg
+casa-023;organizador-de-joias;Organizador de Joias;Casa;44,96;89,92;https://pt.aliexpress.com/w/wholesale-jewelry+organizer+box.html;assets/img/ali/casa-023.jpg
+casa-024;almofada-lombar;Almofada Lombar;Casa;65,99;131,98;https://pt.aliexpress.com/w/wholesale-lumbar+support+pillow.html;assets/img/ali/casa-024.jpg
+casa-025;travesseiro-cervical;Travesseiro Cervical;Casa;58,02;116,04;https://pt.aliexpress.com/w/wholesale-cervical+memory+foam+pillow.html;assets/img/ali/casa-025.jpg
+casa-026;suporte-vassoura-parede;Suporte Vassoura Parede;Casa;26,78;53,56;https://pt.aliexpress.com/w/wholesale-broom+holder+wall+mount.html;assets/img/ali/casa-026.jpg
+casa-027;capa-de-fogao;Capa de Fogão;Casa;16,42;32,84;https://pt.aliexpress.com/w/wholesale-stove+burner+covers.html;assets/img/ali/casa-027.jpg
+casa-028;cortina-blackout;Cortina Blackout;Casa;75,11;150,22;https://pt.aliexpress.com/w/wholesale-blackout+curtains+living+room.html;assets/img/ali/casa-028.jpg
+casa-029;tapete-passadeira;Tapete Passadeira;Casa;50,76;101,52;https://pt.aliexpress.com/w/wholesale-hallway+runner+rug.html;assets/img/ali/casa-029.jpg
+casa-030;luminaria-de-mesa;Luminária de Mesa;Casa;52,84;105,68;https://pt.aliexpress.com/w/wholesale-desk+lamp+led+dimmable.html;assets/img/ali/casa-030.jpg
+casa-031;fita-led-5m-rgb;Fita LED 5m RGB;Casa;33,15;66,30;https://pt.aliexpress.com/w/wholesale-led+strip+lights+5m+rgb.html;assets/img/ali/casa-031.jpg
+casa-032;umidificador-300ml;Umidificador 300ml;Casa;41,96;83,92;https://pt.aliexpress.com/w/wholesale-humidifier+300ml+usb.html;assets/img/ali/casa-032.jpg
+casa-033;relogio-de-parede;Relógio de Parede;Casa;39,37;78,74;https://pt.aliexpress.com/w/wholesale-modern+wall+clock+silent.html;assets/img/ali/casa-033.jpg
+casa-034;cabideiro-de-porta;Cabideiro de Porta;Casa;21,76;43,52;https://pt.aliexpress.com/w/wholesale-over+door+hook+hanger.html;assets/img/ali/casa-034.jpg
+casa-035;caixa-organizadora;Caixa Organizadora;Casa;30,56;61,12;https://pt.aliexpress.com/w/wholesale-foldable+storage+box.html;assets/img/ali/casa-035.jpg
+casa-036;protetor-de-quina;Protetor de Quina;Casa;14,50;29,00;https://pt.aliexpress.com/w/wholesale-corner+guards+baby+safety.html;assets/img/ali/casa-036.jpg
+casa-037;puxador-adesivo;Puxador Adesivo;Casa;12,43;24,86;https://pt.aliexpress.com/w/wholesale-self+adhesive+drawer+handle.html;assets/img/ali/casa-037.jpg
+casa-038;varal-retratil;Varal Retrátil;Casa;35,74;71,48;https://pt.aliexpress.com/w/wholesale-retractable+clothes+line.html;assets/img/ali/casa-038.jpg
+casa-039;pano-microfibra-kit-10;Pano Microfibra Kit 10;Casa;18,13;36,26;https://pt.aliexpress.com/w/wholesale-microfiber+cleaning+cloths+10.html;assets/img/ali/casa-039.jpg
+casa-040;lixeira-com-pedal;Lixeira com Pedal;Casa;59,05;118,10;https://pt.aliexpress.com/w/wholesale-pedal+trash+can+8l.html;assets/img/ali/casa-040.jpg
+pet-041;cama-caverna-gato;Cama Caverna Gato;Pet;59,88;119,76;https://pt.aliexpress.com/w/wholesale-cat+cave+bed+felt.html;assets/img/ali/pet-041.jpg
+pet-042;cama-ortopedica-cao;Cama Ortopédica Cão;Pet;95,31;190,62;https://pt.aliexpress.com/w/wholesale-orthopedic+dog+bed.html;assets/img/ali/pet-042.jpg
+pet-043;coleira-led-recarregavel;Coleira LED Recarregável;Pet;19,53;39,06;https://pt.aliexpress.com/w/wholesale-rechargeable+led+dog+collar.html;assets/img/ali/pet-043.jpg
+pet-044;guia-retratil-5m;Guia Retrátil 5m;Pet;32,12;64,24;https://pt.aliexpress.com/w/wholesale-retractable+dog+leash+5m.html;assets/img/ali/pet-044.jpg
+pet-045;comedouro-lento;Comedouro Lento;Pet;36,57;73,14;https://pt.aliexpress.com/w/wholesale-slow+feeder+dog+bowl.html;assets/img/ali/pet-045.jpg
+pet-046;fonte-agua-gato;Fonte Água Gato;Pet;76,66;153,32;https://pt.aliexpress.com/w/wholesale-cat+water+fountain.html;assets/img/ali/pet-046.jpg
+pet-047;arranhador-torre;Arranhador Torre;Pet;113,96;227,92;https://pt.aliexpress.com/w/wholesale-cat+scratching+tower.html;assets/img/ali/pet-047.jpg
+pet-048;brinquedo-laser;Brinquedo Laser;Pet;27,97;55,94;https://pt.aliexpress.com/w/wholesale-cat+laser+toy+automatic.html;assets/img/ali/pet-048.jpg
+pet-049;dispenser-cata-caca;Dispenser Cata-Caca;Pet;10,88;21,76;https://pt.aliexpress.com/w/wholesale-dog+poop+bag+dispenser.html;assets/img/ali/pet-049.jpg
+pet-050;roupa-cao-inverno;Roupa Cão Inverno;Pet;42,99;85,98;https://pt.aliexpress.com/w/wholesale-dog+winter+coat.html;assets/img/ali/pet-050.jpg
+pet-051;peitoral-antipuxao;Peitoral Antipuxão;Pet;40,92;81,84;https://pt.aliexpress.com/w/wholesale-no+pull+dog+harness.html;assets/img/ali/pet-051.jpg
+pet-052;escova-tira-pelos;Escova Tira-Pelos;Pet;23,83;47,66;https://pt.aliexpress.com/w/wholesale-pet+hair+remover+brush.html;assets/img/ali/pet-052.jpg
+pet-053;tapete-higienico-lavavel;Tapete Higiênico Lavável;Pet;47,66;95,32;https://pt.aliexpress.com/w/wholesale-washable+puppy+pad.html;assets/img/ali/pet-053.jpg
+pet-054;brinquedo-mordedor;Brinquedo Mordedor;Pet;19,68;39,36;https://pt.aliexpress.com/w/wholesale-dog+chew+toy+nylon.html;assets/img/ali/pet-054.jpg
+pet-055;cama-janela-gato;Cama Janela Gato;Pet;67,86;135,72;https://pt.aliexpress.com/w/wholesale-cat+window+perch.html;assets/img/ali/pet-055.jpg
+pet-056;comedouro-elevado;Comedouro Elevado;Pet;54,39;108,78;https://pt.aliexpress.com/w/wholesale-elevated+dog+bowl+stand.html;assets/img/ali/pet-056.jpg
+pet-057;gps-pet-mini;GPS Pet Mini;Pet;86,51;173,02;https://pt.aliexpress.com/w/wholesale-mini+gps+pet+tracker.html;assets/img/ali/pet-057.jpg
+pet-058;tunel-para-gato;Túnel para Gato;Pet;35,22;70,44;https://pt.aliexpress.com/w/wholesale-cat+tunnel+toy.html;assets/img/ali/pet-058.jpg
+pet-059;bolsa-transporte-pet;Bolsa Transporte Pet;Pet;78,74;157,48;https://pt.aliexpress.com/w/wholesale-pet+carrier+bag+airline.html;assets/img/ali/pet-059.jpg
+pet-060;bebedouro-portatil;Bebedouro Portátil;Pet;25,38;50,76;https://pt.aliexpress.com/w/wholesale-portable+dog+water+bottle.html;assets/img/ali/pet-060.jpg
+moda-061;bolsa-transversal-mini;Bolsa Transversal Mini;Moda;19,58;39,16;https://pt.aliexpress.com/w/wholesale-mini+crossbody+bag.html;assets/img/ali/moda-061.jpg
+moda-062;bolsa-shopper-couro-pu;Bolsa Shopper Couro PU;Moda;48,69;97,38;https://pt.aliexpress.com/w/wholesale-pu+leather+tote+bag.html;assets/img/ali/moda-062.jpg
+moda-063;carteira-slim-rfid;Carteira Slim RFID;Moda;20,62;41,24;https://pt.aliexpress.com/w/wholesale-rfid+slim+wallet.html;assets/img/ali/moda-063.jpg
+moda-064;cinto-couro-fivela;Cinto Couro Fivela;Moda;29,01;58,02;https://pt.aliexpress.com/w/wholesale-leather+belt+men.html;assets/img/ali/moda-064.jpg
+moda-065;oculos-uv400;Óculos UV400;Moda;21,76;43,52;https://pt.aliexpress.com/w/wholesale-uv400+sunglasses.html;assets/img/ali/moda-065.jpg
+moda-066;bone-aba-curva;Boné Aba Curva;Moda;18,13;36,26;https://pt.aliexpress.com/w/wholesale-curved+brim+cap.html;assets/img/ali/moda-066.jpg
+moda-067;meia-invisivel-kit-5;Meia Invisível Kit 5;Moda;16,21;32,42;https://pt.aliexpress.com/w/wholesale-invisible+socks+5+pairs.html;assets/img/ali/moda-067.jpg
+moda-068;lenco-seda-cetim;Lenço Seda Cetim;Moda;24,86;49,72;https://pt.aliexpress.com/w/wholesale-satin+silk+scarf.html;assets/img/ali/moda-068.jpg
+moda-069;relogio-quartzo-pulseira;Relógio Quartzo Pulseira;Moda;46,10;92,20;https://pt.aliexpress.com/w/wholesale-quartz+watch+leather+strap.html;assets/img/ali/moda-069.jpg
+moda-070;brinco-argola-aco;Brinco Argola Aço;Moda;13,99;27,98;https://pt.aliexpress.com/w/wholesale-stainless+hoop+earrings.html;assets/img/ali/moda-070.jpg
+moda-071;colar-corrente-fina;Colar Corrente Fina;Moda;16,06;32,12;https://pt.aliexpress.com/w/wholesale-thin+chain+necklace.html;assets/img/ali/moda-071.jpg
+moda-072;pulseira-ima;Pulseira Imã;Moda;15,02;30,04;https://pt.aliexpress.com/w/wholesale-magnetic+bracelet.html;assets/img/ali/moda-072.jpg
+moda-073;necessaire-viagem;Necessaire Viagem;Moda;26,94;53,88;https://pt.aliexpress.com/w/wholesale-travel+toiletry+bag.html;assets/img/ali/moda-073.jpg
+moda-074;cinto-faixa-vestido;Cinto Faixa Vestido;Moda;17,61;35,22;https://pt.aliexpress.com/w/wholesale-women+dress+belt.html;assets/img/ali/moda-074.jpg
+moda-075;chapeu-bucket;Chapéu Bucket;Moda;23,83;47,66;https://pt.aliexpress.com/w/wholesale-bucket+hat+cotton.html;assets/img/ali/moda-075.jpg
+moda-076;mochila-notebook-15;Mochila Notebook 15;Moda;76,66;153,32;https://pt.aliexpress.com/w/wholesale-laptop+backpack+15+inch.html;assets/img/ali/moda-076.jpg
+moda-077;pochete-esportiva;Pochete Esportiva;Moda;21,24;42,48;https://pt.aliexpress.com/w/wholesale-running+belt+waist+bag.html;assets/img/ali/moda-077.jpg
+moda-078;luva-touchscreen;Luva Touchscreen;Moda;25,90;51,80;https://pt.aliexpress.com/w/wholesale-touchscreen+winter+gloves.html;assets/img/ali/moda-078.jpg
+moda-079;cachecol-tricot;Cachecol Tricot;Moda;32,63;65,26;https://pt.aliexpress.com/w/wholesale-knit+scarf+unisex.html;assets/img/ali/moda-079.jpg
+moda-080;porta-cartao-metal;Porta-Cartão Metal;Moda;18,65;37,30;https://pt.aliexpress.com/w/wholesale-metal+card+holder+rfid.html;assets/img/ali/moda-080.jpg
+carro-081;suporte-magnetico-ventosa;Suporte Magnético Ventosa;Carro;8,34;16,68;https://pt.aliexpress.com/w/wholesale-magnetic+car+phone+holder+suction.html;assets/img/ali/carro-081.jpg
+carro-082;suporte-grade-de-ar;Suporte Grade de Ar;Carro;12,43;24,86;https://pt.aliexpress.com/w/wholesale-air+vent+phone+holder.html;assets/img/ali/carro-082.jpg
+carro-083;camera-veicular-full-hd;Câmera Veicular Full HD;Carro;102,72;205,44;https://pt.aliexpress.com/w/wholesale-dash+cam+1080p.html;assets/img/ali/carro-083.jpg
+carro-084;aspirador-portatil-120w;Aspirador Portátil 120W;Carro;107,12;214,24;https://pt.aliexpress.com/w/wholesale-portable+car+vacuum+120w.html;assets/img/ali/carro-084.jpg
+carro-085;organizador-banco-traseiro;Organizador Banco Traseiro;Carro;33,67;67,34;https://pt.aliexpress.com/w/wholesale-car+backseat+organizer.html;assets/img/ali/carro-085.jpg
+carro-086;carregador-veicular-45w;Carregador Veicular 45W;Carro;30,04;60,08;https://pt.aliexpress.com/w/wholesale-car+charger+45w+usb+c.html;assets/img/ali/carro-086.jpg
+carro-087;camera-de-re;Câmera de Ré;Carro;58,02;116,04;https://pt.aliexpress.com/w/wholesale-car+rear+view+camera.html;assets/img/ali/carro-087.jpg
+carro-088;tapete-borracha-universal;Tapete Borracha Universal;Carro;69,41;138,82;https://pt.aliexpress.com/w/wholesale-universal+car+floor+mat.html;assets/img/ali/carro-088.jpg
+carro-089;protetor-sol-para-brisa;Protetor Sol Para-brisa;Carro;24,35;48,70;https://pt.aliexpress.com/w/wholesale-windshield+sun+shade.html;assets/img/ali/carro-089.jpg
+carro-090;aromatizador-clip;Aromatizador Clip;Carro;9,84;19,68;https://pt.aliexpress.com/w/wholesale-car+air+freshener+clip.html;assets/img/ali/carro-090.jpg
+carro-091;kit-emergencia;Kit Emergência;Carro;65,27;130,54;https://pt.aliexpress.com/w/wholesale-car+emergency+kit.html;assets/img/ali/carro-091.jpg
+carro-092;suporte-tablet-encosto;Suporte Tablet Encosto;Carro;37,30;74,60;https://pt.aliexpress.com/w/wholesale-car+headrest+tablet+holder.html;assets/img/ali/carro-092.jpg
+carro-093;capa-volante;Capa Volante;Carro;22,79;45,58;https://pt.aliexpress.com/w/wholesale-steering+wheel+cover.html;assets/img/ali/carro-093.jpg
+carro-094;luz-interna-led;Luz Interna LED;Carro;17,09;34,18;https://pt.aliexpress.com/w/wholesale-car+interior+led+light.html;assets/img/ali/carro-094.jpg
+carro-095;compressor-mini-12v;Compressor Mini 12V;Carro;87,02;174,04;https://pt.aliexpress.com/w/wholesale-12v+portable+air+compressor.html;assets/img/ali/carro-095.jpg
+carro-096;inversor-150w;Inversor 150W;Carro;73,04;146,08;https://pt.aliexpress.com/w/wholesale-car+power+inverter+150w.html;assets/img/ali/carro-096.jpg
+carro-097;pelicula-antiembacante;Película Antiembaçante;Carro;19,68;39,36;https://pt.aliexpress.com/w/wholesale-anti+fog+car+film.html;assets/img/ali/carro-097.jpg
+carro-098;gancho-encosto-kit-4;Gancho Encosto Kit 4;Carro;13,47;26,94;https://pt.aliexpress.com/w/wholesale-car+headrest+hooks+4pcs.html;assets/img/ali/carro-098.jpg
+carro-099;lixeira-carro-couro;Lixeira Carro Couro;Carro;28,49;56,98;https://pt.aliexpress.com/w/wholesale-car+trash+bin+leather.html;assets/img/ali/carro-099.jpg
+carro-100;camera-dvr-dual;Câmera DVR Dual;Carro;142,45;284,90;https://pt.aliexpress.com/w/wholesale-dual+dash+cam+front+rear.html;assets/img/ali/carro-100.jpg
+beleza-101;massageador-de-pescoco;Massageador de Pescoço;Beleza;15,95;31,90;https://pt.aliexpress.com/w/wholesale-electric+neck+massager.html;assets/img/ali/beleza-101.jpg
+beleza-102;massageador-facial-led;Massageador Facial LED;Beleza;48,69;97,38;https://pt.aliexpress.com/w/wholesale-led+facial+massager.html;assets/img/ali/beleza-102.jpg
+beleza-103;escova-alisadora;Escova Alisadora;Beleza;66,30;132,60;https://pt.aliexpress.com/w/wholesale-hair+straightener+brush.html;assets/img/ali/beleza-103.jpg
+beleza-104;secador-compacto;Secador Compacto;Beleza;60,09;120,18;https://pt.aliexpress.com/w/wholesale-travel+hair+dryer.html;assets/img/ali/beleza-104.jpg
+beleza-105;espelho-led-maquiagem;Espelho LED Maquiagem;Beleza;52,84;105,68;https://pt.aliexpress.com/w/wholesale-led+makeup+mirror.html;assets/img/ali/beleza-105.jpg
+beleza-106;depilador-eletrico;Depilador Elétrico;Beleza;72,00;144,00;https://pt.aliexpress.com/w/wholesale-electric+epilator+women.html;assets/img/ali/beleza-106.jpg
+beleza-107;kit-skincare-rolo;Kit Skincare Rolo;Beleza;23,31;46,62;https://pt.aliexpress.com/w/wholesale-jade+roller+gua+sha+set.html;assets/img/ali/beleza-107.jpg
+beleza-108;aparador-pelos-nariz;Aparador Pelos Nariz;Beleza;26,94;53,88;https://pt.aliexpress.com/w/wholesale-nose+hair+trimmer.html;assets/img/ali/beleza-108.jpg
+beleza-109;escova-facial-sonica;Escova Facial Sônica;Beleza;40,40;80,80;https://pt.aliexpress.com/w/wholesale-sonic+facial+cleansing+brush.html;assets/img/ali/beleza-109.jpg
+beleza-110;modelador-cachos;Modelador Cachos;Beleza;74,59;149,18;https://pt.aliexpress.com/w/wholesale-hair+curler+automatic.html;assets/img/ali/beleza-110.jpg
+beleza-111;removedor-cravos;Removedor Cravos;Beleza;44,55;89,10;https://pt.aliexpress.com/w/wholesale-blackhead+vacuum+remover.html;assets/img/ali/beleza-111.jpg
+beleza-112;lixa-pe-eletrica;Lixa Pé Elétrica;Beleza;47,14;94,28;https://pt.aliexpress.com/w/wholesale-electric+foot+file.html;assets/img/ali/beleza-112.jpg
+beleza-113;kit-manicure-18pc;Kit Manicure 18pç;Beleza;32,63;65,26;https://pt.aliexpress.com/w/wholesale-manicure+set+18+pcs.html;assets/img/ali/beleza-113.jpg
+beleza-114;chapinha-mini;Chapinha Mini;Beleza;36,78;73,56;https://pt.aliexpress.com/w/wholesale-mini+hair+straightener.html;assets/img/ali/beleza-114.jpg
+beleza-115;faixa-skincare;Faixa Skincare;Beleza;11,40;22,80;https://pt.aliexpress.com/w/wholesale-skincare+headband.html;assets/img/ali/beleza-115.jpg
+beleza-116;organizadora-maquiagem;Organizadora Maquiagem;Beleza;50,25;100,50;https://pt.aliexpress.com/w/wholesale-makeup+organizer+acrylic.html;assets/img/ali/beleza-116.jpg
+beleza-117;pinca-led-sobrancelha;Pinça LED Sobrancelha;Beleza;17,61;35,22;https://pt.aliexpress.com/w/wholesale-led+eyebrow+tweezers.html;assets/img/ali/beleza-117.jpg
+beleza-118;spray-nano-facial;Spray Nano Facial;Beleza;35,22;70,44;https://pt.aliexpress.com/w/wholesale-nano+facial+mister.html;assets/img/ali/beleza-118.jpg
+beleza-119;massageador-couro-cabeludo;Massageador Couro Cabeludo;Beleza;20,20;40,40;https://pt.aliexpress.com/w/wholesale-scalp+massager+shampoo.html;assets/img/ali/beleza-119.jpg
+beleza-120;kit-barba-homem;Kit Barba Homem;Beleza;78,74;157,48;https://pt.aliexpress.com/w/wholesale-men+beard+kit+trimmer.html;assets/img/ali/beleza-120.jpg
+esporte-121;tapete-yoga-6mm;Tapete Yoga 6mm;Esporte;81,64;163,28;https://pt.aliexpress.com/w/wholesale-yoga+mat+6mm+non+slip.html;assets/img/ali/esporte-121.jpg
+esporte-122;tapete-yoga-extra-grosso;Tapete Yoga Extra Grosso;Esporte;94,28;188,56;https://pt.aliexpress.com/w/wholesale-thick+yoga+mat+10mm.html;assets/img/ali/esporte-122.jpg
+esporte-123;meias-compressao-20-30;Meias Compressão 20-30;Esporte;16,21;32,42;https://pt.aliexpress.com/w/wholesale-compression+socks+20-30+mmhg.html;assets/img/ali/esporte-123.jpg
+esporte-124;corda-crossfit;Corda Crossfit;Esporte;24,86;49,72;https://pt.aliexpress.com/w/wholesale-jump+rope+weighted.html;assets/img/ali/esporte-124.jpg
+esporte-125;elastico-kit-5;Elástico Kit 5;Esporte;35,74;71,48;https://pt.aliexpress.com/w/wholesale-resistance+bands+set+5.html;assets/img/ali/esporte-125.jpg
+esporte-126;rolo-liberacao-miofascial;Rolo Liberação Miofascial;Esporte;43,51;87,02;https://pt.aliexpress.com/w/wholesale-foam+roller+massage.html;assets/img/ali/esporte-126.jpg
+esporte-127;garrafa-1l-esportiva;Garrafa 1L Esportiva;Esporte;29,01;58,02;https://pt.aliexpress.com/w/wholesale-sports+water+bottle+1l.html;assets/img/ali/esporte-127.jpg
+esporte-128;luvas-academia;Luvas Academia;Esporte;21,76;43,52;https://pt.aliexpress.com/w/wholesale-gym+workout+gloves.html;assets/img/ali/esporte-128.jpg
+esporte-129;caneleira-2kg-par;Caneleira 2kg Par;Esporte;49,21;98,42;https://pt.aliexpress.com/w/wholesale-ankle+weights+2kg+pair.html;assets/img/ali/esporte-129.jpg
+esporte-130;bola-pilates-65cm;Bola Pilates 65cm;Esporte;39,89;79,78;https://pt.aliexpress.com/w/wholesale-pilates+ball+65cm.html;assets/img/ali/esporte-130.jpg
+esporte-131;mini-bike-pedal;Mini Bike Pedal;Esporte;116,03;232,06;https://pt.aliexpress.com/w/wholesale-under+desk+mini+bike.html;assets/img/ali/esporte-131.jpg
+esporte-132;suporte-celular-bike;Suporte Celular Bike;Esporte;18,65;37,30;https://pt.aliexpress.com/w/wholesale-bike+phone+mount.html;assets/img/ali/esporte-132.jpg
+esporte-133;farol-bike-usb;Farol Bike USB;Esporte;31,60;63,20;https://pt.aliexpress.com/w/wholesale-usb+bike+light+set.html;assets/img/ali/esporte-133.jpg
+esporte-134;joelheira-compressao;Joelheira Compressão;Esporte;27,97;55,94;https://pt.aliexpress.com/w/wholesale-knee+compression+sleeve.html;assets/img/ali/esporte-134.jpg
+esporte-135;faixa-headband-suor;Faixa Headband Suor;Esporte;14,50;29,00;https://pt.aliexpress.com/w/wholesale-sweat+headband+sport.html;assets/img/ali/esporte-135.jpg
+esporte-136;cinto-hidratacao;Cinto Hidratação;Esporte;42,48;84,96;https://pt.aliexpress.com/w/wholesale-running+hydration+belt.html;assets/img/ali/esporte-136.jpg
+esporte-137;contador-passos-clip;Contador Passos Clip;Esporte;16,06;32,12;https://pt.aliexpress.com/w/wholesale-clip+pedometer.html;assets/img/ali/esporte-137.jpg
+esporte-138;toalha-esportiva;Toalha Esportiva;Esporte;20,20;40,40;https://pt.aliexpress.com/w/wholesale-microfiber+sport+towel.html;assets/img/ali/esporte-138.jpg
+esporte-139;halteres-ajustaveis-par;Halteres Ajustáveis Par;Esporte;150,22;300,44;https://pt.aliexpress.com/w/wholesale-adjustable+dumbbells+pair.html;assets/img/ali/esporte-139.jpg
+esporte-140;barra-porta-exercicio;Barra Porta Exercício;Esporte;85,47;170,94;https://pt.aliexpress.com/w/wholesale-doorway+pull+up+bar.html;assets/img/ali/esporte-140.jpg
+bebe-141;aquecedor-de-mamadeira;Aquecedor de Mamadeira;Bebê;56,25;112,50;https://pt.aliexpress.com/w/wholesale-baby+bottle+warmer+portable.html;assets/img/ali/bebe-141.jpg
+bebe-142;almofada-amamentacao;Almofada Amamentação;Bebê;36,57;73,14;https://pt.aliexpress.com/w/wholesale-nursing+pillow.html;assets/img/ali/bebe-142.jpg
+bebe-143;babador-silicone-kit-3;Babador Silicone Kit 3;Bebê;27,97;55,94;https://pt.aliexpress.com/w/wholesale-silicone+baby+bibs+3.html;assets/img/ali/bebe-143.jpg
+bebe-144;mordedor-gelado;Mordedor Gelado;Bebê;16,58;33,16;https://pt.aliexpress.com/w/wholesale-teething+toy+freezer.html;assets/img/ali/bebe-144.jpg
+bebe-145;monitor-bebe-camera;Monitor Bebê Câmera;Bebê;128,46;256,92;https://pt.aliexpress.com/w/wholesale-baby+monitor+camera+wifi.html;assets/img/ali/bebe-145.jpg
+bebe-146;protetor-tomada-kit-20;Protetor Tomada Kit 20;Bebê;18,65;37,30;https://pt.aliexpress.com/w/wholesale-outlet+covers+baby+proof+20.html;assets/img/ali/bebe-146.jpg
+bebe-147;trava-gaveta-kit-10;Trava Gaveta Kit 10;Bebê;21,24;42,48;https://pt.aliexpress.com/w/wholesale-baby+drawer+locks+10.html;assets/img/ali/bebe-147.jpg
+bebe-148;cadeira-alimentacao-portatil;Cadeira Alimentação Portátil;Bebê;97,90;195,80;https://pt.aliexpress.com/w/wholesale-portable+baby+high+chair.html;assets/img/ali/bebe-148.jpg
+bebe-149;mosquiteiro-carrinho;Mosquiteiro Carrinho;Bebê;24,86;49,72;https://pt.aliexpress.com/w/wholesale-stroller+mosquito+net.html;assets/img/ali/bebe-149.jpg
+bebe-150;organizador-carrinho;Organizador Carrinho;Bebê;38,85;77,70;https://pt.aliexpress.com/w/wholesale-stroller+organizer+bag.html;assets/img/ali/bebe-150.jpg
+bebe-151;termometro-banho;Termômetro Banho;Bebê;30,56;61,12;https://pt.aliexpress.com/w/wholesale-baby+bath+thermometer.html;assets/img/ali/bebe-151.jpg
+bebe-152;cortador-unha-bebe;Cortador Unha Bebê;Bebê;42,48;84,96;https://pt.aliexpress.com/w/wholesale-baby+nail+trimmer+electric.html;assets/img/ali/bebe-152.jpg
+bebe-153;bolsa-maternidade-3pc;Bolsa Maternidade 3pç;Bebê;84,95;169,90;https://pt.aliexpress.com/w/wholesale-diaper+bag+set+3pcs.html;assets/img/ali/bebe-153.jpg
+bebe-154;protetor-sol-carrinho;Protetor Sol Carrinho;Bebê;32,63;65,26;https://pt.aliexpress.com/w/wholesale-stroller+sun+shade.html;assets/img/ali/bebe-154.jpg
+bebe-155;chocalho-sensorial;Chocalho Sensorial;Bebê;19,17;38,34;https://pt.aliexpress.com/w/wholesale-baby+sensory+rattle.html;assets/img/ali/bebe-155.jpg
+bebe-156;tapete-atividades;Tapete Atividades;Bebê;99,46;198,92;https://pt.aliexpress.com/w/wholesale-baby+play+mat+foam.html;assets/img/ali/bebe-156.jpg
+bebe-157;redutor-sanitario;Redutor Sanitário;Bebê;35,22;70,44;https://pt.aliexpress.com/w/wholesale-potty+training+seat.html;assets/img/ali/bebe-157.jpg
+bebe-158;escova-cabelo-bebe;Escova Cabelo Bebê;Bebê;17,61;35,22;https://pt.aliexpress.com/w/wholesale-baby+hair+brush+set.html;assets/img/ali/bebe-158.jpg
+bebe-159;porta-chupeta-clip;Porta-Chupeta Clip;Bebê;13,47;26,94;https://pt.aliexpress.com/w/wholesale-pacifier+clip+holder.html;assets/img/ali/bebe-159.jpg
+bebe-160;umidificador-quarto-bebe;Umidificador Quarto Bebê;Bebê;69,93;139,86;https://pt.aliexpress.com/w/wholesale-baby+room+humidifier.html;assets/img/ali/bebe-160.jpg
+escritorio-161;suporte-notebook-aluminio;Suporte Notebook Alumínio;Escritório;61,12;122,24;https://pt.aliexpress.com/w/wholesale-aluminum+laptop+stand.html;assets/img/ali/escritorio-161.jpg
+escritorio-162;apoio-punho-teclado;Apoio Punho Teclado;Escritório;23,83;47,66;https://pt.aliexpress.com/w/wholesale-keyboard+wrist+rest.html;assets/img/ali/escritorio-162.jpg
+escritorio-163;mouse-pad-grande;Mouse Pad Grande;Escritório;30,56;61,12;https://pt.aliexpress.com/w/wholesale-extended+gaming+mouse+pad.html;assets/img/ali/escritorio-163.jpg
+escritorio-164;organizador-mesa;Organizador Mesa;Escritório;43,51;87,02;https://pt.aliexpress.com/w/wholesale-desk+organizer+wood.html;assets/img/ali/escritorio-164.jpg
+escritorio-165;luminaria-clip-led;Luminária Clip LED;Escritório;34,71;69,42;https://pt.aliexpress.com/w/wholesale-clip+on+led+desk+lamp.html;assets/img/ali/escritorio-165.jpg
+escritorio-166;suporte-monitor;Suporte Monitor;Escritório;68,38;136,76;https://pt.aliexpress.com/w/wholesale-monitor+riser+stand.html;assets/img/ali/escritorio-166.jpg
+escritorio-167;fone-headset-call;Fone Headset Call;Escritório;65,27;130,54;https://pt.aliexpress.com/w/wholesale-office+headset+microphone.html;assets/img/ali/escritorio-167.jpg
+escritorio-168;cadeira-lombar-portatil;Cadeira Lombar Portátil;Escritório;50,76;101,52;https://pt.aliexpress.com/w/wholesale-portable+lumbar+cushion+office.html;assets/img/ali/escritorio-168.jpg
+escritorio-169;divisoria-gaveta;Divisória Gaveta;Escritório;26,94;53,88;https://pt.aliexpress.com/w/wholesale-drawer+dividers+adjustable.html;assets/img/ali/escritorio-169.jpg
+escritorio-170;etiquetadora-manual;Etiquetadora Manual;Escritório;75,11;150,22;https://pt.aliexpress.com/w/wholesale-label+maker+machine.html;assets/img/ali/escritorio-170.jpg
+escritorio-171;grampeador-pesado;Grampeador Pesado;Escritório;31,60;63,20;https://pt.aliexpress.com/w/wholesale-heavy+duty+stapler.html;assets/img/ali/escritorio-171.jpg
+escritorio-172;quadro-branco-magnetico;Quadro Branco Magnético;Escritório;46,10;92,20;https://pt.aliexpress.com/w/wholesale-magnetic+whiteboard+small.html;assets/img/ali/escritorio-172.jpg
+escritorio-173;cabo-organizador-kit;Cabo Organizador Kit;Escritório;22,27;44,54;https://pt.aliexpress.com/w/wholesale-cable+management+kit+desk.html;assets/img/ali/escritorio-173.jpg
+escritorio-174;suporte-fone-mesa;Suporte Fone Mesa;Escritório;28,49;56,98;https://pt.aliexpress.com/w/wholesale-headphone+stand+desk.html;assets/img/ali/escritorio-174.jpg
+escritorio-175;calculadora-solar;Calculadora Solar;Escritório;19,68;39,36;https://pt.aliexpress.com/w/wholesale-solar+desk+calculator.html;assets/img/ali/escritorio-175.jpg
+escritorio-176;pasta-acordeao;Pasta Acordeão;Escritório;33,15;66,30;https://pt.aliexpress.com/w/wholesale-expanding+file+folder.html;assets/img/ali/escritorio-176.jpg
+escritorio-177;relogio-mesa-digital;Relógio Mesa Digital;Escritório;37,30;74,60;https://pt.aliexpress.com/w/wholesale-digital+desk+clock.html;assets/img/ali/escritorio-177.jpg
+escritorio-178;apoio-pes-escritorio;Apoio Pés Escritório;Escritório;53,87;107,74;https://pt.aliexpress.com/w/wholesale-under+desk+foot+rest.html;assets/img/ali/escritorio-178.jpg
+escritorio-179;webcam-cover-kit-3;Webcam Cover Kit 3;Escritório;10,88;21,76;https://pt.aliexpress.com/w/wholesale-webcam+cover+slider+3.html;assets/img/ali/escritorio-179.jpg
+escritorio-180;hub-mesa-qi;Hub Mesa Qi;Escritório;80,81;161,62;https://pt.aliexpress.com/w/wholesale-desk+usb+hub+wireless+charge.html;assets/img/ali/escritorio-180.jpg
+cozinha-181;mini-processador;Mini Processador;Cozinha;59,05;118,10;https://pt.aliexpress.com/w/wholesale-mini+food+chopper+electric.html;assets/img/ali/cozinha-181.jpg
+cozinha-182;balanca-digital-5kg;Balança Digital 5kg;Cozinha;35,22;70,44;https://pt.aliexpress.com/w/wholesale-kitchen+scale+5kg.html;assets/img/ali/cozinha-182.jpg
+cozinha-183;descascador-3-em-1;Descascador 3 em 1;Cozinha;12,43;24,86;https://pt.aliexpress.com/w/wholesale-3+in+1+peeler.html;assets/img/ali/cozinha-183.jpg
+cozinha-184;organizador-geladeira;Organizador Geladeira;Cozinha;40,92;81,84;https://pt.aliexpress.com/w/wholesale-fridge+organizer+bins.html;assets/img/ali/cozinha-184.jpg
+cozinha-185;pote-hermetico-kit-6;Pote Hermético Kit 6;Cozinha;49,73;99,46;https://pt.aliexpress.com/w/wholesale-airtight+food+containers+6.html;assets/img/ali/cozinha-185.jpg
+cozinha-186;ralador-mandoline;Ralador Mandoline;Cozinha;42,48;84,96;https://pt.aliexpress.com/w/wholesale-mandoline+slicer.html;assets/img/ali/cozinha-186.jpg
+cozinha-187;batedor-eletrico-mini;Batedor Elétrico Mini;Cozinha;36,78;73,56;https://pt.aliexpress.com/w/wholesale-mini+electric+whisk.html;assets/img/ali/cozinha-187.jpg
+cozinha-188;forma-silicone-airfryer;Forma Silicone Airfryer;Cozinha;30,04;60,08;https://pt.aliexpress.com/w/wholesale-air+fryer+silicone+pot.html;assets/img/ali/cozinha-188.jpg
+cozinha-189;termometro-culinario;Termômetro Culinário;Cozinha;25,38;50,76;https://pt.aliexpress.com/w/wholesale-digital+meat+thermometer.html;assets/img/ali/cozinha-189.jpg
+cozinha-190;abridor-eletrico;Abridor Elétrico;Cozinha;53,35;106,70;https://pt.aliexpress.com/w/wholesale-electric+can+opener.html;assets/img/ali/cozinha-190.jpg
+cozinha-191;escorredor-dobravel;Escorredor Dobrável;Cozinha;27,97;55,94;https://pt.aliexpress.com/w/wholesale-collapsible+colander.html;assets/img/ali/cozinha-191.jpg
+cozinha-192;dispenser-detergente;Dispenser Detergente;Cozinha;21,76;43,52;https://pt.aliexpress.com/w/wholesale-soap+dispenser+sponge+holder.html;assets/img/ali/cozinha-192.jpg
+cozinha-193;tabua-antibacteriana;Tábua Antibacteriana;Cozinha;34,19;68,38;https://pt.aliexpress.com/w/wholesale-antibacterial+cutting+board.html;assets/img/ali/cozinha-193.jpg
+cozinha-194;moedor-pimenta;Moedor Pimenta;Cozinha;26,42;52,84;https://pt.aliexpress.com/w/wholesale-pepper+mill+grinder.html;assets/img/ali/cozinha-194.jpg
+cozinha-195;sifao-chantilly;Sifão Chantilly;Cozinha;71,48;142,96;https://pt.aliexpress.com/w/wholesale-whipped+cream+dispenser.html;assets/img/ali/cozinha-195.jpg
+cozinha-196;cafeteira-italiana-6x;Cafeteira Italiana 6x;Cozinha;63,20;126,40;https://pt.aliexpress.com/w/wholesale-moka+pot+6+cup.html;assets/img/ali/cozinha-196.jpg
+cozinha-197;infusor-cha-aco;Infusor Chá Aço;Cozinha;17,09;34,18;https://pt.aliexpress.com/w/wholesale-tea+infuser+stainless.html;assets/img/ali/cozinha-197.jpg
+cozinha-198;luva-termica-silicone;Luva Térmica Silicone;Cozinha;24,35;48,70;https://pt.aliexpress.com/w/wholesale-silicone+oven+mitts.html;assets/img/ali/cozinha-198.jpg
+cozinha-199;organizador-temperos;Organizador Temperos;Cozinha;44,03;88,06;https://pt.aliexpress.com/w/wholesale-spice+rack+organizer.html;assets/img/ali/cozinha-199.jpg
+cozinha-200;mini-grill-eletrico;Mini Grill Elétrico;Cozinha;87,54;175,08;https://pt.aliexpress.com/w/wholesale-electric+sandwich+grill.html;assets/img/ali/cozinha-200.jpg

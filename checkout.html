@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sacola — ALVA</title>
+  <meta name="theme-color" content="#0b0a09" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <a class="skip" href="#conteudo">Ir ao conteúdo</a>
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <span class="wordmark loader__mark">ALVA</span>
+      <div class="loader__bar" aria-hidden="true"><i></i></div>
+    </div>
+  </div>
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <span class="cursor__dot"></span>
+    <span class="cursor__ring"></span>
+    <span class="cursor__label"></span>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="nav" id="nav">
+    <a class="wordmark nav__logo" href="index.html">ALVA</a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="index.html">Início</a>
+      <a href="loja.html">Loja</a>
+      <a href="checkout.html" aria-current="page">Sacola</a>
+      <a href="index.html#contato">Contato</a>
+    </nav>
+    <div class="nav__meta">
+      <a class="cart-link" href="checkout.html">Sacola <span class="cart-count" data-cart-count hidden>0</span></a>
+      <button class="nav__burger" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
+    </div>
+  </header>
+  <div class="menu" id="menu" hidden>
+    <nav class="menu__nav" aria-label="Mobile">
+      <a href="index.html" data-index="01">Início</a>
+      <a href="loja.html" data-index="02">Loja</a>
+      <a href="checkout.html" data-index="03">Sacola</a>
+      <a href="index.html#contato" data-index="04">Contato</a>
+    </nav>
+  </div>
+
+  <main id="conteudo" class="check">
+    <header class="shop__hero">
+      <p class="eyebrow">Checkout</p>
+      <h1 class="display display--case">Sua sacola</h1>
+    </header>
+
+    <div class="check__empty" id="empty" hidden>
+      <p>A sacola está vazia.</p>
+      <a class="btn" href="loja.html"><span>Ver a loja</span></a>
+    </div>
+
+    <div class="check__layout" id="checkLayout" hidden>
+      <section>
+        <ul class="bag" id="bag"></ul>
+        <dl class="totals" id="totals"></dl>
+      </section>
+      <form class="form check__form" id="payForm" novalidate>
+        <h2>Entrega</h2>
+        <div class="form__row">
+          <label for="nome">Nome</label>
+          <input id="nome" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="form__row">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="form__row">
+          <label for="phone">Telefone</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="11 99999-0000" />
+        </div>
+        <div class="form__row">
+          <label for="cep">CEP</label>
+          <input id="cep" name="cep" type="text" autocomplete="postal-code" required />
+        </div>
+        <div class="form__row">
+          <label for="address">Endereço</label>
+          <input id="address" name="address" type="text" autocomplete="street-address" required />
+        </div>
+        <div class="form__row">
+          <label for="city">Cidade / UF</label>
+          <input id="city" name="city" type="text" required placeholder="São Paulo / SP" />
+        </div>
+        <p class="check__hint" id="payHint">O pagamento abre no Mercado Pago. Pix, cartão ou saldo.</p>
+        <p class="form__err" id="payErr"></p>
+        <button class="btn btn--solid" type="submit" id="payBtn">
+          <span>Pagar com Mercado Pago</span>
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <a class="wordmark" href="index.html">ALVA</a>
+    <p>Ateliê de marca · São Paulo</p>
+    <p class="footer__copy">© <span id="year"></span> ALVA.</p>
+  </footer>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>

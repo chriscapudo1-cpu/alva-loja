@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loja — ALVA</title>
+  <meta name="description" content="ALVA — 200 produtos em 10 categorias. Entrega após o pagamento." />
+  <meta name="theme-color" content="#0b0a09" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <a class="skip" href="#conteudo">Ir ao conteúdo</a>
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <span class="wordmark loader__mark">ALVA</span>
+      <div class="loader__bar" aria-hidden="true"><i></i></div>
+    </div>
+  </div>
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <span class="cursor__dot"></span>
+    <span class="cursor__ring"></span>
+    <span class="cursor__label"></span>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="nav" id="nav">
+    <a class="wordmark nav__logo" href="index.html">ALVA</a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="index.html">Início</a>
+      <a href="loja.html" aria-current="page">Loja</a>
+      <a href="loja.html?cat=Tech">Tech</a>
+      <a href="loja.html?cat=Casa">Casa</a>
+      <a href="loja.html?cat=Pet">Pet</a>
+      <a href="index.html#contato">Contato</a>
+    </nav>
+    <div class="nav__meta">
+      <a class="cart-link" href="checkout.html">Sacola <span class="cart-count" data-cart-count hidden>0</span></a>
+      <button class="nav__burger" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
+    </div>
+  </header>
+  <div class="menu" id="menu" hidden>
+    <nav class="menu__nav" aria-label="Mobile">
+      <a href="index.html" data-index="01">Início</a>
+      <a href="loja.html" data-index="02">Loja</a>
+      <a href="checkout.html" data-index="03">Sacola</a>
+      <a href="index.html#contato" data-index="04">Contato</a>
+    </nav>
+    <p class="menu__note">Vila Madalena · São Paulo</p>
+  </div>
+
+  <main id="conteudo" class="shop">
+    <header class="shop__hero">
+      <p class="eyebrow reveal">alvaloja.store</p>
+      <h1 class="display display--case reveal" id="shopHeading">Todas as categorias</h1>
+      <p class="lede reveal" id="shopLede">200 produtos em 10 categorias.</p>
+    </header>
+    <div class="chips" id="catChips"></div>
+    <p class="shop__note reveal" id="shopNote" hidden></p>
+    <div class="shop__grid" id="shopGrid"></div>
+  </main>
+
+  <footer class="footer">
+    <a class="wordmark" href="index.html">ALVA</a>
+    <p>alvaloja.store</p>
+    <p class="footer__copy">© <span id="year"></span> ALVA. <a href="admin.html">Pedidos</a></p>
+  </footer>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/loja.js"></script>
+</body>
+</html>

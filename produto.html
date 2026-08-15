@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produto — ALVA</title>
+  <meta name="theme-color" content="#0b0a09" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="nav" id="nav">
+    <a class="wordmark nav__logo" href="index.html">ALVA</a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="index.html">Início</a>
+      <a href="loja.html">Loja</a>
+      <a href="checkout.html">Sacola</a>
+      <a href="index.html#contato">Contato</a>
+    </nav>
+    <div class="nav__meta">
+      <a class="cart-link" href="checkout.html">Sacola <span class="cart-count" data-cart-count hidden>0</span></a>
+      <button class="nav__burger" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
+    </div>
+  </header>
+  <div class="menu" id="menu" hidden>
+    <nav class="menu__nav">
+      <a href="index.html" data-index="01">Início</a>
+      <a href="loja.html" data-index="02">Loja</a>
+      <a href="checkout.html" data-index="03">Sacola</a>
+    </nav>
+  </div>
+
+  <main id="conteudo" class="pdp"></main>
+
+  <footer class="footer">
+    <a class="wordmark" href="index.html">ALVA</a>
+    <p class="footer__copy">© <span id="year"></span> ALVA.</p>
+  </footer>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/produto.js"></script>
+</body>
+</html>

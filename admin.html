@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pedidos — ALVA</title>
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#0b0a09" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="nav" id="nav">
+    <a class="wordmark nav__logo" href="index.html">ALVA</a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="loja.html">Loja</a>
+      <a href="admin.html" aria-current="page">Pedidos</a>
+    </nav>
+  </header>
+
+  <main id="conteudo" class="admin">
+    <header class="shop__hero">
+      <p class="eyebrow">Uso interno</p>
+      <h1 class="display display--case">Pedidos</h1>
+      <p class="lede">Aqui você vê o que cada pessoa comprou, o valor e o status do pagamento.</p>
+    </header>
+
+    <form class="form admin__login paybox" id="loginForm">
+      <p class="eyebrow">Acesso</p>
+      <h2 class="admin__h" style="margin-top:0.4rem">Digite a senha</h2>
+      <div class="form__row">
+        <label for="password">Senha do painel</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required placeholder="Senha" />
+      </div>
+      <p class="form__err" id="loginErr"></p>
+      <button class="btn btn--solid" type="submit"><span>Entrar</span></button>
+    </form>
+
+    <section id="board" hidden>
+      <article class="paybox" id="payBox">
+        <p class="eyebrow">Pagamento</p>
+        <h2 class="admin__h" style="margin-top:0.4rem">Mercado Pago</h2>
+        <p class="lede" id="payStatus">Carregando…</p>
+        <ol class="paybox__steps">
+          <li>Crie ou entre na conta: <a href="https://www.mercadopago.com.br" target="_blank" rel="noopener">mercadopago.com.br</a></li>
+          <li>Abra <a href="https://www.mercadopago.com.br/developers/panel/app" target="_blank" rel="noopener">Suas integrações</a> e crie uma aplicação (Checkout Pro).</li>
+          <li>Copie o <strong>Access Token de produção</strong> (começa com <code>APP_USR-</code>).</li>
+          <li>Cole aqui e salve. O cliente passa a pagar com Pix, cartão ou saldo.</li>
+        </ol>
+        <form class="form" id="payForm">
+          <div class="form__row">
+            <label for="accessToken">Access Token de produção</label>
+            <input id="accessToken" name="accessToken" type="password" autocomplete="off" placeholder="APP_USR-…" required />
+          </div>
+          <p class="form__err" id="payErr"></p>
+          <p class="form__ok" id="payOk" hidden>Pagamento ligado. Os próximos pedidos abrem o Mercado Pago.</p>
+          <button class="btn btn--solid" type="submit"><span>Salvar e testar</span></button>
+        </form>
+      </article>
+      <p class="admin__summary" id="summary"></p>
+      <div class="admin__list" id="list"></div>
+      <h2 class="admin__h">Fornecedores · venda = 2× o custo</h2>
+      <div class="table-wrap">
+        <table class="sheet">
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Custo</th>
+              <th>Venda</th>
+              <th>Lucro</th>
+              <th>Comprar</th>
+              <th>Sua loja</th>
+            </tr>
+          </thead>
+          <tbody id="catalog"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/admin.js"></script>
+  <script>
+    const year = document.getElementById("year");
+    if (year) year.textContent = String(new Date().getFullYear());
+  </script>
+</body>
+</html>
