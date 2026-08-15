@@ -17,7 +17,7 @@
       root.innerHTML = `
         <article class="pdp__grid">
           <figure>
-            <img src="${product.image}?v=2" alt="${product.name}" />
+            <img src="${product.image}?v=4" alt="${product.name}" />
           </figure>
           <div>
             <p class="eyebrow">${product.tag}</p>

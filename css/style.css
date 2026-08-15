@@ -1480,9 +1480,17 @@ body.has-cursor .cursor {
 .order-items__row {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  gap: 0.35rem 1rem;
+  gap: 0.45rem 1rem;
+}
+
+.order-items__img {
+  width: 2.6rem;
+  height: 2.6rem;
+  object-fit: cover;
+  border-radius: 0.2rem;
+  background: var(--bg-3);
 }
 
 .order-items__name {

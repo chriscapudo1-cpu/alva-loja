@@ -54,7 +54,11 @@
                 const link = href
                   ? `<a class="order-items__link" href="${href}">ver produto</a>`
                   : "";
+                const img = item.image
+                  ? `<img class="order-items__img" src="${item.image}?v=4" alt="" />`
+                  : "";
                 return `<li class="order-items__row">
+                  ${img}
                   <span>${item.qty}× ${title} — ${brl(item.price * item.qty)}</span>
                   ${link}
                 </li>`;
