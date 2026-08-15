@@ -179,4 +179,28 @@
       });
     });
   }
+
+  if (!/admin\.html$/i.test(location.pathname)) {
+    const WHATSAPP = "";
+    const msg = encodeURIComponent("Olá, vim da ALVA (alvaloja.store).");
+    const home = /(?:^|\/)(?:index\.html)?$/.test(location.pathname);
+    const fabHref = WHATSAPP
+      ? `https://wa.me/${WHATSAPP.replace(/\D/g, "")}?text=${msg}`
+      : home
+        ? "#contato"
+        : "index.html#contato";
+    const fab = document.createElement("a");
+    fab.className = "fab";
+    fab.href = fabHref;
+    if (WHATSAPP) {
+      fab.target = "_blank";
+      fab.rel = "noopener noreferrer";
+    }
+    fab.setAttribute("aria-label", "Falar no WhatsApp");
+    fab.innerHTML = `
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.5 3.5A11 11 0 0 0 2.1 17.2L1 23l5.9-1.1A11 11 0 0 0 20.5 3.5Zm-8.5 17a9.1 9.1 0 0 1-4.6-1.3l-.3-.2-3.5.7.7-3.4-.2-.3A9.1 9.1 0 1 1 12 20.5Zm5-6.8c-.3-.1-1.6-.8-1.9-.9s-.4-.1-.6.1-.7.9-.8 1-.3.2-.6.1a7.4 7.4 0 0 1-2.2-1.4 8.2 8.2 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.6l.4-.4.1-.3c0-.1 0-.3 0-.4s-.6-1.4-.8-1.9-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3s-.8.8-.8 1.9.8 2.2.9 2.3a9.7 9.7 0 0 0 3.5 3.4c1.3.7 1.8.8 2.4.6s1.6-.7 1.8-1.3.2-1.2.1-1.3-.2-.2-.5-.3Z"/></svg>
+      <span>WhatsApp</span>
+    `;
+    document.body.appendChild(fab);
+  }
 })();
