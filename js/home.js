@@ -23,7 +23,7 @@
     el.innerHTML = `
       <a class="product__media" href="produto.html?id=${encodeURIComponent(product.id)}">
         <figure>
-          <img src="${product.image}?v=4" alt="${product.name}" loading="lazy" />
+          <img src="${product.image}?v=5" alt="${product.name}" loading="lazy" />
         </figure>
       </a>
       <div class="product__meta">

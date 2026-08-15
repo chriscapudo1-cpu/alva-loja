@@ -126,6 +126,13 @@ def score(a: set[str], b: set[str]) -> int:
 
 def main() -> None:
     products = json.loads(SRC.read_text(encoding="utf-8"))
+    restored = 0
+    for item in products:
+        own = ROOT / "assets" / "img" / "ali" / f"{item['id']}.jpg"
+        if own.exists() and own.stat().st_size > 4000:
+            item["image"] = f"assets/img/ali/{item['id']}.jpg"
+            restored += 1
+
     bases: dict[str, list[dict]] = {}
     for item in products:
         if is_original(item):
@@ -134,7 +141,8 @@ def main() -> None:
 
     changed = 0
     for item in products:
-        if is_original(item):
+        own = ROOT / "assets" / "img" / "ali" / f"{item['id']}.jpg"
+        if own.exists() and own.stat().st_size > 4000:
             continue
         pool = bases.get(item["tag"]) or []
         if not pool:
@@ -150,7 +158,8 @@ def main() -> None:
     for item in products:
         item.pop("_tok", None)
     SRC.write_text(json.dumps(products, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"fotos ajustadas: {changed}")
+    print(f"originais restaurados: {restored}")
+    print(f"extras casados: {changed}")
 
 
 if __name__ == "__main__":
