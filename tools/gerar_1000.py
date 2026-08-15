@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 from pathlib import Path
 from urllib.parse import quote_plus
 
@@ -901,15 +902,22 @@ def main() -> None:
         n = NEXT_ID[cat]
         prefix = PREFIX[cat]
         gallery = [p["image"] for p in by_cat[cat]]
+        scored = [
+            (item, set(re.findall(r"[a-z0-9]{3,}", (item["name"] + " " + (item.get("search") or "")).lower())))
+            for item in by_cat[cat]
+        ]
         for i, (name, query, usd_cost) in enumerate(items):
             cost = round(usd_cost * USD, 2)
+            want = set(re.findall(r"[a-z0-9]{3,}", f"{name} {query}".lower()))
+            pick = max(scored, key=lambda pair: len(want & pair[1]))
+            image = pick[0]["image"] if len(want & pick[1]) else gallery[i % len(gallery)]
             extra.append(
                 {
                     "id": f"{prefix}-{n:03d}",
                     "name": name,
                     "cost": cost,
                     "price": round(cost * 2, 2),
-                    "image": gallery[i % len(gallery)],
+                    "image": image,
                     "tag": cat,
                     "blurb": f"{cat} · envio após a confirmação do pagamento.",
                     "stock": 30 + (n % 40),
