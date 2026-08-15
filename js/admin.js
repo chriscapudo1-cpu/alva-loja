@@ -57,13 +57,19 @@
             </header>
             <p>${person.name || "—"} · ${person.email || ""} · ${person.phone || ""}</p>
             <p>${person.address || ""}, ${person.city || ""} · CEP ${person.cep || ""}</p>
-            <ul>
+            <ul class="order-items">
               ${(order.items || [])
                 .map((item) => {
-                  const buy = item.supplierUrl
-                    ? ` · <a href="${item.supplierUrl}" target="_blank" rel="noopener">comprar no fornecedor</a>`
+                  const shop = item.id
+                    ? `<a class="order-items__link" href="produto.html?id=${encodeURIComponent(item.id)}">ver na loja</a>`
                     : "";
-                  return `<li>${item.qty}× ${item.name} — ${brl(item.price * item.qty)}${buy}</li>`;
+                  const buy = item.supplierUrl
+                    ? `<a class="order-items__link" href="${item.supplierUrl}" target="_blank" rel="noopener">comprar no AliExpress</a>`
+                    : "";
+                  return `<li class="order-items__row">
+                    <span>${item.qty}× ${item.name} — ${brl(item.price * item.qty)}</span>
+                    <span class="order-items__links">${shop}${buy}</span>
+                  </li>`;
                 })
                 .join("")}
             </ul>

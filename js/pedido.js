@@ -41,9 +41,24 @@
         if (!order) return;
         box.innerHTML = `
           <p>Pedido <strong>${order.id}</strong> · ${order.status.replaceAll("_", " ")}</p>
-          <ul>
+          <ul class="order-items">
             ${order.items
-              .map((item) => `<li>${item.qty}× ${item.name} — ${brl(item.price * item.qty)}</li>`)
+              .map((item) => {
+                const href = item.id
+                  ? `produto.html?id=${encodeURIComponent(item.id)}`
+                  : "";
+                const name = item.name || "Produto";
+                const title = href
+                  ? `<a class="order-items__name" href="${href}">${name}</a>`
+                  : name;
+                const link = href
+                  ? `<a class="order-items__link" href="${href}">ver produto</a>`
+                  : "";
+                return `<li class="order-items__row">
+                  <span>${item.qty}× ${title} — ${brl(item.price * item.qty)}</span>
+                  ${link}
+                </li>`;
+              })
               .join("")}
           </ul>
           <p>Total ${brl(order.total)}</p>

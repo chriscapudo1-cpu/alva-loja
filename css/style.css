@@ -1472,6 +1472,40 @@ body.has-cursor .cursor {
   margin: 0.7rem 0;
 }
 
+.order-items {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.order-items__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.35rem 1rem;
+}
+
+.order-items__name {
+  color: var(--cream);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.order-items__links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.order-items__link {
+  color: var(--gold);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
 .admin__login {
   max-width: 420px;
 }
