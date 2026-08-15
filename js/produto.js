@@ -2,6 +2,35 @@
   const brl = (value) =>
     Number(value).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
+  const esc = (value) =>
+    String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+
+  const formatDesc = (raw) => {
+    const blocks = String(raw || "")
+      .split(/\n\n+/)
+      .map((block) => block.trim())
+      .filter(Boolean);
+    if (!blocks.length) return "<p></p>";
+    return blocks
+      .map((block) => {
+        const lines = block.split("\n").map((line) => line.trim()).filter(Boolean);
+        const bullets = lines.filter((line) => /^[-•]/.test(line));
+        if (bullets.length && bullets.length === lines.length - 1) {
+          const heading = esc(lines[0]);
+          const items = bullets
+            .map((line) => `<li>${esc(line.replace(/^[-•]\s*/, ""))}</li>`)
+            .join("");
+          return `<h3>${heading}</h3><ul>${items}</ul>`;
+        }
+        return `<p>${lines.map(esc).join("<br />")}</p>`;
+      })
+      .join("");
+  };
+
   const root = document.querySelector(".pdp");
   const id = new URLSearchParams(location.search).get("id");
 
@@ -14,22 +43,14 @@
         return;
       }
       document.title = `${product.name} — ALVA`;
-      const gallery = [product.image].filter(Boolean);
-      const thumbs = gallery
-        .map(
-          (src, index) =>
-            `<button class="pdp__thumb${index === 0 ? " is-on" : ""}" type="button" data-src="${src}" aria-label="Foto ${index + 1}">
-              <img src="${src}?v=7" alt="" />
-            </button>`
-        )
-        .join("");
+      const mainPhoto = product.image || "";
+      const descHtml = formatDesc(product.description || product.blurb || "");
       root.innerHTML = `
         <article class="pdp__grid">
           <div class="pdp__media">
             <figure>
-              <img id="pdpMain" src="${gallery[0]}?v=7" alt="${product.name}" />
+              <img id="pdpMain" src="${mainPhoto}?v=8" alt="${product.name}" />
             </figure>
-            ${gallery.length > 1 ? `<div class="pdp__thumbs">${thumbs}</div>` : ""}
           </div>
           <div>
             <p class="eyebrow">${product.tag}</p>
@@ -41,7 +62,7 @@
             <p class="check__hint">Envio após a confirmação do pagamento.</p>
             <div class="pdp__copy">
               <h2>Descrição</h2>
-              <p>${product.description || product.blurb || ""}</p>
+              ${descHtml}
             </div>
           </div>
         </article>
@@ -50,14 +71,7 @@
         window.LumeCart.add(product.id, 1);
         document.querySelector("#addBtn span").textContent = "Na sacola";
       });
-      const main = document.getElementById("pdpMain");
-      root.querySelectorAll(".pdp__thumb").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const src = btn.getAttribute("data-src");
-          if (main && src) main.src = `${src}?v=7`;
-          root.querySelectorAll(".pdp__thumb").forEach((el) => el.classList.toggle("is-on", el === btn));
-        });
-      });
+
     })
     .catch(() => {
       root.innerHTML = `<p class="lede">Abra pelo python server.py para ver o produto.</p>`;

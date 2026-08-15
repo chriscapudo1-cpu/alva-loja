@@ -1842,6 +1842,22 @@ body.has-cursor .cursor {
   color: var(--cream);
 }
 
+.pdp__copy h3 {
+  margin-top: 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+
+.pdp__copy ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.2rem;
+}
+
 .pdp__price {
   font-family: var(--serif);
   font-size: 2.2rem;
