@@ -37,7 +37,8 @@
   fetch("/api/products")
     .then((res) => res.json())
     .then((data) => {
-      const product = (data.products || []).find((item) => item.id === id);
+      const products = data.products || [];
+      const product = products.find((item) => item.id === id);
       if (!product) {
         root.innerHTML = `<p class="lede">Produto não encontrado. <a href="loja.html">Voltar à loja</a></p>`;
         return;
@@ -45,33 +46,81 @@
       document.title = `${product.name} — ALVA`;
       const mainPhoto = product.image || "";
       const descHtml = formatDesc(product.description || product.blurb || "");
+      const stock = Number(product.stock || 0);
+      const related = products
+        .filter((item) => item.tag === product.tag && item.id !== product.id)
+        .slice(0, 4);
       root.innerHTML = `
+        <p class="pdp__back"><a href="loja.html?cat=${encodeURIComponent(product.tag)}">← ${esc(product.tag)}</a></p>
         <article class="pdp__grid">
           <div class="pdp__media">
             <figure>
-              <img id="pdpMain" src="${mainPhoto}?v=8" alt="${product.name}" />
+              <img id="pdpMain" src="${mainPhoto}?v=8" alt="${esc(product.name)}" />
             </figure>
           </div>
           <div>
-            <p class="eyebrow">${product.tag}</p>
-            <h1 class="display display--case">${product.name}</h1>
+            <p class="eyebrow">${esc(product.tag)}</p>
+            <h1 class="display display--case">${esc(product.name)}</h1>
             <p class="pdp__price">${brl(product.price)}</p>
-            <button class="btn btn--solid" type="button" id="addBtn">
-              <span>Colocar na sacola</span>
-            </button>
-            <p class="check__hint">Envio após a confirmação do pagamento.</p>
+            <p class="pdp__stock">${stock > 0 ? "Em estoque · envio após o pagamento" : "Indisponível no momento"}</p>
+            <div class="pdp__buy">
+              <div class="pdp__qty" role="group" aria-label="Quantidade">
+                <button type="button" id="qtyMinus" aria-label="Menos">−</button>
+                <input id="qtyInput" type="text" inputmode="numeric" value="1" aria-label="Quantidade" />
+                <button type="button" id="qtyPlus" aria-label="Mais">+</button>
+              </div>
+              <button class="btn btn--solid" type="button" id="addBtn" ${stock < 1 ? "disabled" : ""}>
+                <span>Colocar na sacola</span>
+              </button>
+            </div>
+            <p class="check__hint">Frete R$ 18,90 · grátis acima de R$ 200.</p>
             <div class="pdp__copy">
               <h2>Descrição</h2>
               ${descHtml}
             </div>
           </div>
         </article>
+        ${
+          related.length
+            ? `<section class="pdp__also">
+                <h2>Mais em ${esc(product.tag)}</h2>
+                <div class="shop__grid pdp__also-grid">
+                  ${related
+                    .map(
+                      (item) => `
+                    <article class="product">
+                      <a class="product__media" href="produto.html?id=${encodeURIComponent(item.id)}">
+                        <figure><img src="${item.image}?v=8" alt="${esc(item.name)}" loading="lazy" /></figure>
+                      </a>
+                      <div class="product__meta">
+                        <h2><a href="produto.html?id=${encodeURIComponent(item.id)}">${esc(item.name)}</a></h2>
+                        <div class="product__row">
+                          <strong>${brl(item.price)}</strong>
+                        </div>
+                      </div>
+                    </article>`
+                    )
+                    .join("")}
+                </div>
+              </section>`
+            : ""
+        }
       `;
-      document.getElementById("addBtn")?.addEventListener("click", () => {
-        window.LumeCart.add(product.id, 1);
-        document.querySelector("#addBtn span").textContent = "Na sacola";
-      });
 
+      const qtyInput = document.getElementById("qtyInput");
+      const clampQty = (value) => Math.max(1, Math.min(20, Number(value) || 1));
+      const setQty = (value) => {
+        if (qtyInput) qtyInput.value = String(clampQty(value));
+      };
+      document.getElementById("qtyMinus")?.addEventListener("click", () => setQty(Number(qtyInput.value) - 1));
+      document.getElementById("qtyPlus")?.addEventListener("click", () => setQty(Number(qtyInput.value) + 1));
+      qtyInput?.addEventListener("change", () => setQty(qtyInput.value));
+
+      document.getElementById("addBtn")?.addEventListener("click", () => {
+        window.LumeCart.add(product.id, clampQty(qtyInput?.value));
+        const span = document.querySelector("#addBtn span");
+        if (span) span.textContent = "Na sacola";
+      });
     })
     .catch(() => {
       root.innerHTML = `<p class="lede">Abra pelo python server.py para ver o produto.</p>`;

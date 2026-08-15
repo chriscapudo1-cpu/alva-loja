@@ -90,7 +90,7 @@
     const span = btn.querySelector("span");
     if (span) span.textContent = "Na sacola";
     window.setTimeout(() => {
-      if (span) span.textContent = "Colocar na sacola";
+      if (span) span.textContent = "Sacola";
     }, 1400);
   });
 })();

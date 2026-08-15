@@ -113,8 +113,12 @@
               <p>${when(order.createdAt)} · <strong>${order.id}</strong></p>
               <span class="ticket__status">${order.status.replaceAll("_", " ")}</span>
             </header>
-            <p>${person.name || "—"} · ${person.email || ""} · ${person.phone || ""}</p>
-            <p>${person.address || ""}, ${person.city || ""} · CEP ${person.cep || ""}</p>
+            <p>${esc(person.name || "—")} · ${esc(person.email || "")} · ${esc(person.phone || "")}</p>
+            <p>${esc(person.address || "")}${person.number ? ", " + esc(person.number) : ""}${
+              person.complement ? " · " + esc(person.complement) : ""
+            }${person.neighborhood ? " · " + esc(person.neighborhood) : ""} · ${esc(person.city || "")}${
+              person.uf ? "/" + esc(person.uf) : ""
+            } · CEP ${esc(person.cep || "")}</p>
             <ul class="order-items">
               ${(order.items || [])
                 .map((item) => {
@@ -166,6 +170,27 @@
     board.hidden = false;
     render(data.orders || []);
     await loadPay(token);
+    try {
+      const msgRes = await fetch("/api/admin/messages", { headers: { "X-Admin-Token": token } });
+      const msgBox = document.getElementById("msgList");
+      if (msgRes.ok && msgBox) {
+        const payload = await msgRes.json();
+        const notes = payload.messages || [];
+        msgBox.innerHTML = notes.length
+          ? notes
+              .map(
+                (item) => `<article class="ticket">
+                  <header><p>${when(item.createdAt)} · ${esc(item.subject)}</p></header>
+                  <p>${esc(item.name)} · <a href="mailto:${esc(item.email)}">${esc(item.email)}</a></p>
+                  <p>${esc(item.body)}</p>
+                </article>`
+              )
+              .join("")
+          : "<p>Nenhuma mensagem ainda.</p>";
+      }
+    } catch {
+      /* painel de pedidos continua mesmo se o recado falhar */
+    }
   };
 
   document.getElementById("payForm")?.addEventListener("submit", async (event) => {

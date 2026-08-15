@@ -63,6 +63,8 @@
       </article>
       <p class="admin__summary" id="summary"></p>
       <div class="admin__list" id="list"></div>
+      <h2 class="admin__h">Mensagens do site</h2>
+      <div class="admin__list" id="msgList"></div>
       <h2 class="admin__h">Fornecedores · até R$ 150: 50% de lucro · acima: 30%</h2>
       <div class="admin__find">
         <label class="admin__find-label" for="catalogQ">Buscar produto ou fornecedor</label>
@@ -96,7 +98,7 @@
     </section>
   </main>
 
-  <script src="js/admin.js"></script>
+  <script src="js/admin.js?v=9"></script>
   <script>
     const year = document.getElementById("year");
     if (year) year.textContent = String(new Date().getFullYear());

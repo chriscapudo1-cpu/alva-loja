@@ -41,8 +41,12 @@ HOST = os.environ.get("HOST", "0.0.0.0")
 PUBLIC_URL = os.environ.get("PUBLIC_URL", f"http://127.0.0.1:{PORT}").rstrip("/")
 MP_ACCESS_TOKEN = os.environ.get("MP_ACCESS_TOKEN", "").strip()
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "lume2026")
+WHATSAPP = os.environ.get("WHATSAPP", "").strip()
 SHIP_FREE_FROM = 200.0
 SHIP_PRICE = 18.9
+
+_products_cache: list[dict] | None = None
+_products_mtime = 0.0
 
 
 def utc_now() -> str:
@@ -50,7 +54,12 @@ def utc_now() -> str:
 
 
 def load_products() -> list[dict]:
-    return json.loads(PRODUCTS_PATH.read_text(encoding="utf-8"))
+    global _products_cache, _products_mtime
+    mtime = PRODUCTS_PATH.stat().st_mtime
+    if _products_cache is None or mtime != _products_mtime:
+        _products_cache = json.loads(PRODUCTS_PATH.read_text(encoding="utf-8"))
+        _products_mtime = mtime
+    return _products_cache
 
 
 def product_map() -> dict[str, dict]:
@@ -76,6 +85,18 @@ def db() -> sqlite3.Connection:
             mp_payment_id TEXT,
             mp_status TEXT,
             notes TEXT
+        )
+        """
+    )
+    conn.execute(
+        """
+        CREATE TABLE IF NOT EXISTS messages (
+            id TEXT PRIMARY KEY,
+            created_at TEXT NOT NULL,
+            name TEXT NOT NULL,
+            email TEXT NOT NULL,
+            subject TEXT NOT NULL,
+            body TEXT NOT NULL
         )
         """
     )
@@ -273,12 +294,22 @@ def create_preference(order_id: str, items: list[dict], shipping: float, custome
     failure = f"{return_base}/pedido.html?status=failure&order={order_id}" if public else f"{return_base}/"
     pending = f"{return_base}/pedido.html?status=pending&order={order_id}" if public else f"{return_base}/"
     back = {"success": success, "pending": pending, "failure": failure}
+    payer = {
+        "name": customer.get("name", ""),
+        "email": customer.get("email", ""),
+    }
+    cpf = "".join(ch for ch in str(customer.get("cpf") or "") if ch.isdigit())
+    if len(cpf) == 11:
+        payer["identification"] = {"type": "CPF", "number": cpf}
+    phone = "".join(ch for ch in str(customer.get("phone") or "") if ch.isdigit())
+    if len(phone) >= 10:
+        payer["phone"] = {
+            "area_code": phone[:2],
+            "number": phone[2:],
+        }
     payload = {
         "items": mp_items,
-        "payer": {
-            "name": customer.get("name", ""),
-            "email": customer.get("email", ""),
-        },
+        "payer": payer,
         "external_reference": order_id,
         "statement_descriptor": "ALVA LOJA",
         "back_urls": back,
@@ -395,8 +426,72 @@ class Handler(SimpleHTTPRequestHandler):
                     "publicUrl": PUBLIC_URL,
                     "freeFrom": SHIP_FREE_FROM,
                     "shipPrice": SHIP_PRICE,
+                    "whatsapp": "".join(ch for ch in WHATSAPP if ch.isdigit()),
                 }
             )
+            return
+        if parsed.path == "/api/admin/messages":
+            if not is_admin(self):
+                self.send_json({"error": "Não autorizado."}, 401)
+                return
+            conn = db()
+            rows = conn.execute(
+                "SELECT id, created_at, name, email, subject, body FROM messages ORDER BY created_at DESC LIMIT 80"
+            ).fetchall()
+            conn.close()
+            self.send_json(
+                {
+                    "messages": [
+                        {
+                            "id": row["id"],
+                            "createdAt": row["created_at"],
+                            "name": row["name"],
+                            "email": row["email"],
+                            "subject": row["subject"],
+                            "body": row["body"],
+                        }
+                        for row in rows
+                    ]
+                }
+            )
+            return
+        if parsed.path == "/robots.txt":
+            body = (
+                "User-agent: *\n"
+                "Allow: /\n"
+                "Disallow: /admin.html\n"
+                "Disallow: /api/\n"
+                "Disallow: /projeto\n"
+                f"Sitemap: {PUBLIC_URL}/sitemap.xml\n"
+            ).encode("utf-8")
+            self.send_response(200)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+            return
+        if parsed.path == "/sitemap.xml":
+            pages = ["/", "/loja.html", "/index.html"]
+            for tag in ("Tech", "Casa", "Pet", "Moda", "Carro", "Beleza", "Esporte", "Bebê", "Escritório", "Cozinha"):
+                pages.append(f"/loja.html?cat={tag}")
+            urls = "".join(
+                f"<url><loc>{PUBLIC_URL}{path}</loc></url>" for path in pages
+            )
+            body = (
+                '<?xml version="1.0" encoding="UTF-8"?>'
+                f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>'
+            ).encode("utf-8")
+            self.send_response(200)
+            self.send_header("Content-Type", "application/xml; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+            return
+        leaf = parsed.path.rsplit("/", 1)[-1]
+        if leaf.startswith("projeto"):
+            self.send_response(301)
+            self.send_header("Location", "/index.html")
+            self.end_headers()
             return
         if parsed.path == "/api/admin/payment":
             if not is_admin(self):
@@ -448,10 +543,19 @@ class Handler(SimpleHTTPRequestHandler):
                 email = str(customer.get("email") or "").strip()
                 phone = str(customer.get("phone") or "").strip()
                 address = str(customer.get("address") or "").strip()
+                number = str(customer.get("number") or "").strip()
+                complement = str(customer.get("complement") or "").strip()
+                neighborhood = str(customer.get("neighborhood") or "").strip()
                 city = str(customer.get("city") or "").strip()
+                uf = str(customer.get("uf") or "").strip().upper()
                 cep = str(customer.get("cep") or "").strip()
+                cpf = str(customer.get("cpf") or "").strip()
                 if not name or "@" not in email or not phone or not address or not city or not cep:
                     raise ValueError("Preencha nome, e-mail, telefone e endereço.")
+                if not number:
+                    raise ValueError("Informe o número do endereço.")
+                if uf and len(uf) != 2:
+                    raise ValueError("UF inválida.")
                 items, subtotal = build_order_items(payload.get("items") or [])
                 shipping = shipping_for(subtotal)
                 total = round(subtotal + shipping, 2)
@@ -459,12 +563,25 @@ class Handler(SimpleHTTPRequestHandler):
                 status = "aguardando_pagamento" if MP_ACCESS_TOKEN else "reservado"
                 preference_id = None
                 checkout_url = f"/pedido.html?status=reserved&order={order_id}"
+                buyer = {
+                    "name": name,
+                    "email": email,
+                    "phone": phone,
+                    "cpf": cpf,
+                    "address": address,
+                    "number": number,
+                    "complement": complement,
+                    "neighborhood": neighborhood,
+                    "city": city,
+                    "uf": uf,
+                    "cep": cep,
+                }
                 if MP_ACCESS_TOKEN:
                     pref = create_preference(
                         order_id,
                         items,
                         shipping,
-                        {"name": name, "email": email},
+                        buyer,
                     )
                     preference_id = pref.get("id")
                     checkout_url = pref.get("init_point") or pref.get("sandbox_init_point")
@@ -482,17 +599,7 @@ class Handler(SimpleHTTPRequestHandler):
                         order_id,
                         utc_now(),
                         status,
-                        json.dumps(
-                            {
-                                "name": name,
-                                "email": email,
-                                "phone": phone,
-                                "address": address,
-                                "city": city,
-                                "cep": cep,
-                            },
-                            ensure_ascii=False,
-                        ),
+                        json.dumps(buyer, ensure_ascii=False),
                         json.dumps(items, ensure_ascii=False),
                         subtotal,
                         shipping,
@@ -509,6 +616,33 @@ class Handler(SimpleHTTPRequestHandler):
                         "mercadoPago": bool(MP_ACCESS_TOKEN),
                     }
                 )
+            except ValueError as exc:
+                self.send_json({"error": str(exc)}, 400)
+            except Exception as exc:
+                self.send_json({"error": str(exc)}, 502)
+            return
+
+        if parsed.path == "/api/contact":
+            try:
+                payload = json.loads(self.read_body().decode("utf-8") or "{}")
+                name = str(payload.get("name") or "").strip()
+                email = str(payload.get("email") or "").strip()
+                subject = str(payload.get("subject") or "").strip()
+                body = str(payload.get("message") or "").strip()
+                if not name or "@" not in email:
+                    raise ValueError("Preencha nome e e-mail.")
+                if len(body) < 8:
+                    raise ValueError("Escreva um pouco mais na mensagem.")
+                if not subject:
+                    subject = "Contato pelo site"
+                conn = db()
+                conn.execute(
+                    "INSERT INTO messages (id, created_at, name, email, subject, body) VALUES (?, ?, ?, ?, ?, ?)",
+                    (uuid.uuid4().hex[:10], utc_now(), name, email, subject, body),
+                )
+                conn.commit()
+                conn.close()
+                self.send_json({"ok": True})
             except ValueError as exc:
                 self.send_json({"error": str(exc)}, 400)
             except Exception as exc:

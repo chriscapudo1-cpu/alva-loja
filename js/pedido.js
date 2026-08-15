@@ -23,7 +23,7 @@
   if (titleEl) titleEl.textContent = title;
   if (textEl) textEl.textContent = text;
 
-  if (status === "success" || status === "approved" || status === "reserved") {
+  if (status === "success" || status === "approved") {
     window.LumeCart?.clear();
   }
 
@@ -66,6 +66,11 @@
               .join("")}
           </ul>
           <p>Total ${brl(order.total)}</p>
+          ${
+            status === "failure" || status === "rejected"
+              ? `<p><a class="btn btn--solid" href="checkout.html"><span>Tentar pagar de novo</span></a></p>`
+              : ""
+          }
         `;
       })
       .catch(() => {});

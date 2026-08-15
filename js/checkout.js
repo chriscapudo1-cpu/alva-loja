@@ -10,13 +10,83 @@
   const hint = document.getElementById("payHint");
   const err = document.getElementById("payErr");
   const btn = document.getElementById("payBtn");
+  const SAVE = "alva-buyer";
 
   let products = [];
   let mercadoPago = false;
-
   let freeFrom = 200;
   let shipPrice = 18.9;
   const shippingOf = (subtotal) => (subtotal >= freeFrom ? 0 : shipPrice);
+
+  const digits = (value) => String(value || "").replace(/\D/g, "");
+
+  const maskCep = (value) => {
+    const d = digits(value).slice(0, 8);
+    return d.length > 5 ? `${d.slice(0, 5)}-${d.slice(5)}` : d;
+  };
+
+  const maskPhone = (value) => {
+    const d = digits(value).slice(0, 11);
+    if (d.length <= 2) return d;
+    if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
+    if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`;
+    return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
+  };
+
+  const maskCpf = (value) => {
+    const d = digits(value).slice(0, 11);
+    if (d.length <= 3) return d;
+    if (d.length <= 6) return `${d.slice(0, 3)}.${d.slice(3)}`;
+    if (d.length <= 9) return `${d.slice(0, 3)}.${d.slice(3, 6)}.${d.slice(6)}`;
+    return `${d.slice(0, 3)}.${d.slice(3, 6)}.${d.slice(6, 9)}-${d.slice(9)}`;
+  };
+
+  const field = (name) => form?.elements.namedItem(name);
+
+  const saveBuyer = () => {
+    if (!form) return;
+    const data = Object.fromEntries(new FormData(form).entries());
+    try {
+      localStorage.setItem(SAVE, JSON.stringify(data));
+    } catch {
+      /* ignore */
+    }
+  };
+
+  const restoreBuyer = () => {
+    if (!form) return;
+    try {
+      const data = JSON.parse(localStorage.getItem(SAVE) || "{}");
+      Object.entries(data).forEach(([key, value]) => {
+        const el = field(key);
+        if (el && "value" in el) el.value = value;
+      });
+    } catch {
+      /* ignore */
+    }
+  };
+
+  const fillCep = async (cep) => {
+    const raw = digits(cep);
+    if (raw.length !== 8) return;
+    try {
+      const res = await fetch(`https://viacep.com.br/ws/${raw}/json/`);
+      const data = await res.json();
+      if (data.erro) return;
+      const street = field("address");
+      const hood = field("neighborhood");
+      const city = field("city");
+      const uf = field("uf");
+      if (street && !street.value) street.value = data.logradouro || "";
+      if (hood) hood.value = data.bairro || hood.value;
+      if (city) city.value = data.localidade || city.value;
+      if (uf) uf.value = data.uf || uf.value;
+      field("number")?.focus();
+      saveBuyer();
+    } catch {
+      /* ViaCEP offline: o cliente preenche na mão */
+    }
+  };
 
   const lines = () => {
     const cart = window.LumeCart.read();
@@ -41,14 +111,14 @@
       .map(
         (item) => `
         <li class="bag__item">
-          <img src="${item.image}" alt="" />
+          <a href="produto.html?id=${encodeURIComponent(item.id)}"><img src="${item.image}?v=8" alt="" /></a>
           <div>
-            <h3>${item.name}</h3>
+            <h3><a href="produto.html?id=${encodeURIComponent(item.id)}">${item.name}</a></h3>
             <p>${brl(item.price)}</p>
             <div class="bag__qty">
-              <button type="button" data-qty="${item.id}" data-delta="-1">−</button>
+              <button type="button" data-qty="${item.id}" data-delta="-1" aria-label="Menos">−</button>
               <span>${item.qty}</span>
-              <button type="button" data-qty="${item.id}" data-delta="1">+</button>
+              <button type="button" data-qty="${item.id}" data-delta="1" aria-label="Mais">+</button>
               <button type="button" class="bag__remove" data-remove="${item.id}">Tirar</button>
             </div>
           </div>
@@ -61,7 +131,7 @@
     const lack = Math.max(0, freeFrom - subtotal);
     const freightLabel = shipping
       ? `${brl(shipping)} · faltam ${brl(lack)} para frete grátis`
-      : "Grátis a partir de R$ 200";
+      : "Grátis";
     totals.innerHTML = `
       <div><dt>Subtotal</dt><dd>${brl(subtotal)}</dd></div>
       <div><dt>Frete</dt><dd>${freightLabel}</dd></div>
@@ -84,6 +154,18 @@
     }
   });
 
+  form?.addEventListener("input", (event) => {
+    const el = event.target;
+    if (!(el instanceof HTMLInputElement)) return;
+    if (el.name === "cep") el.value = maskCep(el.value);
+    if (el.name === "phone") el.value = maskPhone(el.value);
+    if (el.name === "cpf") el.value = maskCpf(el.value);
+    if (el.name === "uf") el.value = el.value.toUpperCase().replace(/[^A-Z]/g, "").slice(0, 2);
+    saveBuyer();
+  });
+
+  field("cep")?.addEventListener("blur", () => fillCep(field("cep")?.value || ""));
+
   Promise.all([
     fetch("/api/products").then((res) => res.json()),
     fetch("/api/config").then((res) => res.json()),
@@ -95,9 +177,10 @@
       if (Number(config.shipPrice)) shipPrice = Number(config.shipPrice);
       if (!mercadoPago && hint && btn) {
         hint.textContent =
-          "Pagamento ainda não ligado. Entre no painel (admin.html) e cole o Access Token do Mercado Pago.";
+          "Pagamento ainda não ligado. Entre no painel e cole o Access Token do Mercado Pago.";
         btn.querySelector("span").textContent = "Reservar pedido";
       }
+      restoreBuyer();
       draw();
     })
     .catch(() => {
@@ -111,26 +194,45 @@
     const items = window.LumeCart.read();
     if (!items.length) return;
     const data = new FormData(form);
+    const customer = {
+      name: String(data.get("name") || "").trim(),
+      email: String(data.get("email") || "").trim(),
+      phone: String(data.get("phone") || "").trim(),
+      cpf: String(data.get("cpf") || "").trim(),
+      cep: String(data.get("cep") || "").trim(),
+      address: String(data.get("address") || "").trim(),
+      number: String(data.get("number") || "").trim(),
+      complement: String(data.get("complement") || "").trim(),
+      neighborhood: String(data.get("neighborhood") || "").trim(),
+      city: String(data.get("city") || "").trim(),
+      uf: String(data.get("uf") || "").trim().toUpperCase(),
+    };
+    if (!customer.name || !customer.email.includes("@") || digits(customer.phone).length < 10) {
+      err.textContent = "Preencha nome, e-mail e um telefone válido.";
+      return;
+    }
+    if (digits(customer.cep).length !== 8 || !customer.address || !customer.number || !customer.city) {
+      err.textContent = "Preencha CEP, rua, número e cidade.";
+      return;
+    }
+    if (customer.uf && customer.uf.length !== 2) {
+      err.textContent = "UF com 2 letras, por exemplo SP.";
+      return;
+    }
+    if (customer.cpf && digits(customer.cpf).length !== 11) {
+      err.textContent = "CPF incompleto. Pode deixar em branco se preferir.";
+      return;
+    }
+    saveBuyer();
     btn.disabled = true;
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          items,
-          customer: {
-            name: data.get("name"),
-            email: data.get("email"),
-            phone: data.get("phone"),
-            cep: data.get("cep"),
-            address: data.get("address"),
-            city: data.get("city"),
-          },
-        }),
+        body: JSON.stringify({ items, customer }),
       });
       const payload = await res.json();
       if (!res.ok) throw new Error(payload.error || "Não foi possível criar o pedido.");
-      window.LumeCart.clear();
       window.location.href = payload.checkoutUrl;
     } catch (error) {
       err.textContent = error.message;

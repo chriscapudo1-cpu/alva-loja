@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=9" />
 </head>
 <body>
   <a class="skip" href="#conteudo">Ir ao conteúdo</a>
@@ -48,7 +48,7 @@
       <a href="checkout.html" data-index="03">Sacola</a>
       <a href="index.html#contato" data-index="04">Contato</a>
     </nav>
-    <p class="menu__note">Vila Madalena · São Paulo</p>
+    <p class="menu__note">alvaloja.store</p>
   </div>
 
   <main id="conteudo" class="shop">
@@ -62,8 +62,19 @@
         <button class="btn btn--solid" type="submit"><span>Buscar</span></button>
       </form>
     </header>
-    <div class="chips" id="catChips"></div>
+    <div class="shop__toolbar">
+      <div class="chips" id="catChips"></div>
+      <label class="shop__sort">
+        <span>Ordem</span>
+        <select id="shopSort">
+          <option value="nome">Nome</option>
+          <option value="menor">Menor preço</option>
+          <option value="maior">Maior preço</option>
+        </select>
+      </label>
+    </div>
     <p class="shop__note reveal" id="shopNote" hidden></p>
+    <p class="shop__empty" id="shopEmpty" hidden></p>
     <div class="shop__grid" id="shopGrid"></div>
     <p class="shop__more" id="shopMoreWrap">
       <button class="btn btn--solid" type="button" id="shopMore" hidden>
@@ -78,7 +89,7 @@
     <p class="footer__copy">© <span id="year"></span> ALVA. <a href="admin.html">Pedidos</a></p>
   </footer>
   <script src="js/cart.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/loja.js"></script>
+  <script src="js/main.js?v=9"></script>
+  <script src="js/loja.js?v=9"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=9" />
 </head>
 <body>
   <a class="skip" href="#conteudo">Ir ao conteúdo</a>
@@ -66,45 +66,74 @@
       <form class="form check__form" id="payForm" novalidate>
         <h2>Entrega</h2>
         <div class="form__row">
-          <label for="nome">Nome</label>
+          <label for="nome">Nome completo</label>
           <input id="nome" name="name" type="text" autocomplete="name" required />
         </div>
-        <div class="form__row">
-          <label for="email">E-mail</label>
-          <input id="email" name="email" type="email" autocomplete="email" required />
+        <div class="form__split">
+          <div class="form__row">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="form__row">
+            <label for="phone">Telefone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="(11) 99999-0000" />
+          </div>
         </div>
         <div class="form__row">
-          <label for="phone">Telefone</label>
-          <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="11 99999-0000" />
+          <label for="cpf">CPF <span class="form__opt">(opcional)</span></label>
+          <input id="cpf" name="cpf" type="text" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00" />
+        </div>
+        <div class="form__split">
+          <div class="form__row">
+            <label for="cep">CEP</label>
+            <input id="cep" name="cep" type="text" inputmode="numeric" autocomplete="postal-code" required placeholder="00000-000" />
+          </div>
+          <div class="form__row">
+            <label for="number">Número</label>
+            <input id="number" name="number" type="text" autocomplete="address-line2" required />
+          </div>
         </div>
         <div class="form__row">
-          <label for="cep">CEP</label>
-          <input id="cep" name="cep" type="text" autocomplete="postal-code" required />
+          <label for="address">Rua</label>
+          <input id="address" name="address" type="text" autocomplete="address-line1" required />
         </div>
-        <div class="form__row">
-          <label for="address">Endereço</label>
-          <input id="address" name="address" type="text" autocomplete="street-address" required />
+        <div class="form__split">
+          <div class="form__row">
+            <label for="neighborhood">Bairro</label>
+            <input id="neighborhood" name="neighborhood" type="text" autocomplete="address-level3" />
+          </div>
+          <div class="form__row">
+            <label for="complement">Complemento</label>
+            <input id="complement" name="complement" type="text" placeholder="Apto, bloco…" />
+          </div>
         </div>
-        <div class="form__row">
-          <label for="city">Cidade / UF</label>
-          <input id="city" name="city" type="text" required placeholder="São Paulo / SP" />
+        <div class="form__split">
+          <div class="form__row">
+            <label for="city">Cidade</label>
+            <input id="city" name="city" type="text" autocomplete="address-level2" required />
+          </div>
+          <div class="form__row">
+            <label for="uf">UF</label>
+            <input id="uf" name="uf" type="text" maxlength="2" autocomplete="address-level1" placeholder="SP" />
+          </div>
         </div>
-        <p class="check__hint" id="payHint">O pagamento abre no Mercado Pago. Pix, cartão ou saldo.</p>
+        <p class="check__hint" id="payHint">O pagamento abre no Mercado Pago. Pix, cartão ou saldo. A sacola só some depois do pagamento.</p>
         <p class="form__err" id="payErr"></p>
         <button class="btn btn--solid" type="submit" id="payBtn">
           <span>Pagar com Mercado Pago</span>
         </button>
+        <p class="check__hint"><a href="loja.html">Continuar comprando</a></p>
       </form>
     </div>
   </main>
 
   <footer class="footer">
     <a class="wordmark" href="index.html">ALVA</a>
-    <p>Ateliê de marca · São Paulo</p>
+    <p>alvaloja.store</p>
     <p class="footer__copy">© <span id="year"></span> ALVA.</p>
   </footer>
   <script src="js/cart.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/checkout.js"></script>
+  <script src="js/main.js?v=9"></script>
+  <script src="js/checkout.js?v=9"></script>
 </body>
 </html>

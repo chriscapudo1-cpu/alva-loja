@@ -27,9 +27,12 @@
       }
     }, 750);
   };
-  if (preview) {
+  const path = location.pathname.replace(/\\/g, "/");
+  const isHome = /(?:^|\/)(?:index\.html)?$/.test(path);
+  if (preview || !isHome) {
     hideLoader();
     loader?.classList.add("is-gone");
+    loader?.setAttribute("hidden", "");
   } else {
     window.addEventListener("load", () => setTimeout(hideLoader, 550));
     setTimeout(hideLoader, 1600);
@@ -112,24 +115,43 @@
     const data = new FormData(form);
     const nome = String(data.get("nome") || "").trim();
     const email = String(data.get("email") || "").trim();
-    const projeto = String(data.get("projeto") || "").trim();
-    const orcamento = String(data.get("orcamento") || "").trim();
+    const mensagem = String(data.get("mensagem") || data.get("projeto") || "").trim();
+    const assunto = String(data.get("assunto") || data.get("orcamento") || "").trim();
     let ok = true;
 
     showErr("nome", nome ? "" : "Escreva seu nome.");
     showErr("email", emailOk(email) ? "" : "E-mail inválido.");
-    showErr("projeto", projeto.length >= 12 ? "" : "Conte um pouco mais sobre o projeto.");
-    showErr("orcamento", orcamento ? "" : "Escolha uma faixa.");
+    showErr("mensagem", mensagem.length >= 8 ? "" : "Escreva um pouco mais.");
+    showErr("assunto", assunto ? "" : "Escolha um assunto.");
+    showErr("projeto", "");
+    showErr("orcamento", "");
 
-    if (!nome || !emailOk(email) || projeto.length < 12 || !orcamento) ok = false;
+    if (!nome || !emailOk(email) || mensagem.length < 8 || !assunto) ok = false;
     if (!ok) {
       form.querySelector(".is-invalid")?.focus();
       return;
     }
 
-    form.reset();
-    form.classList.add("is-sent");
-    if (formOk) formOk.hidden = false;
+    const btn = form.querySelector("button[type=submit]");
+    if (btn) btn.disabled = true;
+    fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: nome, email, subject: assunto, message: mensagem }),
+    })
+      .then(async (res) => {
+        const payload = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(payload.error || "Não enviou.");
+        form.reset();
+        form.classList.add("is-sent");
+        if (formOk) formOk.hidden = false;
+      })
+      .catch((error) => {
+        showErr("mensagem", error.message || "Não foi possível enviar agora.");
+      })
+      .finally(() => {
+        if (btn) btn.disabled = false;
+      });
   });
 
   const fine = window.matchMedia("(pointer: fine)").matches;
@@ -185,27 +207,30 @@
   }
 
   if (!/admin\.html$/i.test(location.pathname)) {
-    const WHATSAPP = "";
     const msg = encodeURIComponent("Olá, vim da ALVA (alvaloja.store).");
     const home = /(?:^|\/)(?:index\.html)?$/.test(location.pathname);
-    const fabHref = WHATSAPP
-      ? `https://wa.me/${WHATSAPP.replace(/\D/g, "")}?text=${msg}`
-      : home
-        ? "#contato"
-        : "index.html#contato";
     const fab = document.createElement("a");
     fab.className = "fab";
-    fab.href = fabHref;
-    if (WHATSAPP) {
-      fab.target = "_blank";
-      fab.rel = "noopener noreferrer";
-    }
-    fab.setAttribute("aria-label", "Falar no WhatsApp");
+    fab.href = home ? "#contato" : "index.html#contato";
+    fab.setAttribute("aria-label", "Fale com a ALVA");
     fab.innerHTML = `
       <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.5 3.5A11 11 0 0 0 2.1 17.2L1 23l5.9-1.1A11 11 0 0 0 20.5 3.5Zm-8.5 17a9.1 9.1 0 0 1-4.6-1.3l-.3-.2-3.5.7.7-3.4-.2-.3A9.1 9.1 0 1 1 12 20.5Zm5-6.8c-.3-.1-1.6-.8-1.9-.9s-.4-.1-.6.1-.7.9-.8 1-.3.2-.6.1a7.4 7.4 0 0 1-2.2-1.4 8.2 8.2 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.6l.4-.4.1-.3c0-.1 0-.3 0-.4s-.6-1.4-.8-1.9-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3s-.8.8-.8 1.9.8 2.2.9 2.3a9.7 9.7 0 0 0 3.5 3.4c1.3.7 1.8.8 2.4.6s1.6-.7 1.8-1.3.2-1.2.1-1.3-.2-.2-.5-.3Z"/></svg>
-      <span>WhatsApp</span>
+      <span>Fale conosco</span>
     `;
     document.body.appendChild(fab);
+    fetch("/api/config")
+      .then((res) => res.json())
+      .then((cfg) => {
+        const phone = String(cfg.whatsapp || "").replace(/\D/g, "");
+        if (phone.length < 10) return;
+        fab.href = `https://wa.me/${phone}?text=${msg}`;
+        fab.target = "_blank";
+        fab.rel = "noopener noreferrer";
+        fab.setAttribute("aria-label", "Falar no WhatsApp");
+        const label = fab.querySelector("span");
+        if (label) label.textContent = "WhatsApp";
+      })
+      .catch(() => {});
   }
 
   if (!/admin\.html$/i.test(location.pathname)) {
