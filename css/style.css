@@ -1031,6 +1031,13 @@ body.has-cursor .cursor {
   max-width: none;
 }
 
+.pdp .display {
+  font-size: clamp(2.1rem, 4.2vw, 3.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  max-width: 16ch;
+}
+
 .case__lead {
   margin-top: 1.2rem;
   max-width: 34ch;
@@ -2270,9 +2277,19 @@ body.has-cursor .cursor {
   }
 
   .pdp__grid {
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 4rem;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 3rem;
+  }
+
+  .pdp__media {
+    position: sticky;
+    top: calc(var(--nav-h) + 1rem);
+  }
+
+  .pdp__plate {
+    max-height: min(36rem, calc(100svh - var(--nav-h) - 8rem));
+    aspect-ratio: 1;
   }
 }
 
