@@ -202,6 +202,10 @@
               </div>
             </div>
             <div class="form__row">
+              <label for="prodSupplier">Link do produto no AliExpress</label>
+              <input id="prodSupplier" name="supplierUrl" type="url" placeholder="https://pt.aliexpress.com/item/0000000000000.html" />
+            </div>
+            <div class="form__row">
               <label for="prodDesc">Descrição</label>
               <textarea id="prodDesc" name="description" rows="8"></textarea>
             </div>
@@ -377,11 +381,11 @@
           <select id="catalogCat" aria-label="Categoria">
             <option value="">Todas as categorias</option>
           </select>
-          <a class="btn btn--solid" id="catalogAe" href="https://pt.aliexpress.com/w/wholesale.html" target="_blank" rel="noopener">
-            <span>Buscar no AliExpress</span>
+          <a class="btn btn--solid" id="catalogAe" href="loja.html" target="_blank" rel="noopener" hidden>
+            <span>Abrir produto no AliExpress</span>
           </a>
         </div>
-        <p class="admin__find-note" id="catalogNote">Carregando catálogo…</p>
+        <p class="admin__find-note" id="catalogNote">Carregando catálogo… Cole o link do anúncio (aliexpress.com/item/...) em Editar um produto.</p>
       </div>
       <div class="table-wrap">
         <table class="sheet">
@@ -404,7 +408,7 @@
   </main>
 
   <script src="js/look.js?v=15"></script>
-  <script src="js/admin.js?v=15"></script>
+  <script src="js/admin.js?v=16"></script>
   <script>
     const year = document.getElementById("year");
     if (year) year.textContent = String(new Date().getFullYear());

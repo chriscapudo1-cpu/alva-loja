@@ -206,6 +206,14 @@ def save_product(payload: dict) -> dict:
         found["description"] = str(payload.get("description") or "").strip()
     if "blurb" in payload:
         found["blurb"] = str(payload.get("blurb") or "").strip()
+    if "supplierUrl" in payload:
+        url = str(payload.get("supplierUrl") or "").strip()
+        if url:
+            match = re.search(r"aliexpress\.com/item/(\d+)", url, re.I)
+            if not match:
+                raise ValueError("Cole o link do anúncio, no formato aliexpress.com/item/...")
+            url = f"https://pt.aliexpress.com/item/{match.group(1)}.html"
+        found["supplierUrl"] = url
     write_products(products)
     return found
 
@@ -330,7 +338,11 @@ def build_order_items(cart: list) -> tuple[list[dict], float]:
             "cost": float(product.get("cost") or 0),
             "qty": qty,
             "image": product["image"],
-            "supplierUrl": product.get("supplierUrl") or "",
+            "supplierUrl": (
+                f"https://pt.aliexpress.com/item/{m.group(1)}.html"
+                if (m := re.search(r"aliexpress\.com/item/(\d+)", str(product.get("supplierUrl") or ""), re.I))
+                else ""
+            ),
         }
         items.append(line)
         subtotal += line["price"] * qty
@@ -940,6 +952,7 @@ class Handler(SimpleHTTPRequestHandler):
                             "stock": item.get("stock") or 0,
                             "tag": item.get("tag") or "",
                             "blurb": item.get("blurb") or "",
+                            "supplierUrl": item.get("supplierUrl") or "",
                             "description": item.get("description") or "",
                         },
                     }

@@ -23,16 +23,16 @@
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "");
 
+  const itemLink = (item) => {
+    const url = String(item?.supplierUrl || "");
+    return /aliexpress\.com\/item\/\d+/i.test(url) ? url : "";
+  };
+
   const paintCatalog = () => {
     const box = document.getElementById("catalog");
     const note = document.getElementById("catalogNote");
     const q = fold(document.getElementById("catalogQ")?.value || "");
     const cat = document.getElementById("catalogCat")?.value || "";
-    const ae = document.getElementById("catalogAe");
-    if (ae) {
-      const term = (document.getElementById("catalogQ")?.value || "").trim() || "dropshipping";
-      ae.href = `https://pt.aliexpress.com/w/wholesale-${encodeURIComponent(term)}.html`;
-    }
     if (!box) return;
     const list = catalog.filter((item) => {
       if (cat && item.tag !== cat) return false;
@@ -46,8 +46,9 @@
       .slice(0, 200)
       .map((item) => {
         const gain = Number(item.price) - Number(item.cost || 0);
-        const buy = item.supplierUrl
-          ? `<a href="${esc(item.supplierUrl)}" target="_blank" rel="noopener">AliExpress</a>`
+        const buyUrl = itemLink(item);
+        const buy = buyUrl
+          ? `<a href="${esc(buyUrl)}" target="_blank" rel="noopener">Produto no AliExpress</a>`
           : "—";
         return `<tr>
           <td>${esc(item.name)}</td>
@@ -71,6 +72,17 @@
     }
     if (!list.length) {
       box.innerHTML = `<tr><td colspan="7">Nenhum produto com essa busca.</td></tr>`;
+    }
+    const ae = document.getElementById("catalogAe");
+    if (ae) {
+      const chosen = list.find((item) => itemLink(item));
+      if (chosen) {
+        ae.hidden = false;
+        ae.href = itemLink(chosen);
+        ae.querySelector("span").textContent = "Abrir produto no AliExpress";
+      } else {
+        ae.hidden = true;
+      }
     }
   };
 
@@ -129,9 +141,10 @@
                   const shop = item.id
                     ? `<a class="order-items__link" href="produto.html?id=${encodeURIComponent(item.id)}">ver na loja</a>`
                     : "";
-                  const buy = item.supplierUrl
-                    ? `<a class="order-items__link" href="${item.supplierUrl}" target="_blank" rel="noopener">comprar no AliExpress</a>`
-                    : "";
+                  const buy =
+                    /aliexpress\.com\/item\/\d+/i.test(item.supplierUrl || "")
+                      ? `<a class="order-items__link" href="${item.supplierUrl}" target="_blank" rel="noopener">comprar no AliExpress</a>`
+                      : "";
                   return `<li class="order-items__row">
                     <span>${item.qty}× ${item.name} — ${brl(item.price * item.qty)}</span>
                     <span class="order-items__links">${shop}${buy}</span>
@@ -357,6 +370,7 @@
     set("prodCost", item.cost);
     set("prodStock", item.stock);
     set("prodBlurb", item.blurb || "");
+    set("prodSupplier", itemLink(item));
     set("prodDesc", item.description || "");
     const view = document.getElementById("prodView");
     if (view) view.href = `produto.html?id=${encodeURIComponent(item.id)}`;
@@ -501,6 +515,7 @@
           cost: form.elements.cost.value,
           stock: form.elements.stock.value,
           blurb: form.elements.blurb.value,
+          supplierUrl: form.elements.supplierUrl?.value || "",
           description: form.elements.description.value,
         }),
       });
