@@ -221,19 +221,15 @@ def save_product(payload: dict) -> dict:
 def public_images(item: dict) -> list[str]:
     found: list[str] = []
     seen: set[str] = set()
-    pid = str(item.get("id") or "")
-    candidates = list(item.get("images") or [])
+    candidates = []
     if item.get("image"):
-        candidates.insert(0, item["image"])
-    for suffix in ("", "-2", "-3", "-4"):
-        if not pid:
-            break
-        rel = f"assets/img/ali/{pid}{suffix}.jpg"
-        path = ROOT / rel
-        if path.exists() and path.stat().st_size > 4000:
-            candidates.append(rel)
+        candidates.append(item["image"])
+    candidates.extend(item.get("images") or [])
     for src in candidates:
-        if src and src not in seen:
+        if not src or src in seen:
+            continue
+        path = ROOT / src
+        if path.exists() and path.stat().st_size > 4000:
             seen.add(src)
             found.append(src)
     return found
