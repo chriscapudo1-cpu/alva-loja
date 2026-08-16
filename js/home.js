@@ -23,17 +23,16 @@
     if (catsEl) {
       catsEl.innerHTML = "";
       byTag.forEach((item, tag) => {
-        const count = products.filter((p) => p.tag === tag).length;
         const a = document.createElement("a");
         a.className = "home-cat reveal is-in";
         a.href = `loja.html?cat=${encodeURIComponent(tag)}`;
         a.innerHTML = `
           <figure>
-            <img src="${item.image}?v=10" alt="" />
+            <img src="${item.image}?v=12" alt="" />
           </figure>
           <div>
             <h3>${tag}</h3>
-            <p>${count} peças</p>
+            <p>Ver a categoria</p>
           </div>
         `;
         catsEl.appendChild(a);

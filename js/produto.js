@@ -35,25 +35,48 @@
       document.title = `${product.name} — ALVA`;
       const desc = document.querySelector('meta[name="description"]');
       if (desc) desc.setAttribute("content", `${product.name} na ALVA. ${brl(product.price)}.`);
-      const mainPhoto = product.image || "";
+      const photos = [
+        ...new Set(
+          [product.image, ...(product.images || [])].filter(Boolean)
+        ),
+      ];
+      const mainPhoto = photos[0] || "";
       const descHtml = formatDesc(product.description || product.blurb || "", esc);
-      const stock = Number(product.stock || 0);
+      const available = product.available != null ? Boolean(product.available) : Number(product.stock || 0) > 0;
       const related = products
         .filter((item) => item.tag === product.tag && item.id !== product.id)
         .slice(0, 4);
+      const thumbs =
+        photos.length > 1
+          ? `<div class="pdp__thumbs" role="tablist" aria-label="Fotos do produto">${photos
+              .map(
+                (src, index) => `
+            <button class="pdp__thumb${index === 0 ? " is-on" : ""}" type="button" data-photo="${esc(src)}" aria-label="Foto ${index + 1}" aria-selected="${index === 0 ? "true" : "false"}">
+              <img src="${src}?v=12" alt="" />
+            </button>`
+              )
+              .join("")}</div>`
+          : "";
       root.innerHTML = `
         <p class="pdp__back"><a href="loja.html?cat=${encodeURIComponent(product.tag)}">← ${esc(product.tag)}</a></p>
         <article class="pdp__grid">
           <div class="pdp__media">
             <figure class="pdp__plate">
-              <img id="pdpMain" src="${mainPhoto}?v=10" alt="${esc(product.name)}" />
+              <img id="pdpMain" src="${mainPhoto}?v=12" alt="${esc(product.name)}" />
+              ${
+                photos.length > 1
+                  ? `<button class="pdp__nav pdp__nav--prev" type="button" id="pdpPrev" aria-label="Foto anterior">‹</button>
+                     <button class="pdp__nav pdp__nav--next" type="button" id="pdpNext" aria-label="Próxima foto">›</button>`
+                  : ""
+              }
             </figure>
+            ${thumbs}
           </div>
           <div class="pdp__info">
             <p class="eyebrow">${esc(product.tag)}</p>
             <h1 class="display display--case">${esc(product.name)}</h1>
             <p class="pdp__price">${brl(product.price)}</p>
-            <p class="pdp__install">${stock > 0 ? `ou 3× de ${parcel(product.price)} no cartão` : "Indisponível no momento"}</p>
+            <p class="pdp__install">${available ? `ou 3× de ${parcel(product.price)} no cartão` : "Indisponível no momento"}</p>
             <ul class="pdp__trust">
               <li>Pix e cartão no Mercado Pago</li>
               <li>Frete R$ 18,90 · grátis acima de R$ 200</li>
@@ -65,7 +88,7 @@
                 <input id="qtyInput" type="text" inputmode="numeric" value="1" aria-label="Quantidade" />
                 <button type="button" id="qtyPlus" aria-label="Mais">+</button>
               </div>
-              <button class="btn btn--solid" type="button" id="addBtn" ${stock < 1 ? "disabled" : ""}>
+              <button class="btn btn--solid" type="button" id="addBtn" ${available ? "" : "disabled"}>
                 <span>Adicionar à sacola</span>
               </button>
             </div>
@@ -92,7 +115,7 @@
             <strong>${esc(product.name)}</strong>
             <span>${brl(product.price)}</span>
           </div>
-          <button class="btn btn--solid" type="button" id="stickyAdd" ${stock < 1 ? "disabled" : ""}>
+          <button class="btn btn--solid" type="button" id="stickyAdd" ${available ? "" : "disabled"}>
             <span>Adicionar</span>
           </button>
         </div>
@@ -117,6 +140,32 @@
           span.textContent = "Na sacola";
         });
       };
+      const main = document.getElementById("pdpMain");
+      const thumbsEl = root.querySelectorAll(".pdp__thumb");
+      let photoIndex = 0;
+      const showPhoto = (index) => {
+        if (!photos.length || !main) return;
+        photoIndex = (index + photos.length) % photos.length;
+        main.src = `${photos[photoIndex]}?v=12`;
+        thumbsEl.forEach((btn, i) => {
+          const on = i === photoIndex;
+          btn.classList.toggle("is-on", on);
+          btn.setAttribute("aria-selected", on ? "true" : "false");
+        });
+      };
+      thumbsEl.forEach((btn, index) => {
+        btn.addEventListener("click", () => showPhoto(index));
+      });
+      document.getElementById("pdpPrev")?.addEventListener("click", () => showPhoto(photoIndex - 1));
+      document.getElementById("pdpNext")?.addEventListener("click", () => showPhoto(photoIndex + 1));
+      main?.addEventListener("click", () => {
+        if (photos.length > 1) showPhoto(photoIndex + 1);
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.target.closest("input, textarea, select")) return;
+        if (event.key === "ArrowLeft") showPhoto(photoIndex - 1);
+        if (event.key === "ArrowRight") showPhoto(photoIndex + 1);
+      });
       document.getElementById("qtyMinus")?.addEventListener("click", () => setQty(Number(qtyInput.value) - 1));
       document.getElementById("qtyPlus")?.addEventListener("click", () => setQty(Number(qtyInput.value) + 1));
       qtyInput?.addEventListener("change", () => setQty(qtyInput.value));

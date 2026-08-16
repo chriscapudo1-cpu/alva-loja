@@ -7,9 +7,14 @@ ALI = ROOT / "assets" / "img" / "ali"
 products = json.loads((ROOT / "data" / "products.json").read_text(encoding="utf-8"))
 photos = 0
 for item in products:
-    dest = ALI / f"{item['id']}.jpg"
-    if dest.exists() and dest.stat().st_size > 4000:
-        item["image"] = f"assets/img/ali/{item['id']}.jpg"
+    gallery = []
+    for suffix in ("", "-2", "-3", "-4"):
+        dest = ALI / f"{item['id']}{suffix}.jpg"
+        if dest.exists() and dest.stat().st_size > 4000:
+            gallery.append(f"assets/img/ali/{item['id']}{suffix}.jpg")
+    if gallery:
+        item["image"] = gallery[0]
+        item["images"] = gallery
         photos += 1
     item["blurb"] = f"{item['tag']} · envio após a confirmação do pagamento."
 

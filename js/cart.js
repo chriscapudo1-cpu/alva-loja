@@ -105,13 +105,21 @@
 
   const find = (id) => catalog.find((item) => item.id === id);
 
+  const gallery = (product) => {
+    const photos = [...new Set([product.image, ...(product.images || [])].filter(Boolean))];
+    return photos;
+  };
+
   const card = (product) => {
+    const photos = gallery(product);
+    const second = photos[1];
     const el = document.createElement("article");
     el.className = "product reveal is-in";
     el.innerHTML = `
       <a class="product__media" href="produto.html?id=${encodeURIComponent(product.id)}">
         <figure>
-          <img src="${product.image}?v=10" alt="${esc(product.name)}" loading="lazy" />
+          <img src="${photos[0] || product.image}?v=12" alt="${esc(product.name)}" loading="lazy" />
+          ${second ? `<img class="product__img--alt" src="${second}?v=12" alt="" loading="lazy" />` : ""}
         </figure>
         <span class="product__badge">${esc(product.tag)}</span>
       </a>
@@ -197,7 +205,7 @@
         (item) => `
         <article class="drawer__item">
           <a href="produto.html?id=${encodeURIComponent(item.id)}">
-            <img src="${item.image}?v=10" alt="" />
+            <img src="${item.image}?v=12" alt="" />
           </a>
           <div>
             <h3><a href="produto.html?id=${encodeURIComponent(item.id)}">${esc(item.name)}</a></h3>

@@ -60,7 +60,9 @@
       window.AlvaPixel?.track("Search", { search_string: query });
     }
     if (lede) {
-      lede.textContent = `${list.length} ${list.length === 1 ? "peça" : "peças"} · Pix, cartão · frete grátis acima de R$ 200`;
+      lede.textContent = current
+        ? `${current} · Pix, cartão · frete grátis acima de R$ 200`
+        : "Pix, cartão · frete grátis acima de R$ 200";
     }
     if (grid) {
       grid.innerHTML = "";
@@ -75,7 +77,7 @@
     if (more) {
       more.hidden = slice.length >= list.length;
       if (list.length > slice.length) {
-        more.querySelector("span").textContent = `Ver mais (${list.length - slice.length})`;
+        more.querySelector("span").textContent = "Ver mais";
       }
     }
     chips?.querySelectorAll("[data-cat]").forEach((btn) => {

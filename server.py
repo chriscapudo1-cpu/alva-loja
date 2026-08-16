@@ -67,6 +67,27 @@ def product_map() -> dict[str, dict]:
     return {item["id"]: item for item in load_products()}
 
 
+def public_images(item: dict) -> list[str]:
+    found: list[str] = []
+    seen: set[str] = set()
+    pid = str(item.get("id") or "")
+    candidates = list(item.get("images") or [])
+    if item.get("image"):
+        candidates.insert(0, item["image"])
+    for suffix in ("", "-2", "-3", "-4"):
+        if not pid:
+            break
+        rel = f"assets/img/ali/{pid}{suffix}.jpg"
+        path = ROOT / rel
+        if path.exists() and path.stat().st_size > 4000:
+            candidates.append(rel)
+    for src in candidates:
+        if src and src not in seen:
+            seen.add(src)
+            found.append(src)
+    return found
+
+
 def db() -> sqlite3.Connection:
     DATA.mkdir(exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
@@ -396,20 +417,22 @@ class Handler(SimpleHTTPRequestHandler):
     def do_GET(self) -> None:
         parsed = urlparse(self.path)
         if parsed.path == "/api/products":
-            public = [
-                {
-                    "id": item["id"],
-                    "name": item["name"],
-                    "price": item["price"],
-                    "image": item["image"],
-                    "images": [item["image"]],
-                    "tag": item["tag"],
-                    "blurb": item["blurb"],
-                    "description": item.get("description") or item.get("blurb") or "",
-                    "stock": item["stock"],
-                }
-                for item in load_products()
-            ]
+            public = []
+            for item in load_products():
+                photos = public_images(item)
+                public.append(
+                    {
+                        "id": item["id"],
+                        "name": item["name"],
+                        "price": item["price"],
+                        "image": photos[0] if photos else item.get("image") or "",
+                        "images": photos,
+                        "tag": item["tag"],
+                        "blurb": item["blurb"],
+                        "description": item.get("description") or item.get("blurb") or "",
+                        "available": int(item.get("stock") or 0) > 0,
+                    }
+                )
             category = (parse_qs(parsed.query).get("cat") or [""])[0]
             if category:
                 public = [item for item in public if item["tag"] == category]
