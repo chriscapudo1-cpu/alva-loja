@@ -1032,10 +1032,10 @@ body.has-cursor .cursor {
 }
 
 .pdp .display {
-  font-size: clamp(2.1rem, 4.2vw, 3.5rem);
-  line-height: 1.02;
+  font-size: clamp(1.85rem, 3.2vw, 2.8rem);
+  line-height: 1.08;
   letter-spacing: -0.02em;
-  max-width: 16ch;
+  max-width: 18ch;
 }
 
 .case__lead {
@@ -1439,10 +1439,6 @@ body.has-cursor .cursor {
   .pdp__price {
     font-size: 1.7rem;
     margin: 0.7rem 0 0.9rem;
-  }
-
-  .pdp__thumbs {
-    grid-template-columns: repeat(3, 1fr);
   }
 
   .form__split {
@@ -1992,31 +1988,27 @@ body.has-cursor .cursor {
 
 .pdp__grid {
   display: grid;
-  gap: 2rem;
+  gap: 1.6rem;
 }
 
 .pdp__media {
   display: grid;
-  gap: 0.7rem;
-}
-
-.pdp__grid img,
-.pdp__media figure img {
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
+  align-content: start;
+  gap: 0.65rem;
 }
 
 .pdp__thumbs {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(4.4rem, 1fr));
-  gap: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
 }
 
 .pdp__thumb {
+  flex: 0 0 4.2rem;
+  width: 4.2rem;
   padding: 0;
   border: 1px solid var(--line);
-  background: #efe8db;
+  background: #fff;
   cursor: pointer;
 }
 
@@ -2025,8 +2017,11 @@ body.has-cursor .cursor {
 }
 
 .pdp__thumb img {
+  width: 100%;
   aspect-ratio: 1;
+  object-fit: contain;
   display: block;
+  padding: 0.25rem;
 }
 
 .pdp__copy {
@@ -2320,9 +2315,9 @@ body.has-cursor .cursor {
   }
 
   .pdp__grid {
-    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
+    grid-template-columns: minmax(260px, 28rem) minmax(280px, 1fr);
     align-items: start;
-    gap: 3rem;
+    gap: 2.4rem 3rem;
   }
 
   .pdp__media {
@@ -2331,8 +2326,8 @@ body.has-cursor .cursor {
   }
 
   .pdp__plate {
-    max-height: min(36rem, calc(100svh - var(--nav-h) - 8rem));
-    aspect-ratio: 1;
+    width: 100%;
+    max-height: min(28rem, calc(100svh - var(--nav-h) - 7rem));
   }
 }
 
@@ -2410,10 +2405,11 @@ body.drawer-open {
 
 .pdp__plate {
   position: relative;
-  background: #efe8db;
+  background: #fff;
   aspect-ratio: 1;
   display: grid;
   place-items: center;
+  overflow: hidden;
 }
 
 .pdp__plate #pdpMain {
@@ -2424,27 +2420,27 @@ body.drawer-open {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 999px;
-  background: rgba(11, 10, 9, 0.55);
+  background: rgba(11, 10, 9, 0.42);
   color: var(--cream);
-  font-size: 1.4rem;
+  font-size: 1.15rem;
   line-height: 1;
   display: grid;
   place-items: center;
 }
 
 .pdp__nav:hover {
-  background: rgba(11, 10, 9, 0.82);
+  background: rgba(11, 10, 9, 0.78);
 }
 
 .pdp__nav--prev {
-  left: 0.7rem;
+  left: 0.55rem;
 }
 
 .pdp__nav--next {
-  right: 0.7rem;
+  right: 0.55rem;
 }
 
 .pdp__plate img,
@@ -2452,8 +2448,9 @@ body.drawer-open {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 8%;
+  padding: 0.7rem;
   aspect-ratio: auto;
+  background: #fff;
 }
 
 .pdp__install {
