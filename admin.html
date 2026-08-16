@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=14" />
+  <link rel="stylesheet" href="css/style.css?v=15" />
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -43,6 +43,7 @@
     <section id="board" hidden>
       <nav class="admin__tabs" aria-label="Áreas do painel">
         <button class="chip admin__tab is-on" type="button" data-panel="site">Site</button>
+        <button class="chip admin__tab" type="button" data-panel="look">Aparência</button>
         <button class="chip admin__tab" type="button" data-panel="pay">Pagamento</button>
         <button class="chip admin__tab" type="button" data-panel="orders">Pedidos</button>
         <button class="chip admin__tab" type="button" data-panel="catalog">Fornecedores</button>
@@ -214,6 +215,110 @@
         </article>
       </div>
 
+      <div class="admin__panel" data-panel="look" hidden>
+        <article class="paybox paybox--wide">
+          <p class="eyebrow">Visual</p>
+          <h2 class="admin__h" style="margin-top:0.4rem">Tema e layout</h2>
+          <p class="lede">Escolha as cores, a letra e como a loja se organiza. O visitante vê na hora.</p>
+          <form class="form site-form" id="lookForm">
+            <h3 class="site-form__label">Tema</h3>
+            <div class="look-swatches" id="lookSwatches">
+              <button class="look-swatch" type="button" data-theme="escuro" style="--sw-bg:#0b0a09;--sw-tx:#f3ece0;--sw-ac:#c4a36a"><span>Escuro</span></button>
+              <button class="look-swatch" type="button" data-theme="claro" style="--sw-bg:#f4efe6;--sw-tx:#1b1713;--sw-ac:#9a7040"><span>Claro</span></button>
+              <button class="look-swatch" type="button" data-theme="oceano" style="--sw-bg:#0b1218;--sw-tx:#e8eef3;--sw-ac:#6eb3c7"><span>Oceano</span></button>
+              <button class="look-swatch" type="button" data-theme="vinho" style="--sw-bg:#140b0d;--sw-tx:#f3e8e6;--sw-ac:#c47a6a"><span>Vinho</span></button>
+              <button class="look-swatch" type="button" data-theme="floresta" style="--sw-bg:#0c110d;--sw-tx:#e8efe6;--sw-ac:#8aaa6e"><span>Floresta</span></button>
+            </div>
+            <input id="lookTheme" name="theme" type="hidden" value="escuro" />
+            <div class="site-form__grid">
+              <div class="form__row">
+                <label for="lookBg">Cor de fundo</label>
+                <input id="lookBg" name="colorBg" type="color" value="#0b0a09" />
+              </div>
+              <div class="form__row">
+                <label for="lookText">Cor do texto</label>
+                <input id="lookText" name="colorText" type="color" value="#f3ece0" />
+              </div>
+              <div class="form__row">
+                <label for="lookAccent">Cor de destaque</label>
+                <input id="lookAccent" name="colorAccent" type="color" value="#c4a36a" />
+              </div>
+              <div class="form__row">
+                <label for="lookFont">Letra</label>
+                <select id="lookFont" name="font">
+                  <option value="editorial">Editorial (com serifa)</option>
+                  <option value="limpa">Limpa (sem serifa)</option>
+                </select>
+              </div>
+            </div>
+
+            <h3 class="site-form__label">Layout</h3>
+            <div class="site-form__grid">
+              <div class="form__row">
+                <label for="lookHero">Abertura da home</label>
+                <select id="lookHero" name="heroStyle">
+                  <option value="capa">Foto de fundo, tela cheia</option>
+                  <option value="baixo">Foto de fundo, mais baixa</option>
+                  <option value="dividido">Texto de um lado, foto do outro</option>
+                  <option value="semfoto">Sem foto de abertura</option>
+                </select>
+              </div>
+              <div class="form__row">
+                <label for="lookCols">Colunas da loja no desktop</label>
+                <select id="lookCols" name="shopCols">
+                  <option value="2">2 colunas</option>
+                  <option value="3">3 colunas</option>
+                  <option value="4">4 colunas</option>
+                </select>
+              </div>
+              <div class="form__row">
+                <label for="lookRadius">Cantos</label>
+                <select id="lookRadius" name="radius">
+                  <option value="reta">Retos</option>
+                  <option value="suave">Suaves</option>
+                  <option value="redondo">Redondos</option>
+                </select>
+              </div>
+              <div class="form__row">
+                <label for="lookDensity">Espaçamento</label>
+                <select id="lookDensity" name="density">
+                  <option value="confortavel">Confortável</option>
+                  <option value="compacto">Compacto</option>
+                </select>
+              </div>
+              <div class="form__row">
+                <label for="lookPromises">Faixa de confiança</label>
+                <select id="lookPromises" name="showPromises">
+                  <option value="sim">Mostrar</option>
+                  <option value="nao">Esconder</option>
+                </select>
+              </div>
+              <div class="form__row">
+                <label for="lookCats">Bloco de categorias</label>
+                <select id="lookCats" name="showCats">
+                  <option value="sim">Mostrar</option>
+                  <option value="nao">Esconder</option>
+                </select>
+              </div>
+              <div class="form__row">
+                <label for="lookFeat">Bloco de destaques</label>
+                <select id="lookFeat" name="showFeat">
+                  <option value="sim">Mostrar</option>
+                  <option value="nao">Esconder</option>
+                </select>
+              </div>
+            </div>
+            <div class="look-preview" id="lookPreview" aria-hidden="true">
+              <strong>Prévia</strong>
+              <span>Assim ficam o fundo, o texto e o destaque.</span>
+            </div>
+            <p class="form__err" id="lookErr"></p>
+            <p class="form__ok" id="lookOk" hidden>Aparência salva. Abra a loja para ver.</p>
+            <button class="btn btn--solid" type="submit"><span>Salvar tema e layout</span></button>
+          </form>
+        </article>
+      </div>
+
       <div class="admin__panel" data-panel="pay" hidden>
       <article class="paybox" id="payBox">
         <p class="eyebrow">Pagamento</p>
@@ -298,7 +403,8 @@
     </section>
   </main>
 
-  <script src="js/admin.js?v=13"></script>
+  <script src="js/look.js?v=15"></script>
+  <script src="js/admin.js?v=15"></script>
   <script>
     const year = document.getElementById("year");
     if (year) year.textContent = String(new Date().getFullYear());

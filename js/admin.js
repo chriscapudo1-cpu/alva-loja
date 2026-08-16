@@ -289,12 +289,53 @@
     "contactEmail",
   ];
 
+  const LOOK_FIELDS = [
+    "theme",
+    "colorBg",
+    "colorText",
+    "colorAccent",
+    "font",
+    "radius",
+    "density",
+    "heroStyle",
+    "shopCols",
+    "showPromises",
+    "showCats",
+    "showFeat",
+  ];
+
+  const paintLookPreview = () => {
+    const form = document.getElementById("lookForm");
+    const preview = document.getElementById("lookPreview");
+    if (!form || !preview) return;
+    const bg = form.elements.colorBg.value;
+    const text = form.elements.colorText.value;
+    const accent = form.elements.colorAccent.value;
+    preview.style.background = bg;
+    preview.style.color = text;
+    preview.style.borderColor = accent;
+    preview.querySelector("strong").style.color = accent;
+    document.querySelectorAll(".look-swatch").forEach((btn) => {
+      btn.classList.toggle("is-on", btn.getAttribute("data-theme") === form.elements.theme.value);
+    });
+  };
+
+  const fillLook = (site) => {
+    const form = document.getElementById("lookForm");
+    if (!form || !site) return;
+    LOOK_FIELDS.forEach((key) => {
+      if (form.elements[key] && site[key]) form.elements[key].value = site[key];
+    });
+    paintLookPreview();
+  };
+
   const fillSite = (site) => {
     const form = document.getElementById("siteForm");
     if (!form || !site) return;
     SITE_FIELDS.forEach((key) => {
       if (form.elements[key]) form.elements[key].value = site[key] || "";
     });
+    fillLook(site);
   };
 
   const loadSite = async (token) => {
@@ -339,6 +380,52 @@
     document.querySelectorAll(".admin__panel").forEach((panel) => {
       panel.hidden = panel.getAttribute("data-panel") !== name;
     });
+  });
+
+  document.getElementById("lookSwatches")?.addEventListener("click", (event) => {
+    const btn = event.target.closest("[data-theme]");
+    if (!btn) return;
+    const theme = btn.getAttribute("data-theme");
+    const preset = window.AlvaLook?.THEMES?.[theme];
+    const form = document.getElementById("lookForm");
+    if (!form || !preset) return;
+    form.elements.theme.value = theme;
+    form.elements.colorBg.value = preset.bg;
+    form.elements.colorText.value = preset.text;
+    form.elements.colorAccent.value = preset.accent;
+    paintLookPreview();
+  });
+
+  document.getElementById("lookForm")?.addEventListener("input", paintLookPreview);
+
+  document.getElementById("lookForm")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const token = sessionStorage.getItem(tokenKey);
+    const err = document.getElementById("lookErr");
+    const ok = document.getElementById("lookOk");
+    if (err) err.textContent = "";
+    if (ok) ok.hidden = true;
+    const form = event.currentTarget;
+    const payload = {};
+    LOOK_FIELDS.forEach((key) => {
+      payload[key] = form.elements[key]?.value || "";
+    });
+    try {
+      const res = await fetch("/api/admin/site", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Admin-Token": token || "",
+        },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Não salvou.");
+      fillLook(data.site);
+      if (ok) ok.hidden = false;
+    } catch (error) {
+      if (err) err.textContent = error.message;
+    }
   });
 
   document.getElementById("siteForm")?.addEventListener("submit", async (event) => {

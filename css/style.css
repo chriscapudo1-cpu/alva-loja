@@ -16,6 +16,75 @@
   --pad: clamp(1.25rem, 4vw, 3.5rem);
   --nav-h: 4.5rem;
   --max: 1280px;
+  --radius: 0;
+  --photo-bg: #efe8db;
+}
+
+body[data-font="limpa"] {
+  --serif: var(--sans);
+}
+
+body[data-radius="suave"] {
+  --radius: 0.45rem;
+}
+
+body[data-radius="redondo"] {
+  --radius: 1rem;
+}
+
+body[data-density="compacto"] {
+  --pad: clamp(0.95rem, 3vw, 2.2rem);
+  --nav-h: 3.8rem;
+}
+
+body.hide-promises .promises,
+body.hide-cats .home-cats,
+body.hide-feat .home-feat {
+  display: none;
+}
+
+body[data-hero="baixo"] .hero {
+  min-height: 72svh;
+}
+
+body[data-hero="semfoto"] .hero__media {
+  display: none;
+}
+
+body[data-hero="semfoto"] .hero {
+  min-height: auto;
+  background: var(--bg-2);
+  padding-bottom: 3.2rem;
+}
+
+@media (min-width: 980px) {
+  body[data-hero="dividido"] .hero {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    min-height: 86svh;
+    padding: 0;
+  }
+
+  body[data-hero="dividido"] .hero__media {
+    position: relative;
+    inset: auto;
+    order: 2;
+    min-height: 86svh;
+  }
+
+  body[data-hero="dividido"] .hero__copy {
+    display: grid;
+    align-content: center;
+    padding: calc(var(--nav-h) + 2rem) var(--pad) 3rem;
+  }
+
+  body[data-cols="2"] .shop__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  body[data-cols="4"] .shop__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 *,
@@ -560,6 +629,22 @@ body.has-cursor .cursor {
 }
 
 /* Buttons */
+.btn,
+.chip,
+.product figure,
+.pdp__plate,
+.pdp__thumb,
+.home-cat,
+.home-cat figure,
+.form input,
+.form textarea,
+.form select,
+.drawer,
+.ticket,
+.paybox {
+  border-radius: var(--radius);
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -1573,7 +1658,7 @@ body.has-cursor .cursor {
   position: relative;
   overflow: hidden;
   aspect-ratio: 1;
-  background: #efe8db;
+  background: var(--photo-bg);
 }
 
 .product img {
@@ -1715,7 +1800,7 @@ body.has-cursor .cursor {
   width: 88px;
   height: 88px;
   object-fit: contain;
-  background: #efe8db;
+  background: var(--photo-bg);
   padding: 6px;
 }
 
@@ -2008,7 +2093,7 @@ body.has-cursor .cursor {
   width: 4.2rem;
   padding: 0;
   border: 1px solid var(--line);
-  background: #fff;
+  background: var(--photo-bg);
   cursor: pointer;
 }
 
@@ -2174,6 +2259,62 @@ body.has-cursor .cursor {
   color: var(--gold);
   text-decoration: underline;
   text-underline-offset: 0.18em;
+}
+
+.look-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7.2rem, 1fr));
+  gap: 0.55rem;
+  margin: 0.4rem 0 1rem;
+}
+
+.look-swatch {
+  display: grid;
+  gap: 0.45rem;
+  min-height: 4.4rem;
+  padding: 0.55rem;
+  border: 1px solid var(--line-strong);
+  background:
+    linear-gradient(135deg, var(--sw-bg) 0 62%, var(--sw-ac) 62% 78%, var(--sw-tx) 78% 100%);
+  color: var(--cream);
+  text-align: left;
+}
+
+.look-swatch span {
+  align-self: end;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(11, 10, 9, 0.55);
+  padding: 0.15rem 0.35rem;
+  width: fit-content;
+}
+
+.look-swatch.is-on {
+  border-color: var(--gold);
+  outline: 1px solid var(--gold);
+}
+
+.look-preview {
+  margin: 1.1rem 0 1.2rem;
+  padding: 1.1rem 1.15rem;
+  border: 1px solid var(--line-strong);
+  display: grid;
+  gap: 0.3rem;
+}
+
+.look-preview strong {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+input[type="color"] {
+  width: 100%;
+  min-height: 2.7rem;
+  padding: 0.2rem;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
 }
 
 .table-wrap {
@@ -2405,7 +2546,7 @@ body.drawer-open {
 
 .pdp__plate {
   position: relative;
-  background: #fff;
+  background: var(--photo-bg);
   aspect-ratio: 1;
   display: grid;
   place-items: center;
@@ -2450,7 +2591,7 @@ body.drawer-open {
   object-fit: contain;
   padding: 0.7rem;
   aspect-ratio: auto;
-  background: #fff;
+  background: var(--photo-bg);
 }
 
 .pdp__install {
@@ -2607,7 +2748,7 @@ body.drawer-open {
   width: 72px;
   height: 72px;
   object-fit: contain;
-  background: #efe8db;
+  background: var(--photo-bg);
   padding: 6px;
 }
 

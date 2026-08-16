@@ -16,6 +16,7 @@
     });
     const home = /(?:^|\/)(?:index\.html)?$/.test(location.pathname.replace(/\\/g, "/"));
     if (home && site.title) document.title = site.title;
+    window.AlvaLook?.apply(site);
   };
   fetch("/api/site")
     .then((res) => (res.ok ? res.json() : null))

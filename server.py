@@ -7,6 +7,7 @@ import hashlib
 import hmac
 import json
 import os
+import re
 import sqlite3
 import uuid
 from datetime import datetime, timezone
@@ -46,6 +47,30 @@ DEFAULT_SITE = {
     "contactTitle": "Fale com a ALVA.",
     "contactLede": "Pedido, troca ou uma dúvida antes de comprar. Respondemos em até um dia útil.",
     "contactEmail": "ola@alvaloja.store",
+    "theme": "escuro",
+    "colorBg": "#0b0a09",
+    "colorText": "#f3ece0",
+    "colorAccent": "#c4a36a",
+    "font": "editorial",
+    "radius": "reta",
+    "density": "confortavel",
+    "heroStyle": "capa",
+    "shopCols": "3",
+    "showPromises": "sim",
+    "showCats": "sim",
+    "showFeat": "sim",
+}
+
+SITE_CHOICES = {
+    "theme": {"escuro", "claro", "oceano", "vinho", "floresta"},
+    "font": {"editorial", "limpa"},
+    "radius": {"reta", "suave", "redondo"},
+    "density": {"confortavel", "compacto"},
+    "heroStyle": {"capa", "baixo", "dividido", "semfoto"},
+    "shopCols": {"2", "3", "4"},
+    "showPromises": {"sim", "nao"},
+    "showCats": {"sim", "nao"},
+    "showFeat": {"sim", "nao"},
 }
 
 
@@ -118,6 +143,13 @@ def load_site() -> dict:
     return data
 
 
+def clean_hex(value: str, fallback: str) -> str:
+    raw = str(value or "").strip()
+    if re.fullmatch(r"#?[0-9a-fA-F]{6}", raw):
+        return "#" + raw.lstrip("#").lower()
+    return fallback
+
+
 def save_site(payload: dict) -> dict:
     current = load_site()
     for key in DEFAULT_SITE:
@@ -128,6 +160,12 @@ def save_site(payload: dict) -> dict:
     email = current["contactEmail"]
     if email and "@" not in email:
         raise ValueError("Informe um e-mail válido.")
+    for key, allowed in SITE_CHOICES.items():
+        if current[key] not in allowed:
+            current[key] = DEFAULT_SITE[key]
+    current["colorBg"] = clean_hex(current["colorBg"], DEFAULT_SITE["colorBg"])
+    current["colorText"] = clean_hex(current["colorText"], DEFAULT_SITE["colorText"])
+    current["colorAccent"] = clean_hex(current["colorAccent"], DEFAULT_SITE["colorAccent"])
     SITE_PATH.write_text(
         json.dumps(current, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
