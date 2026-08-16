@@ -28,7 +28,7 @@
         a.href = `loja.html?cat=${encodeURIComponent(tag)}`;
         a.innerHTML = `
           <figure>
-            <img src="${item.image}?v=17" alt="" />
+            <img src="${item.image}?v=18" alt="" />
           </figure>
           <div>
             <h3>${tag}</h3>

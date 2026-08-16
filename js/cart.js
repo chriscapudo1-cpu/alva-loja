@@ -118,8 +118,8 @@
     el.innerHTML = `
       <a class="product__media" href="produto.html?id=${encodeURIComponent(product.id)}">
         <figure>
-          <img src="${photos[0] || product.image}?v=17" alt="${esc(product.name)}" loading="lazy" />
-          ${second ? `<img class="product__img--alt" src="${second}?v=17" alt="" loading="lazy" />` : ""}
+          <img src="${photos[0] || product.image}?v=18" alt="${esc(product.name)}" loading="lazy" />
+          ${second ? `<img class="product__img--alt" src="${second}?v=18" alt="" loading="lazy" />` : ""}
         </figure>
         <span class="product__badge">${esc(product.tag)}</span>
       </a>
@@ -205,7 +205,7 @@
         (item) => `
         <article class="drawer__item">
           <a href="produto.html?id=${encodeURIComponent(item.id)}">
-            <img src="${item.image}?v=17" alt="" />
+            <img src="${item.image}?v=18" alt="" />
           </a>
           <div>
             <h3><a href="produto.html?id=${encodeURIComponent(item.id)}">${esc(item.name)}</a></h3>
