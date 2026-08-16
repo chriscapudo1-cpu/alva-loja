@@ -52,7 +52,7 @@
               .map(
                 (src, index) => `
             <button class="pdp__thumb${index === 0 ? " is-on" : ""}" type="button" data-photo="${esc(src)}" aria-label="Foto ${index + 1}" aria-selected="${index === 0 ? "true" : "false"}">
-              <img src="${src}?v=12" alt="" />
+              <img src="${src}?v=16" alt="" />
             </button>`
               )
               .join("")}</div>`
@@ -62,7 +62,7 @@
         <article class="pdp__grid">
           <div class="pdp__media">
             <figure class="pdp__plate">
-              <img id="pdpMain" src="${mainPhoto}?v=12" alt="${esc(product.name)}" />
+              <img id="pdpMain" src="${mainPhoto}?v=16" alt="${esc(product.name)}" />
               ${
                 photos.length > 1
                   ? `<button class="pdp__nav pdp__nav--prev" type="button" id="pdpPrev" aria-label="Foto anterior">‹</button>
@@ -146,7 +146,7 @@
       const showPhoto = (index) => {
         if (!photos.length || !main) return;
         photoIndex = (index + photos.length) % photos.length;
-        main.src = `${photos[photoIndex]}?v=12`;
+        main.src = `${photos[photoIndex]}?v=16`;
         thumbsEl.forEach((btn, i) => {
           const on = i === photoIndex;
           btn.classList.toggle("is-on", on);
