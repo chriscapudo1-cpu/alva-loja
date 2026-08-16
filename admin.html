@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pedidos — ALVA</title>
+  <title>Painel — ALVA</title>
   <meta name="robots" content="noindex" />
   <meta name="theme-color" content="#0b0a09" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=13" />
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -25,8 +25,8 @@
   <main id="conteudo" class="admin">
     <header class="shop__hero">
       <p class="eyebrow">Uso interno</p>
-      <h1 class="display display--case">Pedidos</h1>
-      <p class="lede">Aqui você vê o que cada pessoa comprou, o valor e o status do pagamento.</p>
+      <h1 class="display display--case">Painel</h1>
+      <p class="lede">Edite o site, veja pedidos e ligue o pagamento.</p>
     </header>
 
     <form class="form admin__login paybox" id="loginForm">
@@ -41,6 +41,180 @@
     </form>
 
     <section id="board" hidden>
+      <nav class="admin__tabs" aria-label="Áreas do painel">
+        <button class="chip admin__tab is-on" type="button" data-panel="site">Site</button>
+        <button class="chip admin__tab" type="button" data-panel="pay">Pagamento</button>
+        <button class="chip admin__tab" type="button" data-panel="orders">Pedidos</button>
+        <button class="chip admin__tab" type="button" data-panel="catalog">Fornecedores</button>
+      </nav>
+
+      <div class="admin__panel" data-panel="site">
+        <article class="paybox paybox--wide">
+          <p class="eyebrow">Conteúdo</p>
+          <h2 class="admin__h" style="margin-top:0.4rem">Editar o site</h2>
+          <p class="lede">O que você salvar aqui aparece na loja na hora, sem mexer em código.</p>
+          <form class="form site-form" id="siteForm">
+            <h3 class="site-form__label">Abertura</h3>
+            <div class="form__row">
+              <label for="siteTitle">Título da aba do navegador</label>
+              <input id="siteTitle" name="title" type="text" maxlength="80" />
+            </div>
+            <div class="form__row">
+              <label for="siteEyebrow">Linha pequena acima da frase</label>
+              <input id="siteEyebrow" name="eyebrow" type="text" maxlength="80" />
+            </div>
+            <div class="site-form__grid">
+              <div class="form__row">
+                <label for="siteHero1">Frase · linha 1</label>
+                <input id="siteHero1" name="hero1" type="text" maxlength="80" required />
+              </div>
+              <div class="form__row">
+                <label for="siteHero2">Frase · linha 2</label>
+                <input id="siteHero2" name="hero2" type="text" maxlength="80" />
+              </div>
+            </div>
+            <div class="form__row">
+              <label for="siteHero3">Frase · linha 3 (destaque)</label>
+              <input id="siteHero3" name="hero3" type="text" maxlength="80" />
+            </div>
+            <div class="form__row">
+              <label for="siteHeroLede">Texto abaixo da frase</label>
+              <textarea id="siteHeroLede" name="heroLede" rows="2" maxlength="240"></textarea>
+            </div>
+
+            <h3 class="site-form__label">Faixa de confiança</h3>
+            <div class="site-form__grid">
+              <div class="form__row">
+                <label for="siteP1t">Bloco 1 · título</label>
+                <input id="siteP1t" name="promise1Title" type="text" maxlength="40" />
+              </div>
+              <div class="form__row">
+                <label for="siteP1x">Bloco 1 · texto</label>
+                <input id="siteP1x" name="promise1Text" type="text" maxlength="60" />
+              </div>
+              <div class="form__row">
+                <label for="siteP2t">Bloco 2 · título</label>
+                <input id="siteP2t" name="promise2Title" type="text" maxlength="40" />
+              </div>
+              <div class="form__row">
+                <label for="siteP2x">Bloco 2 · texto</label>
+                <input id="siteP2x" name="promise2Text" type="text" maxlength="60" />
+              </div>
+              <div class="form__row">
+                <label for="siteP3t">Bloco 3 · título</label>
+                <input id="siteP3t" name="promise3Title" type="text" maxlength="40" />
+              </div>
+              <div class="form__row">
+                <label for="siteP3x">Bloco 3 · texto</label>
+                <input id="siteP3x" name="promise3Text" type="text" maxlength="60" />
+              </div>
+              <div class="form__row">
+                <label for="siteP4t">Bloco 4 · título</label>
+                <input id="siteP4t" name="promise4Title" type="text" maxlength="40" />
+              </div>
+              <div class="form__row">
+                <label for="siteP4x">Bloco 4 · texto</label>
+                <input id="siteP4x" name="promise4Text" type="text" maxlength="60" />
+              </div>
+            </div>
+
+            <h3 class="site-form__label">Seções e rodapé</h3>
+            <div class="site-form__grid">
+              <div class="form__row">
+                <label for="siteCatsTitle">Título das categorias</label>
+                <input id="siteCatsTitle" name="catsTitle" type="text" maxlength="60" />
+              </div>
+              <div class="form__row">
+                <label for="siteCatsLede">Texto das categorias</label>
+                <input id="siteCatsLede" name="catsLede" type="text" maxlength="160" />
+              </div>
+              <div class="form__row">
+                <label for="siteFeatTitle">Título dos destaques</label>
+                <input id="siteFeatTitle" name="featTitle" type="text" maxlength="60" />
+              </div>
+              <div class="form__row">
+                <label for="siteFeatLede">Texto dos destaques</label>
+                <input id="siteFeatLede" name="featLede" type="text" maxlength="160" />
+              </div>
+            </div>
+            <div class="form__row">
+              <label for="siteFeatCta">Botão para o catálogo</label>
+              <input id="siteFeatCta" name="featCta" type="text" maxlength="40" />
+            </div>
+            <div class="form__row">
+              <label for="siteFooter">Frase do rodapé</label>
+              <input id="siteFooter" name="footer" type="text" maxlength="120" />
+            </div>
+            <div class="form__row">
+              <label for="siteContactTitle">Título do contato</label>
+              <input id="siteContactTitle" name="contactTitle" type="text" maxlength="60" />
+            </div>
+            <div class="form__row">
+              <label for="siteContactLede">Texto do contato</label>
+              <textarea id="siteContactLede" name="contactLede" rows="2" maxlength="200"></textarea>
+            </div>
+            <div class="form__row">
+              <label for="siteContactEmail">E-mail público</label>
+              <input id="siteContactEmail" name="contactEmail" type="email" maxlength="80" />
+            </div>
+            <p class="form__err" id="siteErr"></p>
+            <p class="form__ok" id="siteOk" hidden>Site atualizado. Abra a loja para ver.</p>
+            <button class="btn btn--solid" type="submit"><span>Salvar textos do site</span></button>
+          </form>
+        </article>
+
+        <article class="paybox paybox--wide">
+          <p class="eyebrow">Catálogo</p>
+          <h2 class="admin__h" style="margin-top:0.4rem">Editar um produto</h2>
+          <p class="lede">Mude nome, preço, estoque ou a descrição de uma peça.</p>
+          <form class="form site-form" id="productForm">
+            <div class="form__row">
+              <label for="prodPick">Produto</label>
+              <input id="prodPick" type="search" list="prodList" placeholder="Busque pelo nome ou código" autocomplete="off" />
+              <datalist id="prodList"></datalist>
+            </div>
+            <input id="prodId" name="id" type="hidden" />
+            <div class="site-form__grid">
+              <div class="form__row">
+                <label for="prodName">Nome</label>
+                <input id="prodName" name="name" type="text" maxlength="80" />
+              </div>
+              <div class="form__row">
+                <label for="prodTag">Categoria</label>
+                <input id="prodTag" type="text" readonly />
+              </div>
+              <div class="form__row">
+                <label for="prodPrice">Preço de venda</label>
+                <input id="prodPrice" name="price" type="number" min="1" step="0.01" />
+              </div>
+              <div class="form__row">
+                <label for="prodCost">Custo</label>
+                <input id="prodCost" name="cost" type="number" min="0" step="0.01" />
+              </div>
+              <div class="form__row">
+                <label for="prodStock">Estoque (só no admin)</label>
+                <input id="prodStock" name="stock" type="number" min="0" step="1" />
+              </div>
+              <div class="form__row">
+                <label for="prodBlurb">Resumo</label>
+                <input id="prodBlurb" name="blurb" type="text" maxlength="160" />
+              </div>
+            </div>
+            <div class="form__row">
+              <label for="prodDesc">Descrição</label>
+              <textarea id="prodDesc" name="description" rows="8"></textarea>
+            </div>
+            <p class="form__err" id="prodErr"></p>
+            <p class="form__ok" id="prodOk" hidden>Produto salvo.</p>
+            <div class="hero__actions">
+              <button class="btn btn--solid" type="submit"><span>Salvar produto</span></button>
+              <a class="btn" id="prodView" href="loja.html" target="_blank" rel="noopener"><span>Ver na loja</span></a>
+            </div>
+          </form>
+        </article>
+      </div>
+
+      <div class="admin__panel" data-panel="pay" hidden>
       <article class="paybox" id="payBox">
         <p class="eyebrow">Pagamento</p>
         <h2 class="admin__h" style="margin-top:0.4rem">Mercado Pago</h2>
@@ -80,10 +254,16 @@
           <button class="btn btn--solid" type="submit"><span>Salvar pixel</span></button>
         </form>
       </article>
+      </div>
+
+      <div class="admin__panel" data-panel="orders" hidden>
       <p class="admin__summary" id="summary"></p>
       <div class="admin__list" id="list"></div>
       <h2 class="admin__h">Mensagens do site</h2>
       <div class="admin__list" id="msgList"></div>
+      </div>
+
+      <div class="admin__panel" data-panel="catalog" hidden>
       <h2 class="admin__h">Fornecedores · até R$ 150: 50% de lucro · acima: 30%</h2>
       <div class="admin__find">
         <label class="admin__find-label" for="catalogQ">Buscar produto ou fornecedor</label>
@@ -114,10 +294,11 @@
           <tbody id="catalog"></tbody>
         </table>
       </div>
+      </div>
     </section>
   </main>
 
-  <script src="js/admin.js?v=11"></script>
+  <script src="js/admin.js?v=13"></script>
   <script>
     const year = document.getElementById("year");
     if (year) year.textContent = String(new Date().getFullYear());

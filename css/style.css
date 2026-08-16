@@ -2080,6 +2080,42 @@ body.has-cursor .cursor {
   max-width: 640px;
 }
 
+.paybox--wide {
+  max-width: 860px;
+}
+
+.admin__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0 0 1.6rem;
+}
+
+.admin__tab.is-on {
+  background: var(--cream);
+  color: var(--bg);
+  border-color: var(--cream);
+}
+
+.site-form__label {
+  margin: 1.4rem 0 0.2rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.site-form__grid {
+  display: grid;
+  gap: 0.8rem;
+}
+
+@media (min-width: 720px) {
+  .site-form__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .paybox__steps {
   margin: 1rem 0 1.3rem 1.15rem;
   color: var(--cream-dim);
@@ -2136,6 +2172,13 @@ body.has-cursor .cursor {
 .admin__find-note {
   color: var(--cream-dim);
   font-size: 0.88rem;
+}
+
+.admin__edit {
+  margin-right: 0.55rem;
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
 }
 
 .table-wrap {

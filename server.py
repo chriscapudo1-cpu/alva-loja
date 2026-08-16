@@ -20,6 +20,33 @@ ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
 DB_PATH = DATA / "orders.db"
 PRODUCTS_PATH = DATA / "products.json"
+SITE_PATH = DATA / "site.json"
+
+DEFAULT_SITE = {
+    "title": "ALVA — essenciais para o cotidiano",
+    "eyebrow": "ALVA · Brasil · Pix e cartão",
+    "hero1": "O essencial do cotidiano.",
+    "hero2": "Escolha, pague",
+    "hero3": "e receba em casa.",
+    "heroLede": "Tech, casa, pet e moda. Pagamento por Pix ou cartão. Acompanhe o envio pelo e-mail.",
+    "promise1Title": "Pix e cartão",
+    "promise1Text": "Mercado Pago",
+    "promise2Title": "Frete R$ 18,90",
+    "promise2Text": "grátis acima de R$ 200",
+    "promise3Title": "10 categorias",
+    "promise3Text": "tech, casa, pet e moda",
+    "promise4Title": "Envio após o pagamento",
+    "promise4Text": "você acompanha no e-mail",
+    "catsTitle": "O que tem na ALVA",
+    "catsLede": "Toque na categoria e entre direto no que você procura.",
+    "featTitle": "Os que mais saem",
+    "featLede": "Toque, veja o preço em 3× e coloque na sacola. O resto está no catálogo.",
+    "featCta": "Ver o catálogo",
+    "footer": "Você escolhe, paga e recebe em casa.",
+    "contactTitle": "Fale com a ALVA.",
+    "contactLede": "Pedido, troca ou uma dúvida antes de comprar. Respondemos em até um dia útil.",
+    "contactEmail": "ola@alvaloja.store",
+}
 
 
 def load_env() -> None:
@@ -65,6 +92,84 @@ def load_products() -> list[dict]:
 
 def product_map() -> dict[str, dict]:
     return {item["id"]: item for item in load_products()}
+
+
+def write_products(products: list[dict]) -> None:
+    global _products_cache, _products_mtime
+    PRODUCTS_PATH.write_text(
+        json.dumps(products, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    _products_cache = products
+    _products_mtime = PRODUCTS_PATH.stat().st_mtime
+
+
+def load_site() -> dict:
+    data = dict(DEFAULT_SITE)
+    if SITE_PATH.exists():
+        try:
+            saved = json.loads(SITE_PATH.read_text(encoding="utf-8"))
+            if isinstance(saved, dict):
+                for key in DEFAULT_SITE:
+                    if key in saved and saved[key] is not None:
+                        data[key] = str(saved[key]).strip()
+        except (OSError, json.JSONDecodeError):
+            pass
+    return data
+
+
+def save_site(payload: dict) -> dict:
+    current = load_site()
+    for key in DEFAULT_SITE:
+        if key in payload and payload[key] is not None:
+            current[key] = str(payload[key]).strip()
+    if not current["hero1"]:
+        raise ValueError("A primeira linha da frase inicial não pode ficar vazia.")
+    email = current["contactEmail"]
+    if email and "@" not in email:
+        raise ValueError("Informe um e-mail válido.")
+    SITE_PATH.write_text(
+        json.dumps(current, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    return current
+
+
+def save_product(payload: dict) -> dict:
+    product_id = str(payload.get("id") or "").strip()
+    if not product_id:
+        raise ValueError("Escolha um produto.")
+    products = json.loads(PRODUCTS_PATH.read_text(encoding="utf-8"))
+    found = None
+    for item in products:
+        if item.get("id") == product_id:
+            found = item
+            break
+    if not found:
+        raise ValueError("Produto não encontrado.")
+    name = str(payload.get("name") or "").strip()
+    if len(name) < 2:
+        raise ValueError("O nome do produto precisa ter pelo menos 2 letras.")
+    try:
+        price = round(float(payload.get("price")), 2)
+        cost = round(float(payload.get("cost") if payload.get("cost") not in (None, "") else found.get("cost") or 0), 2)
+        stock = int(payload.get("stock") if payload.get("stock") not in (None, "") else found.get("stock") or 0)
+    except (TypeError, ValueError) as exc:
+        raise ValueError("Preço, custo ou estoque inválido.") from exc
+    if price <= 0:
+        raise ValueError("O preço de venda precisa ser maior que zero.")
+    if cost < 0 or stock < 0:
+        raise ValueError("Custo e estoque não podem ser negativos.")
+    found["name"] = name
+    found["price"] = price
+    found["cost"] = cost
+    found["stock"] = stock
+    if "description" in payload:
+        found["description"] = str(payload.get("description") or "").strip()
+    if "blurb" in payload:
+        found["blurb"] = str(payload.get("blurb") or "").strip()
+    write_products(products)
+    return found
 
 
 def public_images(item: dict) -> list[str]:
@@ -454,6 +559,15 @@ class Handler(SimpleHTTPRequestHandler):
                 return
             self.send_json({"products": load_products()})
             return
+        if parsed.path == "/api/site":
+            self.send_json(load_site())
+            return
+        if parsed.path == "/api/admin/site":
+            if not is_admin(self):
+                self.send_json({"error": "Não autorizado."}, 401)
+                return
+            self.send_json(load_site())
+            return
         if parsed.path == "/api/config":
             self.send_json(
                 {
@@ -751,6 +865,47 @@ class Handler(SimpleHTTPRequestHandler):
                 account = probe_mp(token)
                 set_mp_token(token)
                 self.send_json({"ok": True, **payment_status(), "account": account})
+            except ValueError as exc:
+                self.send_json({"error": str(exc)}, 400)
+            except Exception as exc:
+                self.send_json({"error": str(exc)}, 400)
+            return
+
+        if parsed.path == "/api/admin/site":
+            if not is_admin(self):
+                self.send_json({"error": "Não autorizado."}, 401)
+                return
+            try:
+                payload = json.loads(self.read_body().decode("utf-8") or "{}")
+                self.send_json({"ok": True, "site": save_site(payload)})
+            except ValueError as exc:
+                self.send_json({"error": str(exc)}, 400)
+            except Exception as exc:
+                self.send_json({"error": str(exc)}, 400)
+            return
+
+        if parsed.path == "/api/admin/product":
+            if not is_admin(self):
+                self.send_json({"error": "Não autorizado."}, 401)
+                return
+            try:
+                payload = json.loads(self.read_body().decode("utf-8") or "{}")
+                item = save_product(payload)
+                self.send_json(
+                    {
+                        "ok": True,
+                        "product": {
+                            "id": item["id"],
+                            "name": item["name"],
+                            "price": item["price"],
+                            "cost": item.get("cost") or 0,
+                            "stock": item.get("stock") or 0,
+                            "tag": item.get("tag") or "",
+                            "blurb": item.get("blurb") or "",
+                            "description": item.get("description") or "",
+                        },
+                    }
+                )
             except ValueError as exc:
                 self.send_json({"error": str(exc)}, 400)
             except Exception as exc:

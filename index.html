@@ -67,14 +67,14 @@
         <div class="hero__veil"></div>
       </div>
       <div class="hero__copy">
-        <p class="eyebrow reveal">ALVA · Brasil · Pix e cartão</p>
+        <p class="eyebrow reveal" data-site="eyebrow">ALVA · Brasil · Pix e cartão</p>
         <h1 class="display reveal">
-          O essencial do cotidiano.<br />
-          Escolha, pague<br />
-          <em>e receba em casa</em>.
+          <span data-site="hero1">O essencial do cotidiano.</span><br />
+          <span data-site="hero2">Escolha, pague</span><br />
+          <em data-site="hero3">e receba em casa.</em>
         </h1>
         <div class="hero__foot reveal">
-          <p>Tech, casa, pet e moda. Pagamento por Pix ou cartão. Acompanhe o envio pelo e-mail.</p>
+          <p data-site="heroLede">Tech, casa, pet e moda. Pagamento por Pix ou cartão. Acompanhe o envio pelo e-mail.</p>
           <div class="hero__actions">
             <a class="btn btn--solid magnetic" href="loja.html">
               <span>Ver a loja</span>
@@ -93,10 +93,10 @@
 
     <section class="promises" aria-label="Como a ALVA trabalha">
       <ul class="promises__list">
-        <li><strong>Pix e cartão</strong><span>Mercado Pago</span></li>
-        <li><strong>Frete R$ 18,90</strong><span>grátis acima de R$ 200</span></li>
-        <li><strong>10 categorias</strong><span>tech, casa, pet e moda</span></li>
-        <li><strong>Envio após o pagamento</strong><span>você acompanha no e-mail</span></li>
+        <li><strong data-site="promise1Title">Pix e cartão</strong><span data-site="promise1Text">Mercado Pago</span></li>
+        <li><strong data-site="promise2Title">Frete R$ 18,90</strong><span data-site="promise2Text">grátis acima de R$ 200</span></li>
+        <li><strong data-site="promise3Title">10 categorias</strong><span data-site="promise3Text">tech, casa, pet e moda</span></li>
+        <li><strong data-site="promise4Title">Envio após o pagamento</strong><span data-site="promise4Text">você acompanha no e-mail</span></li>
       </ul>
     </section>
 
@@ -111,8 +111,8 @@
       <div class="section-head">
         <p class="num reveal">01</p>
         <div>
-          <h2 class="reveal">O que tem na ALVA</h2>
-          <p class="lede reveal">Toque na categoria e entre direto no que você procura.</p>
+          <h2 class="reveal" data-site="catsTitle">O que tem na ALVA</h2>
+          <p class="lede reveal" data-site="catsLede">Toque na categoria e entre direto no que você procura.</p>
         </div>
       </div>
       <div class="home-cats__grid" id="homeCats"></div>
@@ -122,14 +122,14 @@
       <div class="section-head">
         <p class="num reveal">02</p>
         <div>
-          <h2 class="reveal">Os que mais saem</h2>
-          <p class="lede reveal">Toque, veja o preço em 3× e coloque na sacola. O resto está no catálogo.</p>
+          <h2 class="reveal" data-site="featTitle">Os que mais saem</h2>
+          <p class="lede reveal" data-site="featLede">Toque, veja o preço em 3× e coloque na sacola. O resto está no catálogo.</p>
         </div>
       </div>
       <div class="shop__grid home-feat__grid" id="homeFeat"></div>
       <p class="home-feat__more reveal">
         <a class="btn magnetic" href="loja.html">
-          <span>Ver o catálogo</span>
+          <span data-site="featCta">Ver o catálogo</span>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </p>
@@ -169,11 +169,11 @@
     <section class="contact" id="contato">
       <div class="contact__intro">
         <p class="num reveal">04</p>
-        <h2 class="reveal">Fale com a ALVA.</h2>
-        <p class="lede reveal">Pedido, troca ou uma dúvida antes de comprar. Respondemos em até um dia útil.</p>
+        <h2 class="reveal" data-site="contactTitle">Fale com a ALVA.</h2>
+        <p class="lede reveal" data-site="contactLede">Pedido, troca ou uma dúvida antes de comprar. Respondemos em até um dia útil.</p>
         <ul class="contact__facts reveal">
           <li>Brasil · envio nacional</li>
-          <li><a href="mailto:ola@alvaloja.store">ola@alvaloja.store</a></li>
+          <li><a href="mailto:ola@alvaloja.store" data-site="contactEmail">ola@alvaloja.store</a></li>
           <li><span id="clock">—</span> BRT</li>
         </ul>
       </div>
@@ -219,7 +219,7 @@
     <div class="footer__grid">
       <div class="footer__brand">
         <a class="wordmark" href="index.html">ALVA</a>
-        <p>Você escolhe, paga e recebe em casa.</p>
+        <p data-site="footer">Você escolhe, paga e recebe em casa.</p>
       </div>
       <div class="footer__cols">
         <div>
@@ -246,7 +246,7 @@
   </footer>
 
   <script src="js/cart.js?v=12"></script>
-  <script src="js/main.js?v=12"></script>
+  <script src="js/main.js?v=13"></script>
   <script src="js/home.js?v=12"></script>
 </body>
 </html>

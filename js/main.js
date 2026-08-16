@@ -2,6 +2,26 @@
   const year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
+  const applySite = (site) => {
+    if (!site || typeof site !== "object") return;
+    document.querySelectorAll("[data-site]").forEach((el) => {
+      const key = el.getAttribute("data-site");
+      const value = site[key];
+      if (value == null || value === "") return;
+      if (el.tagName === "A" && (el.getAttribute("href") || "").startsWith("mailto:")) {
+        el.setAttribute("href", `mailto:${value}`);
+      }
+      if (el.children.length && !el.hasAttribute("data-site-html")) return;
+      el.textContent = value;
+    });
+    const home = /(?:^|\/)(?:index\.html)?$/.test(location.pathname.replace(/\\/g, "/"));
+    if (home && site.title) document.title = site.title;
+  };
+  fetch("/api/site")
+    .then((res) => (res.ok ? res.json() : null))
+    .then(applySite)
+    .catch(() => {});
+
   const clock = document.getElementById("clock");
   const tick = () => {
     if (!clock) return;

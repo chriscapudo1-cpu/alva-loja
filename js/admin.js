@@ -56,7 +56,10 @@
           <td>${brl(item.price)}</td>
           <td>${brl(gain)}</td>
           <td>${buy}</td>
-          <td><a href="produto.html?id=${encodeURIComponent(item.id)}">ver na loja</a></td>
+          <td>
+            <button class="admin__edit" type="button" data-edit="${esc(item.id)}">editar</button>
+            <a href="produto.html?id=${encodeURIComponent(item.id)}">ver</a>
+          </td>
         </tr>`;
       })
       .join("");
@@ -102,6 +105,7 @@
           });
         }
         paintCatalog();
+        paintProductList();
       })
       .catch(() => {});
     list.innerHTML = orders
@@ -176,6 +180,7 @@
     board.hidden = false;
     render(data.orders || []);
     await loadPay(token);
+    await loadSite(token);
     try {
       const msgRes = await fetch("/api/admin/messages", { headers: { "X-Admin-Token": token } });
       const msgBox = document.getElementById("msgList");
@@ -255,6 +260,172 @@
       if (pixelOk) pixelOk.hidden = false;
     } catch (error) {
       if (pixelErr) pixelErr.textContent = error.message;
+    }
+  });
+
+  const SITE_FIELDS = [
+    "title",
+    "eyebrow",
+    "hero1",
+    "hero2",
+    "hero3",
+    "heroLede",
+    "promise1Title",
+    "promise1Text",
+    "promise2Title",
+    "promise2Text",
+    "promise3Title",
+    "promise3Text",
+    "promise4Title",
+    "promise4Text",
+    "catsTitle",
+    "catsLede",
+    "featTitle",
+    "featLede",
+    "featCta",
+    "footer",
+    "contactTitle",
+    "contactLede",
+    "contactEmail",
+  ];
+
+  const fillSite = (site) => {
+    const form = document.getElementById("siteForm");
+    if (!form || !site) return;
+    SITE_FIELDS.forEach((key) => {
+      if (form.elements[key]) form.elements[key].value = site[key] || "";
+    });
+  };
+
+  const loadSite = async (token) => {
+    const res = await fetch("/api/admin/site", { headers: { "X-Admin-Token": token } });
+    if (!res.ok) return;
+    fillSite(await res.json());
+  };
+
+  const fillProduct = (item) => {
+    if (!item) return;
+    const set = (id, value) => {
+      const el = document.getElementById(id);
+      if (el) el.value = value ?? "";
+    };
+    set("prodId", item.id);
+    set("prodName", item.name);
+    set("prodTag", item.tag || "");
+    set("prodPrice", item.price);
+    set("prodCost", item.cost);
+    set("prodStock", item.stock);
+    set("prodBlurb", item.blurb || "");
+    set("prodDesc", item.description || "");
+    const view = document.getElementById("prodView");
+    if (view) view.href = `produto.html?id=${encodeURIComponent(item.id)}`;
+  };
+
+  const paintProductList = () => {
+    const listEl = document.getElementById("prodList");
+    if (!listEl) return;
+    listEl.innerHTML = catalog
+      .map((item) => `<option value="${esc(item.id)}">${esc(item.name)} · ${esc(item.tag)}</option>`)
+      .join("");
+  };
+
+  document.querySelector(".admin__tabs")?.addEventListener("click", (event) => {
+    const btn = event.target.closest("[data-panel]");
+    if (!btn) return;
+    const name = btn.getAttribute("data-panel");
+    document.querySelectorAll(".admin__tab").forEach((tab) => {
+      tab.classList.toggle("is-on", tab === btn);
+    });
+    document.querySelectorAll(".admin__panel").forEach((panel) => {
+      panel.hidden = panel.getAttribute("data-panel") !== name;
+    });
+  });
+
+  document.getElementById("siteForm")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const token = sessionStorage.getItem(tokenKey);
+    const err = document.getElementById("siteErr");
+    const ok = document.getElementById("siteOk");
+    if (err) err.textContent = "";
+    if (ok) ok.hidden = true;
+    const form = event.currentTarget;
+    const payload = {};
+    SITE_FIELDS.forEach((key) => {
+      payload[key] = form.elements[key]?.value || "";
+    });
+    try {
+      const res = await fetch("/api/admin/site", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Admin-Token": token || "",
+        },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Não salvou.");
+      fillSite(data.site);
+      if (ok) ok.hidden = false;
+    } catch (error) {
+      if (err) err.textContent = error.message;
+    }
+  });
+
+  document.getElementById("catalog")?.addEventListener("click", (event) => {
+    const btn = event.target.closest("[data-edit]");
+    if (!btn) return;
+    const item = catalog.find((entry) => entry.id === btn.getAttribute("data-edit"));
+    if (!item) return;
+    fillProduct(item);
+    const pick = document.getElementById("prodPick");
+    if (pick) pick.value = item.id;
+    document.querySelector('.admin__tab[data-panel="site"]')?.click();
+    document.getElementById("productForm")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  document.getElementById("prodPick")?.addEventListener("change", () => {
+    const value = document.getElementById("prodPick")?.value || "";
+    const item =
+      catalog.find((entry) => entry.id === value) ||
+      catalog.find((entry) => fold(entry.name) === fold(value)) ||
+      catalog.find((entry) => fold(entry.name).includes(fold(value)));
+    if (item) fillProduct(item);
+  });
+
+  document.getElementById("productForm")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const token = sessionStorage.getItem(tokenKey);
+    const err = document.getElementById("prodErr");
+    const ok = document.getElementById("prodOk");
+    if (err) err.textContent = "";
+    if (ok) ok.hidden = true;
+    const form = event.currentTarget;
+    try {
+      const res = await fetch("/api/admin/product", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Admin-Token": token || "",
+        },
+        body: JSON.stringify({
+          id: form.elements.id.value,
+          name: form.elements.name.value,
+          price: form.elements.price.value,
+          cost: form.elements.cost.value,
+          stock: form.elements.stock.value,
+          blurb: form.elements.blurb.value,
+          description: form.elements.description.value,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Não salvou.");
+      const index = catalog.findIndex((item) => item.id === data.product.id);
+      if (index >= 0) catalog[index] = { ...catalog[index], ...data.product };
+      fillProduct(data.product);
+      paintCatalog();
+      if (ok) ok.hidden = false;
+    } catch (error) {
+      if (err) err.textContent = error.message;
     }
   });
 
