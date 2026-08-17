@@ -10,4 +10,4 @@ services:
       - key: HOST
         value: 0.0.0.0
       - key: PUBLIC_URL
-        value: https://alvaloja.store
+        value: https://alvaloja.com

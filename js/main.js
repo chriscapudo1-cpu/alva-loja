@@ -228,7 +228,7 @@
   }
 
   if (!/admin\.html$/i.test(location.pathname)) {
-    const msg = encodeURIComponent("Olá, vim da ALVA (alvaloja.store).");
+    const msg = encodeURIComponent("Olá, vim da ALVA (alvaloja.com).");
     const home = /(?:^|\/)(?:index\.html)?$/.test(location.pathname);
     const fab = document.createElement("a");
     fab.className = "fab";

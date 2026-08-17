@@ -46,7 +46,7 @@ DEFAULT_SITE = {
     "footer": "Você escolhe, paga e recebe em casa.",
     "contactTitle": "Fale com a ALVA.",
     "contactLede": "Pedido, troca ou uma dúvida antes de comprar. Respondemos em até um dia útil.",
-    "contactEmail": "ola@alvaloja.store",
+    "contactEmail": "ola@alvaloja.com",
     "theme": "escuro",
     "colorBg": "#0b0a09",
     "colorText": "#f3ece0",
