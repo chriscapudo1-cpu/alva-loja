@@ -40,23 +40,18 @@ SWATCHES = {
 HEX = {name: f"#{r:02x}{g:02x}{b:02x}" for name, (r, g, b) in SWATCHES.items()}
 
 SIZE = re.compile(
-    r"(meia |meias |luva |luvas |cinto |bone |chapeu |cachecol|"
-    r"lenco seda|lenco pescoco|lenco bolso|pijama|body manga|"
-    r"chinelo|joelheira|segunda pele|peitoral|coleira|focinheira|"
-    r"guia retratil|guia maos|roupa cao|roupa gato|legging|moletom|"
-    r"jaqueta|bermuda|short |blusa |camisa |vestido |calca |"
-    r"headband|caneleira 2kg)"
+    r"(meia |meias |luva |luvas |cinto |bone |chapeu |"
+    r"pijama|body manga|chinelo|joelheira|segunda pele|peitoral|"
+    r"coleira|focinheira|guia retratil|guia maos|roupa cao|roupa gato|"
+    r"legging|moletom|jaqueta|bermuda|short |blusa |camisa |vestido |"
+    r"calca |headband|caneleira 2kg)"
 )
 COLOR_KIND = re.compile(
-    r"(capa de sofa|capa sofa|cortina|edredom|jogo de cama|capa colchao|"
-    r"tapete sala|tapete passadeira|tapete banheiro|almofada|lencol|"
-    r"bolsa|mochila|carteira|cinto |bone |chapeu |cachecol|lenco seda|"
-    r"oculos|meia |luva |pijama|chinelo|necessaire|pochete|"
-    r"coleira|peitoral|cama caverna|cama ortopedica|cama janela|cama donut|"
-    r"roupa cao|roupa gato|guia retratil|"
-    r"capa iphone|capa android|capa airpods|capa volante|"
-    r"cabo usb|cabo lightning|cabo displayport|"
-    r"tapete yoga)"
+    r"(capa de sofa|capa sofa|cortina blackout|cortina voil|cortina box|"
+    r"edredom|jogo de cama|capa colchao|tapete sala|tapete passadeira|"
+    r"tapete banheiro|tapete yoga|almofada|lencol|"
+    r"bolsa|mochila|carteira|necessaire|pochete|oculos|"
+    r"cachecol|lenco seda|lenco pescoco|capa volante)"
 )
 
 
@@ -78,16 +73,6 @@ def extra_option(name: str) -> dict | None:
         return {"name": "Comprimento", "values": ["2 m", "5 m", "10 m"]}
     if re.search(r"cabo usb|cabo lightning|cabo displayport", name):
         return {"name": "Comprimento", "values": ["0,5 m", "1 m", "2 m"]}
-    if "capa de sofa" in name or "capa sofa" in name:
-        return {"name": "Tamanho", "values": ["2 lugares", "3 lugares", "4 lugares"]}
-    if re.search(r"edredom|jogo de cama|capa colchao", name):
-        return {"name": "Tamanho", "values": ["Solteiro", "Casal", "Queen", "King"]}
-    if re.search(r"cortina blackout|cortina voil|cortina box", name):
-        return {"name": "Medida", "values": ["2,00×1,80 m", "2,80×2,30 m", "3,00×2,50 m"]}
-    if re.search(r"tapete sala|tapete passadeira|tapete banheiro", name):
-        return {"name": "Medida", "values": ["40×60 cm", "60×90 cm", "80×150 cm"]}
-    if "tapete yoga" in name:
-        return {"name": "Espessura", "values": ["6 mm", "8 mm", "10 mm"]}
     if re.search(
         r"cama caverna|cama ortopedica|cama janela|cama donut|tenda cama|cama aquecida",
         name,
@@ -109,16 +94,12 @@ def needs_color(name: str) -> bool:
 
 
 def extras_for(name: str) -> list[str]:
-    if re.search(r"capa iphone|capa android|capa airpods", name):
-        return ["Preto", "Transparente", "Branco"]
-    if "cabo" in name:
-        return ["Preto", "Branco"]
     if re.search(r"capa de sofa|cortina|edredom|jogo de cama|tapete", name):
         return ["Cinza", "Bege", "Preto", "Azul"]
-    if re.search(r"coleira|peitoral|cama |roupa cao|roupa gato", name):
-        return ["Cinza", "Bege", "Preto"]
-    if re.search(r"bolsa|carteira|cinto|bone|chapeu|lenco|cachecol", name):
+    if re.search(r"bolsa|carteira|mochila|necessaire|pochete|cachecol|lenco", name):
         return ["Preto", "Bege", "Marrom", "Branco"]
+    if "oculos" in name:
+        return ["Preto", "Tartaruga", "Dourado"]
     return ["Preto", "Cinza", "Bege"]
 
 
@@ -217,13 +198,10 @@ def color_group(item: dict, name: str) -> dict:
 
 def options_for(item: dict) -> list[dict]:
     name = fold(item.get("name") or "")
-    groups: list[dict] = []
     if needs_color(name):
-        groups.append(color_group(item, name))
+        return [color_group(item, name)]
     extra = extra_option(name)
-    if extra:
-        groups.append(extra)
-    return groups
+    return [extra] if extra else []
 
 
 def main() -> None:

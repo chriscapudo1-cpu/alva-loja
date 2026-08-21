@@ -24,6 +24,7 @@
     militar: "#4d5c3a",
     offwhite: "#eee8dc",
     transparente: "#c8cdd3",
+    tartaruga: "#6b4a2b",
   };
 
   const foldColor = (value) =>

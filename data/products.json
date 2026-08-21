@@ -179,17 +179,6 @@
     "description": "Cabo de Carregamento Rápido USB C de 0,25/1/1,5/2M 240W, Cabo de Carregamento Rápido Tipo C para Tipo C Trançado em Nylon para iPhone 17 16 Xiaomi\n\nCaracterísticas\n- Entrada ou recarga em USB-C.\n\nEspecificações\n- Material: nylon,TRANÇA\n- Corrente Máxima: 2ª A\n- Funcionalidades: outro,Cabo de carregamento RÁPIDO,Cabo de dados\n- Origem: CN (Origem)\n- Certificação: CE,ROHS\n\nO que acompanha\n- 1 unidade\n- Cabo ou acessório de uso, quando o modelo incluir\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Cinza",
-          "Preto",
-          "Branco"
-        ],
-        "hex": {
-          "Cinza": "#646464"
-        }
-      },
-      {
         "name": "Comprimento",
         "values": [
           "0,5 m",
@@ -239,17 +228,6 @@
     "description": "Capa iPhone Silicone iPhone silicone capa\n\nCaracterísticas\n- Toque em silicone ou TPU, flexível no dia a dia.\n\nEspecificações\n- Tipo: Capa iPhone Silicone\n- Categoria: Tech\n- Material: silicone / TPU\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Cabo ou acessório de uso, quando o modelo incluir\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Transparente",
-          "Preto",
-          "Branco"
-        ],
-        "hex": {
-          "Transparente": "#95989b"
-        }
-      },
-      {
         "name": "Modelo",
         "values": [
           "iPhone 13",
@@ -279,17 +257,6 @@
     ],
     "description": "Capa Android Fosca Android fosca celular capa\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Capa Android Fosca\n- Categoria: Tech\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Cabo ou acessório de uso, quando o modelo incluir\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Transparente",
-          "Preto",
-          "Branco"
-        ],
-        "hex": {
-          "Transparente": "#b1b3b6"
-        }
-      },
       {
         "name": "Modelo",
         "values": [
@@ -494,14 +461,6 @@
         "hex": {
           "Vermelho": "#a21117"
         }
-      },
-      {
-        "name": "Tamanho",
-        "values": [
-          "2 lugares",
-          "3 lugares",
-          "4 lugares"
-        ]
       }
     ]
   },
@@ -535,14 +494,6 @@
         "hex": {
           "Nude": "#d8c8b7"
         }
-      },
-      {
-        "name": "Tamanho",
-        "values": [
-          "2 lugares",
-          "3 lugares",
-          "4 lugares"
-        ]
       }
     ]
   },
@@ -685,14 +636,6 @@
         "hex": {
           "Preto": "#1d1d1d"
         }
-      },
-      {
-        "name": "Medida",
-        "values": [
-          "2,00×1,80 m",
-          "2,80×2,30 m",
-          "3,00×2,50 m"
-        ]
       }
     ]
   },
@@ -724,14 +667,6 @@
         "hex": {
           "Preto": "#22221d"
         }
-      },
-      {
-        "name": "Medida",
-        "values": [
-          "40×60 cm",
-          "60×90 cm",
-          "80×150 cm"
-        ]
       }
     ]
   },
@@ -956,17 +891,6 @@
     "description": "Cama Caverna Gato gato caverna cama feltro\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Cama Caverna Gato\n- Categoria: Pet\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Cinza",
-          "Bege",
-          "Preto"
-        ],
-        "hex": {
-          "Cinza": "#595964"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -993,17 +917,6 @@
     ],
     "description": "Cama Ortopédica Cão ortopédica cão cama\n\nCaracterísticas\n- Apoio pensado para o corpo no uso prolongado.\n\nEspecificações\n- Tipo: Cama Ortopédica Cão\n- Categoria: Pet\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Cinza",
-          "Bege",
-          "Preto"
-        ],
-        "hex": {
-          "Cinza": "#6a6f6f"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -1034,17 +947,6 @@
     "description": "Coleira LED Recarregável recarregável LED cão coleira\n\nCaracterísticas\n- Iluminação LED para uso à noite ou detalhe visual.\n- Recarregável, sem ficar trocando pilha o tempo todo.\n\nEspecificações\n- Tipo: Coleira LED Recarregável\n- Categoria: Pet\n- Alimentação: recarregável\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Cinza",
-          "Bege"
-        ],
-        "hex": {
-          "Preto": "#1d1d1d"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -1072,17 +974,6 @@
     ],
     "description": "Guia Retrátil 5m retratil cão guia 5m\n\nCaracterísticas\n- Dobra ou recolhe para guardar.\n\nEspecificações\n- Tipo: Guia Retrátil 5m\n- Categoria: Pet\n- Comprimento: 5 m\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Cinza",
-          "Bege"
-        ],
-        "hex": {
-          "Preto": "#282828"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -1203,18 +1094,6 @@
     "description": "Roupa Cão Inverno cão inverno roupa\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Roupa Cão Inverno\n- Categoria: Pet\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Transparente",
-          "Cinza",
-          "Bege",
-          "Preto"
-        ],
-        "hex": {
-          "Transparente": "#bcbec1"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -1242,17 +1121,6 @@
     ],
     "description": "Peitoral Antipuxão anti puxão cão peitoral\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Peitoral Antipuxão\n- Categoria: Pet\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Cinza",
-          "Bege",
-          "Preto"
-        ],
-        "hex": {
-          "Cinza": "#6a6a6a"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -1335,18 +1203,6 @@
     ],
     "description": "Cama Janela Gato gato janela cama\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Cama Janela Gato\n- Categoria: Pet\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Amarelo",
-          "Cinza",
-          "Bege",
-          "Preto"
-        ],
-        "hex": {
-          "Amarelo": "#c2bf58"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -1575,18 +1431,6 @@
     "description": "Cinto Couro Fivela couro cinto masculino\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Cinto Couro Fivela\n- Categoria: Moda\n- Material: couro PU\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Militar",
-          "Preto",
-          "Bege",
-          "Marrom"
-        ],
-        "hex": {
-          "Militar": "#4e6061"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -1619,8 +1463,8 @@
         "values": [
           "Prata",
           "Preto",
-          "Cinza",
-          "Bege"
+          "Tartaruga",
+          "Dourado"
         ],
         "hex": {
           "Prata": "#b4b4b6"
@@ -1647,18 +1491,6 @@
     ],
     "description": "Boné Aba Curva curva aba boné\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Boné Aba Curva\n- Categoria: Moda\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Rosa",
-          "Preto",
-          "Bege",
-          "Marrom"
-        ],
-        "hex": {
-          "Rosa": "#d885a8"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -1687,18 +1519,6 @@
     ],
     "description": "Meia Invisível Kit 5 invisível meias 5 pares\n\nCaracterísticas\n- Vai em conjunto, pronto para usar.\n\nEspecificações\n- Tipo: Meia Invisível Kit 5\n- Categoria: Moda\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Grafite",
-          "Preto",
-          "Cinza",
-          "Bege"
-        ],
-        "hex": {
-          "Grafite": "#403530"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -1740,15 +1560,6 @@
         "hex": {
           "Rosa": "#cd8ba8"
         }
-      },
-      {
-        "name": "Tamanho",
-        "values": [
-          "P",
-          "M",
-          "G",
-          "GG"
-        ]
       }
     ]
   },
@@ -1846,8 +1657,9 @@
         "name": "Cor",
         "values": [
           "Preto",
-          "Cinza",
-          "Bege"
+          "Bege",
+          "Marrom",
+          "Branco"
         ],
         "hex": {
           "Preto": "#1d1d22"
@@ -1872,18 +1684,6 @@
     ],
     "description": "Cinto Faixa Vestido feminino vestido cinto\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Cinto Faixa Vestido\n- Categoria: Moda\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Vermelho",
-          "Preto",
-          "Bege",
-          "Marrom"
-        ],
-        "hex": {
-          "Vermelho": "#a81628"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -1912,18 +1712,6 @@
     ],
     "description": "Chapéu Bucket bucket chapéu algodão\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Chapéu Bucket\n- Categoria: Moda\n- Material: algodão\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Transparente",
-          "Preto",
-          "Bege",
-          "Marrom"
-        ],
-        "hex": {
-          "Transparente": "#c1c4c7"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -1956,8 +1744,9 @@
         "name": "Cor",
         "values": [
           "Preto",
-          "Cinza",
-          "Bege"
+          "Bege",
+          "Marrom",
+          "Branco"
         ],
         "hex": {
           "Preto": "#282828"
@@ -1987,8 +1776,8 @@
         "values": [
           "Rosa",
           "Preto",
-          "Cinza",
-          "Bege"
+          "Bege",
+          "Marrom"
         ],
         "hex": {
           "Rosa": "#d2909d"
@@ -2013,18 +1802,6 @@
     ],
     "description": "Luva Touchscreen touchscreen inverno luvas\n\nCaracterísticas\n- Proteção UV no uso ao ar livre.\n\nEspecificações\n- Tipo: Luva Touchscreen\n- Categoria: Moda\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Vermelho",
-          "Preto",
-          "Cinza",
-          "Bege"
-        ],
-        "hex": {
-          "Vermelho": "#c9163e"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -2064,15 +1841,6 @@
         "hex": {
           "Vermelho": "#9d1c22"
         }
-      },
-      {
-        "name": "Tamanho",
-        "values": [
-          "P",
-          "M",
-          "G",
-          "GG"
-        ]
       }
     ]
   },
@@ -2344,14 +2112,6 @@
         "hex": {
           "Preto": "#222222"
         }
-      },
-      {
-        "name": "Tamanho",
-        "values": [
-          "37–38 cm",
-          "38–39 cm",
-          "39–40 cm"
-        ]
       }
     ]
   },
@@ -2873,14 +2633,6 @@
         "hex": {
           "Grafite": "#3b3b30"
         }
-      },
-      {
-        "name": "Espessura",
-        "values": [
-          "6 mm",
-          "8 mm",
-          "10 mm"
-        ]
       }
     ]
   },
@@ -2912,14 +2664,6 @@
         "hex": {
           "Cinza": "#646464"
         }
-      },
-      {
-        "name": "Espessura",
-        "values": [
-          "6 mm",
-          "8 mm",
-          "10 mm"
-        ]
       }
     ]
   },
@@ -3226,18 +2970,6 @@
     ],
     "description": "Cinto Hidratação corrida hydration cinto\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Cinto Hidratação\n- Categoria: Esporte\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Grafite",
-          "Preto",
-          "Bege",
-          "Marrom"
-        ],
-        "hex": {
-          "Grafite": "#3b353b"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -4403,17 +4135,6 @@
     "description": "Luva Térmica Silicone silicone oven mitts\n\nCaracterísticas\n- Toque em silicone ou TPU, flexível no dia a dia.\n- Proteção UV no uso ao ar livre.\n\nEspecificações\n- Tipo: Luva Térmica Silicone\n- Categoria: Cozinha\n- Material: silicone / TPU\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Cinza",
-          "Preto",
-          "Bege"
-        ],
-        "hex": {
-          "Cinza": "#85858b"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -4622,17 +4343,6 @@
     "description": "Capa AirPods Silicone AirPods silicone capa\n\nCaracterísticas\n- Toque em silicone ou TPU, flexível no dia a dia.\n\nEspecificações\n- Tipo: Capa AirPods Silicone\n- Categoria: Tech\n- Material: silicone / TPU\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Cabo ou acessório de uso, quando o modelo incluir\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Transparente",
-          "Preto",
-          "Branco"
-        ],
-        "hex": {
-          "Transparente": "#c1c4c1"
-        }
-      },
-      {
         "name": "Modelo",
         "values": [
           "AirPods 1/2",
@@ -4705,16 +4415,6 @@
     ],
     "description": "Cabo Lightning 2m Lightning cabo 2m nylon\n\nCaracterísticas\n- Compatível com conector Lightning.\n\nEspecificações\n- Tipo: Cabo Lightning 2m\n- Categoria: Tech\n- Conector: Lightning\n- Material: nylon\n- Comprimento: 2 m\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Cabo ou acessório de uso, quando o modelo incluir\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Branco"
-        ],
-        "hex": {
-          "Preto": "#1d1d1d"
-        }
-      },
       {
         "name": "Comprimento",
         "values": [
@@ -5715,16 +5415,6 @@
     "description": "Cabo DisplayPort 2m displayport cabo 2m 8k\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Cabo DisplayPort 2m\n- Categoria: Tech\n- Comprimento: 2 m\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Cabo ou acessório de uso, quando o modelo incluir\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Branco"
-        ],
-        "hex": {
-          "Preto": "#1c1c1c"
-        }
-      },
-      {
         "name": "Comprimento",
         "values": [
           "0,5 m",
@@ -6035,15 +5725,6 @@
         "hex": {
           "Preto": "#1d1d1d"
         }
-      },
-      {
-        "name": "Tamanho",
-        "values": [
-          "Solteiro",
-          "Casal",
-          "Queen",
-          "King"
-        ]
       }
     ]
   },
@@ -6093,15 +5774,6 @@
         "hex": {
           "Preto": "#221712"
         }
-      },
-      {
-        "name": "Tamanho",
-        "values": [
-          "Solteiro",
-          "Casal",
-          "Queen",
-          "King"
-        ]
       }
     ]
   },
@@ -6133,15 +5805,6 @@
         "hex": {
           "Cinza": "#64646a"
         }
-      },
-      {
-        "name": "Tamanho",
-        "values": [
-          "Solteiro",
-          "Casal",
-          "Queen",
-          "King"
-        ]
       }
     ]
   },
@@ -6174,14 +5837,6 @@
         "hex": {
           "Nude": "#d8c8b7"
         }
-      },
-      {
-        "name": "Medida",
-        "values": [
-          "2,00×1,80 m",
-          "2,80×2,30 m",
-          "3,00×2,50 m"
-        ]
       }
     ]
   },
@@ -6201,20 +5856,7 @@
       "assets/img/ali/casa-046.jpg"
     ],
     "description": "Varão Cortina 2m curtain rod 2m\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Varão Cortina 2m\n- Categoria: Casa\n- Comprimento: 2 m\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Itens de fixação, quando o modelo incluir\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
-    "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Transparente",
-          "Cinza",
-          "Bege",
-          "Preto"
-        ],
-        "hex": {
-          "Transparente": "#c1c4c7"
-        }
-      }
-    ]
+    "options": []
   },
   {
     "id": "casa-047",
@@ -6244,14 +5886,6 @@
         "hex": {
           "Cinza": "#757575"
         }
-      },
-      {
-        "name": "Medida",
-        "values": [
-          "40×60 cm",
-          "60×90 cm",
-          "80×150 cm"
-        ]
       }
     ]
   },
@@ -6669,14 +6303,6 @@
         "hex": {
           "Transparente": "#bcbec1"
         }
-      },
-      {
-        "name": "Medida",
-        "values": [
-          "2,00×1,80 m",
-          "2,80×2,30 m",
-          "3,00×2,50 m"
-        ]
       }
     ]
   },
@@ -6708,14 +6334,6 @@
         "hex": {
           "Cinza": "#7a7a80"
         }
-      },
-      {
-        "name": "Medida",
-        "values": [
-          "40×60 cm",
-          "60×90 cm",
-          "80×150 cm"
-        ]
       }
     ]
   },
@@ -7534,14 +7152,6 @@
         "hex": {
           "Preto": "#171717"
         }
-      },
-      {
-        "name": "Medida",
-        "values": [
-          "2,00×1,80 m",
-          "2,80×2,30 m",
-          "3,00×2,50 m"
-        ]
       }
     ]
   },
@@ -7671,18 +7281,6 @@
     "description": "Coleira Antipulgas Ajustável flea tick cão coleira ajustável\n\nCaracterísticas\n- Tamanho ou ângulo ajustável.\n\nEspecificações\n- Tipo: Coleira Antipulgas Ajustável\n- Categoria: Pet\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Grafite",
-          "Cinza",
-          "Bege",
-          "Preto"
-        ],
-        "hex": {
-          "Grafite": "#3b3b5c"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -7710,18 +7308,6 @@
     ],
     "description": "Coleira Couro Personalizada personalized couro cão coleira\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Coleira Couro Personalizada\n- Categoria: Pet\n- Material: couro PU\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Vermelho",
-          "Cinza",
-          "Bege",
-          "Preto"
-        ],
-        "hex": {
-          "Vermelho": "#9d2122"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -7779,18 +7365,6 @@
     ],
     "description": "Peitoral Gato Escape-Proof escape proof gato peitoral\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Peitoral Gato Escape-Proof\n- Categoria: Pet\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Grafite",
-          "Cinza",
-          "Bege",
-          "Preto"
-        ],
-        "hex": {
-          "Grafite": "#403530"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -7921,18 +7495,6 @@
     ],
     "description": "Cama Donut Cão donut calming cão cama\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Cama Donut Cão\n- Categoria: Pet\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Nude",
-          "Cinza",
-          "Bege",
-          "Preto"
-        ],
-        "hex": {
-          "Nude": "#d8c8b7"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -8554,18 +8116,6 @@
     "description": "Cinto Segurança Carro Pet cão carro seat cinto\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Cinto Segurança Carro Pet\n- Categoria: Pet\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Grafite",
-          "Preto",
-          "Bege",
-          "Marrom"
-        ],
-        "hex": {
-          "Grafite": "#353b46"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -8647,7 +8197,8 @@
         "values": [
           "Cinza",
           "Preto",
-          "Bege"
+          "Bege",
+          "Marrom"
         ],
         "hex": {
           "Cinza": "#6a6a6a"
@@ -8781,17 +8332,6 @@
     "description": "Coleira Gravata cão bow tie coleira\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Coleira Gravata\n- Categoria: Pet\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Cinza",
-          "Bege"
-        ],
-        "hex": {
-          "Preto": "#171717"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -8837,17 +8377,6 @@
     ],
     "description": "GPS Coleira Bluetooth Bluetooth pet rastreador coleira\n\nCaracterísticas\n- Conexão sem fio, sem cabo enrolado no uso diário.\n- Localização por GPS no modelo indicado.\n\nEspecificações\n- Tipo: GPS Coleira Bluetooth\n- Categoria: Pet\n- Conexão: Bluetooth\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Cinza",
-          "Bege"
-        ],
-        "hex": {
-          "Preto": "#282828"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -9030,14 +8559,6 @@
         "hex": {
           "Cinza": "#808080"
         }
-      },
-      {
-        "name": "Tamanho",
-        "values": [
-          "2 lugares",
-          "3 lugares",
-          "4 lugares"
-        ]
       }
     ]
   },
@@ -9095,17 +8616,6 @@
     "description": "Coleira Refletiva Noturna reflective cão coleira night\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Coleira Refletiva Noturna\n- Categoria: Pet\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Cinza",
-          "Bege"
-        ],
-        "hex": {
-          "Preto": "#1d1d1d"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -9133,17 +8643,6 @@
     ],
     "description": "Pingente LED Coleira LED pet coleira pendant\n\nCaracterísticas\n- Iluminação LED para uso à noite ou detalhe visual.\n\nEspecificações\n- Tipo: Pingente LED Coleira\n- Categoria: Pet\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Cinza",
-          "Bege"
-        ],
-        "hex": {
-          "Preto": "#222222"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -9446,8 +8945,8 @@
         "values": [
           "Transparente",
           "Preto",
-          "Cinza",
-          "Bege"
+          "Bege",
+          "Marrom"
         ],
         "hex": {
           "Transparente": "#c1bebc"
@@ -9540,18 +9039,6 @@
     "description": "Cinto Feminino Fivela Dourada feminino gold buckle cinto\n\nCaracterísticas\n- Formato compacto para levar na bolsa.\n\nEspecificações\n- Tipo: Cinto Feminino Fivela Dourada\n- Categoria: Moda\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Bege",
-          "Marrom",
-          "Branco"
-        ],
-        "hex": {
-          "Preto": "#171717"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -9579,18 +9066,6 @@
     ],
     "description": "Cinto Elástico Sem Fivela buckleless elástica cinto\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Cinto Elástico Sem Fivela\n- Categoria: Moda\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Cinza",
-          "Preto",
-          "Bege",
-          "Marrom"
-        ],
-        "hex": {
-          "Cinza": "#758085"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -9624,7 +9099,8 @@
         "values": [
           "Cinza",
           "Preto",
-          "Bege"
+          "Tartaruga",
+          "Dourado"
         ],
         "hex": {
           "Cinza": "#7a7a7a"
@@ -9653,8 +9129,8 @@
         "name": "Cor",
         "values": [
           "Preto",
-          "Cinza",
-          "Bege"
+          "Tartaruga",
+          "Dourado"
         ],
         "hex": {
           "Preto": "#1d1d22"
@@ -9683,8 +9159,8 @@
         "name": "Cor",
         "values": [
           "Preto",
-          "Cinza",
-          "Bege"
+          "Tartaruga",
+          "Dourado"
         ],
         "hex": {
           "Preto": "#171717"
@@ -9709,18 +9185,6 @@
     ],
     "description": "Boné Trucker Telinha trucker telinha boné\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Boné Trucker Telinha\n- Categoria: Moda\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Bege",
-          "Marrom",
-          "Branco"
-        ],
-        "hex": {
-          "Preto": "#171717"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -10040,17 +9504,6 @@
     "description": "Meia Cano Alto Kit 5 crew meias 5 pares\n\nCaracterísticas\n- Vai em conjunto, pronto para usar.\n\nEspecificações\n- Tipo: Meia Cano Alto Kit 5\n- Categoria: Moda\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Cinza",
-          "Bege"
-        ],
-        "hex": {
-          "Preto": "#171717"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -10079,17 +9532,6 @@
     "description": "Meia Térmica Inverno thermal inverno meias\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Meia Térmica Inverno\n- Categoria: Moda\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Cinza",
-          "Preto",
-          "Bege"
-        ],
-        "hex": {
-          "Cinza": "#808085"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -10117,18 +9559,6 @@
     ],
     "description": "Meia Soquete Colorida Kit 8 canela meias 8 pares\n\nCaracterísticas\n- Vai em conjunto, pronto para usar.\n\nEspecificações\n- Tipo: Meia Soquete Colorida Kit 8\n- Categoria: Moda\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Off-white",
-          "Preto",
-          "Cinza",
-          "Bege"
-        ],
-        "hex": {
-          "Off-white": "#e9e6d6"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -10294,18 +9724,6 @@
     "description": "Pijama Cetim 2 Peças cetim pajama conjunto\n\nCaracterísticas\n- Vai em conjunto, pronto para usar.\n\nEspecificações\n- Tipo: Pijama Cetim 2 Peças\n- Categoria: Moda\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Grafite",
-          "Preto",
-          "Cinza",
-          "Bege"
-        ],
-        "hex": {
-          "Grafite": "#3b3b3b"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -10351,17 +9769,6 @@
     ],
     "description": "Chinelo Nuvem cloud slide slippers\n\nCaracterísticas\n- Proteção UV no uso ao ar livre.\n\nEspecificações\n- Tipo: Chinelo Nuvem\n- Categoria: Moda\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Cinza",
-          "Preto",
-          "Bege"
-        ],
-        "hex": {
-          "Cinza": "#969075"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -10427,18 +9834,6 @@
     "description": "Cinto Tirante Calça anti buckle cinto jeans\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Cinto Tirante Calça\n- Categoria: Moda\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Bege",
-          "Marrom",
-          "Branco"
-        ],
-        "hex": {
-          "Preto": "#1d1d28"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -10503,13 +9898,16 @@
     "description": "Lenço Pescoço Homem masculino seda neckerchief\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Lenço Pescoço Homem\n- Categoria: Moda\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Tamanho",
+        "name": "Cor",
         "values": [
-          "P",
-          "M",
-          "G",
-          "GG"
-        ]
+          "Cinza",
+          "Preto",
+          "Bege",
+          "Marrom"
+        ],
+        "hex": {
+          "Cinza": "#64646a"
+        }
       }
     ]
   },
@@ -10601,8 +9999,9 @@
         "name": "Cor",
         "values": [
           "Preto",
-          "Cinza",
-          "Bege"
+          "Bege",
+          "Marrom",
+          "Branco"
         ],
         "hex": {
           "Preto": "#1d1717"
@@ -10703,8 +10102,9 @@
         "name": "Cor",
         "values": [
           "Preto",
-          "Cinza",
-          "Bege"
+          "Bege",
+          "Marrom",
+          "Branco"
         ],
         "hex": {
           "Preto": "#222222"
@@ -10879,17 +10279,6 @@
     "description": "Luva Sem Dedo Tricot fingerless tricot luvas\n\nCaracterísticas\n- Proteção UV no uso ao ar livre.\n\nEspecificações\n- Tipo: Luva Sem Dedo Tricot\n- Categoria: Moda\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Cinza",
-          "Bege"
-        ],
-        "hex": {
-          "Preto": "#1d1d22"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -10972,18 +10361,6 @@
     "description": "Chapéu Panama Palha panama straw chapéu\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Chapéu Panama Palha\n- Categoria: Moda\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Bege",
-          "Marrom",
-          "Branco"
-        ],
-        "hex": {
-          "Preto": "#1d1d1d"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -11030,18 +10407,6 @@
     "description": "Cinto Faixa Cetim cetim sash cinto\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Cinto Faixa Cetim\n- Categoria: Moda\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Prata",
-          "Preto",
-          "Bege",
-          "Marrom"
-        ],
-        "hex": {
-          "Prata": "#b9b4b0"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -11086,17 +10451,7 @@
       "assets/img/ali/moda-151.jpg"
     ],
     "description": "Lenço Bolso Terno pocket square\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Lenço Bolso Terno\n- Categoria: Moda\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
-    "options": [
-      {
-        "name": "Tamanho",
-        "values": [
-          "P",
-          "M",
-          "G",
-          "GG"
-        ]
-      }
-    ]
+    "options": []
   },
   {
     "id": "moda-152",
@@ -11210,8 +10565,8 @@
         "values": [
           "Transparente",
           "Preto",
-          "Cinza",
-          "Bege"
+          "Tartaruga",
+          "Dourado"
         ],
         "hex": {
           "Transparente": "#bcbec1"
@@ -11241,8 +10596,8 @@
         "values": [
           "Transparente",
           "Preto",
-          "Cinza",
-          "Bege"
+          "Tartaruga",
+          "Dourado"
         ],
         "hex": {
           "Transparente": "#c1bec1"
@@ -11266,17 +10621,7 @@
       "assets/img/ali/moda-159.jpg"
     ],
     "description": "Porta-Lenço Bolso pocket tissue suporte\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Porta-Lenço Bolso\n- Categoria: Moda\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Embalagem para envio\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
-    "options": [
-      {
-        "name": "Tamanho",
-        "values": [
-          "P",
-          "M",
-          "G",
-          "GG"
-        ]
-      }
-    ]
+    "options": []
   },
   {
     "id": "moda-160",
@@ -11752,20 +11097,7 @@
       "assets/img/ali/carro-124.jpg"
     ],
     "description": "Cortina Ímã Carro Kit 2 magnético carro cortina 2\n\nCaracterísticas\n- Vai em conjunto, pronto para usar.\n- Fixação ou encaixe magnético.\n\nEspecificações\n- Tipo: Cortina Ímã Carro Kit 2\n- Categoria: Carro\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Itens de instalação, quando o modelo incluir\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
-    "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Transparente",
-          "Cinza",
-          "Bege",
-          "Preto"
-        ],
-        "hex": {
-          "Transparente": "#b6bebc"
-        }
-      }
-    ]
+    "options": []
   },
   {
     "id": "carro-125",
@@ -12064,14 +11396,6 @@
         "hex": {
           "Preto": "#171717"
         }
-      },
-      {
-        "name": "Tamanho",
-        "values": [
-          "37–38 cm",
-          "38–39 cm",
-          "39–40 cm"
-        ]
       }
     ]
   },
@@ -12489,18 +11813,6 @@
     "description": "Protetor Cinto Conforto seat cinto comfort tapete\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Protetor Cinto Conforto\n- Categoria: Carro\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Itens de instalação, quando o modelo incluir\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Bege",
-          "Marrom",
-          "Branco"
-        ],
-        "hex": {
-          "Preto": "#222222"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -12528,18 +11840,6 @@
     ],
     "description": "Clipe Cinto Segurança seat cinto clip adjuster\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Clipe Cinto Segurança\n- Categoria: Carro\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Itens de instalação, quando o modelo incluir\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Cinza",
-          "Preto",
-          "Bege",
-          "Marrom"
-        ],
-        "hex": {
-          "Cinza": "#64646a"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -12730,17 +12030,6 @@
     ],
     "description": "Grade Colmeia Universal universal honeycomb grille\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Grade Colmeia Universal\n- Categoria: Carro\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Itens de instalação, quando o modelo incluir\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Cinza",
-          "Preto",
-          "Bege"
-        ],
-        "hex": {
-          "Cinza": "#6a6a6a"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -13350,8 +12639,8 @@
         "values": [
           "Off-white",
           "Preto",
-          "Cinza",
-          "Bege"
+          "Bege",
+          "Marrom"
         ],
         "hex": {
           "Off-white": "#efe6d6"
@@ -14073,17 +13362,6 @@
     "description": "Luva Hidratante Noite overnight moisturizing luvas\n\nCaracterísticas\n- Proteção UV no uso ao ar livre.\n\nEspecificações\n- Tipo: Luva Hidratante Noite\n- Categoria: Beleza\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Cinza",
-          "Bege"
-        ],
-        "hex": {
-          "Preto": "#282828"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -14111,18 +13389,6 @@
     ],
     "description": "Meia Hidratante Spa spa moisturizing meias\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Meia Hidratante Spa\n- Categoria: Beleza\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Off-white",
-          "Preto",
-          "Cinza",
-          "Bege"
-        ],
-        "hex": {
-          "Off-white": "#f4e1e1"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -14357,8 +13623,9 @@
         "name": "Cor",
         "values": [
           "Preto",
-          "Cinza",
-          "Bege"
+          "Bege",
+          "Marrom",
+          "Branco"
         ],
         "hex": {
           "Preto": "#282828"
@@ -14491,18 +13758,6 @@
     ],
     "description": "Cinto Musculação Couro couro weightlifting cinto\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Cinto Musculação Couro\n- Categoria: Esporte\n- Material: couro PU\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Cinza",
-          "Preto",
-          "Bege",
-          "Marrom"
-        ],
-        "hex": {
-          "Cinza": "#8b8b8b"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -14711,17 +13966,6 @@
     ],
     "description": "Meia Yoga Antiderrapante yoga meias non slip\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Meia Yoga Antiderrapante\n- Categoria: Esporte\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Cinza",
-          "Bege"
-        ],
-        "hex": {
-          "Preto": "#171717"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -15258,17 +14502,6 @@
     "description": "Luva Ciclismo Gel gel cycling luvas\n\nCaracterísticas\n- Proteção UV no uso ao ar livre.\n\nEspecificações\n- Tipo: Luva Ciclismo Gel\n- Categoria: Esporte\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Cinza",
-          "Preto",
-          "Bege"
-        ],
-        "hex": {
-          "Cinza": "#9b9b9b"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -15623,18 +14856,6 @@
     "description": "Cinto Número Peito race bib cinto\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Cinto Número Peito\n- Categoria: Esporte\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Bege",
-          "Marrom",
-          "Branco"
-        ],
-        "hex": {
-          "Preto": "#171717"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -15684,8 +14905,9 @@
         "name": "Cor",
         "values": [
           "Preto",
-          "Cinza",
-          "Bege"
+          "Bege",
+          "Marrom",
+          "Branco"
         ],
         "hex": {
           "Preto": "#17171d"
@@ -16984,18 +16206,6 @@
     "description": "Protetor Cinto Cadeirinha carro seat pulseira capas\n\nCaracterísticas\n- Peça escolhida para uso direto, sem instalação complicada.\n- Acabamento de uso diário, fácil de guardar.\n\nEspecificações\n- Tipo: Protetor Cinto Cadeirinha\n- Categoria: Bebê\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
       {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Bege",
-          "Marrom",
-          "Branco"
-        ],
-        "hex": {
-          "Preto": "#1d1d22"
-        }
-      },
-      {
         "name": "Tamanho",
         "values": [
           "P",
@@ -17405,17 +16615,6 @@
     ],
     "description": "Meia Antiderrapante Bebê Kit 6 bebê non slip meias 6\n\nCaracterísticas\n- Vai em conjunto, pronto para usar.\n\nEspecificações\n- Tipo: Meia Antiderrapante Bebê Kit 6\n- Categoria: Bebê\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Cinza",
-          "Bege"
-        ],
-        "hex": {
-          "Preto": "#1d222d"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
@@ -19955,17 +19154,6 @@
     ],
     "description": "Luva Forno Extra Longa extra long oven mitt\n\nCaracterísticas\n- Proteção UV no uso ao ar livre.\n\nEspecificações\n- Tipo: Luva Forno Extra Longa\n- Categoria: Cozinha\n- Uso: residencial / dia a dia\n\nO que acompanha\n- 1 unidade\n- Acessórios do modelo, quando inclusos\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
     "options": [
-      {
-        "name": "Cor",
-        "values": [
-          "Preto",
-          "Cinza",
-          "Bege"
-        ],
-        "hex": {
-          "Preto": "#171717"
-        }
-      },
       {
         "name": "Tamanho",
         "values": [
