@@ -93,7 +93,14 @@
     return cart
       .map((item) => {
         const product = products.find((p) => p.id === item.id);
-        return product ? { ...product, qty: item.qty } : null;
+        if (!product) return null;
+        const options = window.LumeCart.pickOptions(product, item.options);
+        return {
+          ...product,
+          qty: item.qty,
+          options,
+          line: window.LumeCart.lineId({ id: item.id, options }),
+        };
       })
       .filter(Boolean);
   };
@@ -114,12 +121,17 @@
           <a href="produto.html?id=${encodeURIComponent(item.id)}"><img src="${item.image}?v=8" alt="" /></a>
           <div>
             <h3><a href="produto.html?id=${encodeURIComponent(item.id)}">${item.name}</a></h3>
+            ${
+              window.LumeCart.choiceLabel(item.options)
+                ? `<p class="opt-line">${window.LumeCart.esc(window.LumeCart.choiceLabel(item.options))}</p>`
+                : ""
+            }
             <p>${brl(item.price)}</p>
             <div class="bag__qty">
-              <button type="button" data-qty="${item.id}" data-delta="-1" aria-label="Menos">−</button>
+              <button type="button" data-line="${window.LumeCart.esc(item.line)}" data-delta="-1" aria-label="Menos">−</button>
               <span>${item.qty}</span>
-              <button type="button" data-qty="${item.id}" data-delta="1" aria-label="Mais">+</button>
-              <button type="button" class="bag__remove" data-remove="${item.id}">Tirar</button>
+              <button type="button" data-line="${window.LumeCart.esc(item.line)}" data-delta="1" aria-label="Mais">+</button>
+              <button type="button" class="bag__remove" data-remove="${window.LumeCart.esc(item.line)}">Tirar</button>
             </div>
           </div>
           <strong>${brl(item.price * item.qty)}</strong>
@@ -140,12 +152,12 @@
   };
 
   bag?.addEventListener("click", (event) => {
-    const qtyBtn = event.target.closest("[data-qty]");
+    const qtyBtn = event.target.closest("[data-line][data-delta]");
     const removeBtn = event.target.closest("[data-remove]");
     if (qtyBtn) {
-      const id = qtyBtn.getAttribute("data-qty");
-      const current = window.LumeCart.read().find((item) => item.id === id);
-      window.LumeCart.setQty(id, Number(current?.qty || 1) + Number(qtyBtn.getAttribute("data-delta")));
+      const key = qtyBtn.getAttribute("data-line");
+      const current = window.LumeCart.read().find((item) => window.LumeCart.lineId(item) === key);
+      window.LumeCart.setQty(key, Number(current?.qty || 1) + Number(qtyBtn.getAttribute("data-delta")));
       draw();
     }
     if (removeBtn) {

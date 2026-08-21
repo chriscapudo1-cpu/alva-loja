@@ -22,6 +22,7 @@ DATA = ROOT / "data"
 DB_PATH = DATA / "orders.db"
 PRODUCTS_PATH = DATA / "products.json"
 SITE_PATH = DATA / "site.json"
+PAYMENT_PATH = DATA / "payment.json"
 
 DEFAULT_SITE = {
     "title": "ALVA — essenciais para o cotidiano",
@@ -86,12 +87,25 @@ def load_env() -> None:
         os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
 
 
+def read_payment_file() -> dict:
+    if not PAYMENT_PATH.exists():
+        return {}
+    try:
+        data = json.loads(PAYMENT_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
 load_env()
 
 PORT = int(os.environ.get("PORT", "5173"))
 HOST = os.environ.get("HOST", "0.0.0.0")
 PUBLIC_URL = os.environ.get("PUBLIC_URL", f"http://127.0.0.1:{PORT}").rstrip("/")
-MP_ACCESS_TOKEN = os.environ.get("MP_ACCESS_TOKEN", "").strip()
+MP_ACCESS_TOKEN = (
+    str(read_payment_file().get("accessToken") or "").strip()
+    or os.environ.get("MP_ACCESS_TOKEN", "").strip()
+)
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "lume2026")
 WHATSAPP = os.environ.get("WHATSAPP", "").strip()
 META_PIXEL_ID = os.environ.get("META_PIXEL_ID", "").strip()
@@ -117,6 +131,73 @@ def load_products() -> list[dict]:
 
 def product_map() -> dict[str, dict]:
     return {item["id"]: item for item in load_products()}
+
+
+def clean_option_groups(raw) -> list[dict]:
+    groups: list[dict] = []
+    if not isinstance(raw, list):
+        return groups
+    for entry in raw:
+        if not isinstance(entry, dict):
+            continue
+        name = str(entry.get("name") or "").strip()[:40]
+        values: list[str] = []
+        seen: set[str] = set()
+        for val in entry.get("values") or []:
+            text = str(val or "").strip()[:40]
+            key = text.casefold()
+            if not text or key in seen:
+                continue
+            seen.add(key)
+            values.append(text)
+            if len(values) >= 24:
+                break
+        if name and values:
+            group = {"name": name, "values": values}
+            hexes = entry.get("hex")
+            if isinstance(hexes, dict):
+                cleaned: dict[str, str] = {}
+                for val in values:
+                    raw_hex = str(hexes.get(val) or "").strip()
+                    if re.fullmatch(r"#?[0-9A-Fa-f]{6}", raw_hex):
+                        cleaned[val] = raw_hex if raw_hex.startswith("#") else f"#{raw_hex}"
+                if cleaned:
+                    group["hex"] = cleaned
+            groups.append(group)
+        if len(groups) >= 8:
+            break
+    return groups
+
+
+def parse_options_text(text: str) -> list[dict]:
+    groups = []
+    for raw_line in str(text or "").splitlines():
+        line = raw_line.strip()
+        if not line or ":" not in line:
+            continue
+        name, rest = line.split(":", 1)
+        groups.append({"name": name.strip(), "values": [part.strip() for part in rest.split(",")]})
+    return clean_option_groups(groups)
+
+
+def option_label(chosen: dict) -> str:
+    if not chosen:
+        return ""
+    return " · ".join(str(value) for value in chosen.values() if value)
+
+
+def pick_options(product: dict, raw) -> dict:
+    groups = clean_option_groups(product.get("options"))
+    incoming = raw if isinstance(raw, dict) else {}
+    chosen: dict[str, str] = {}
+    for group in groups:
+        name = group["name"]
+        values = group["values"]
+        want = str(incoming.get(name) or "").strip()
+        if want not in values:
+            want = values[0]
+        chosen[name] = want
+    return chosen
 
 
 def write_products(products: list[dict]) -> None:
@@ -214,6 +295,19 @@ def save_product(payload: dict) -> dict:
                 raise ValueError("Cole o link do anúncio, no formato aliexpress.com/item/...")
             url = f"https://pt.aliexpress.com/item/{match.group(1)}.html"
         found["supplierUrl"] = url
+    if "optionsText" in payload:
+        old_hex: dict[str, str] = {}
+        for group in found.get("options") or []:
+            if isinstance(group, dict):
+                old_hex.update(group.get("hex") or {})
+        parsed = parse_options_text(payload.get("optionsText") or "")
+        for group in parsed:
+            kept = {name: old_hex[name] for name in group["values"] if name in old_hex}
+            if kept:
+                group["hex"] = kept
+        found["options"] = parsed
+    elif "options" in payload:
+        found["options"] = clean_option_groups(payload.get("options"))
     write_products(products)
     return found
 
@@ -327,6 +421,8 @@ def build_order_items(cart: list) -> tuple[list[dict], float]:
             raise ValueError("Quantidade inválida.")
         if qty > int(product.get("stock") or 0):
             raise ValueError(f"{product['name']} não tem essa quantidade.")
+        chosen = pick_options(product, entry.get("options"))
+        label = option_label(chosen)
         line = {
             "id": product["id"],
             "name": product["name"],
@@ -334,6 +430,8 @@ def build_order_items(cart: list) -> tuple[list[dict], float]:
             "cost": float(product.get("cost") or 0),
             "qty": qty,
             "image": product["image"],
+            "options": chosen,
+            "optionLabel": label,
             "supplierUrl": (
                 f"https://pt.aliexpress.com/item/{m.group(1)}.html"
                 if (m := re.search(r"aliexpress\.com/item/(\d+)", str(product.get("supplierUrl") or ""), re.I))
@@ -373,6 +471,14 @@ def set_mp_token(token: str) -> None:
     global MP_ACCESS_TOKEN
     MP_ACCESS_TOKEN = token.strip()
     write_env_key("MP_ACCESS_TOKEN", MP_ACCESS_TOKEN)
+    payload = read_payment_file()
+    payload["accessToken"] = MP_ACCESS_TOKEN
+    PAYMENT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    PAYMENT_PATH.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    os.environ["MP_ACCESS_TOKEN"] = MP_ACCESS_TOKEN
 
 
 def set_pixel_id(pixel_id: str) -> str:
@@ -409,6 +515,7 @@ def payment_status() -> dict:
     info = {
         "mercadoPago": bool(MP_ACCESS_TOKEN),
         "tokenTail": MP_ACCESS_TOKEN[-4:] if len(MP_ACCESS_TOKEN) >= 4 else "",
+        "accessToken": MP_ACCESS_TOKEN,
         "publicUrl": PUBLIC_URL,
         "freeFrom": SHIP_FREE_FROM,
         "shipPrice": SHIP_PRICE,
@@ -448,7 +555,7 @@ def create_preference(order_id: str, items: list[dict], shipping: float, custome
     mp_items = [
         {
             "id": item["id"],
-            "title": item["name"],
+            "title": f"{item['name']} — {item['optionLabel']}" if item.get("optionLabel") else item["name"],
             "quantity": item["qty"],
             "currency_id": "BRL",
             "unit_price": float(item["price"]),
@@ -582,6 +689,7 @@ class Handler(SimpleHTTPRequestHandler):
                         "blurb": item["blurb"],
                         "description": item.get("description") or item.get("blurb") or "",
                         "available": int(item.get("stock") or 0) > 0,
+                        "options": clean_option_groups(item.get("options")),
                     }
                 )
             category = (parse_qs(parsed.query).get("cat") or [""])[0]
@@ -950,6 +1058,7 @@ class Handler(SimpleHTTPRequestHandler):
                             "blurb": item.get("blurb") or "",
                             "supplierUrl": item.get("supplierUrl") or "",
                             "description": item.get("description") or "",
+                            "options": clean_option_groups(item.get("options")),
                         },
                     }
                 )

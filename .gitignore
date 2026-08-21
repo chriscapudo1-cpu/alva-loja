@@ -1,4 +1,5 @@
 .env
+data/payment.json
 data/orders.db
 data/orders.db-journal
 __pycache__/

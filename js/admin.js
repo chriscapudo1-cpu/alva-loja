@@ -145,8 +145,9 @@
                     /aliexpress\.com\/item\/\d+/i.test(item.supplierUrl || "")
                       ? `<a class="order-items__link" href="${item.supplierUrl}" target="_blank" rel="noopener">comprar no AliExpress</a>`
                       : "";
+                  const variant = item.optionLabel || "";
                   return `<li class="order-items__row">
-                    <span>${item.qty}× ${item.name} — ${brl(item.price * item.qty)}</span>
+                    <span>${item.qty}× ${esc(item.name)}${variant ? " · " + esc(variant) : ""} — ${brl(item.price * item.qty)}</span>
                     <span class="order-items__links">${shop}${buy}</span>
                   </li>`;
                 })
@@ -162,6 +163,11 @@
 
   const paintPay = (data) => {
     const status = document.getElementById("payStatus");
+    const input = document.getElementById("accessToken");
+    if (input && data.accessToken) {
+      input.value = data.accessToken;
+      input.placeholder = `Salvo · …${data.tokenTail || ""}`;
+    }
     if (!status) return;
     if (data.mercadoPago && data.account) {
       const name = data.account.nickname || data.account.email || "conta";
@@ -237,7 +243,6 @@
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Não salvou.");
       paintPay(data);
-      if (input) input.value = "";
       if (payOk) payOk.hidden = false;
     } catch (error) {
       if (payErr) payErr.textContent = error.message;
@@ -372,6 +377,12 @@
     set("prodBlurb", item.blurb || "");
     set("prodSupplier", itemLink(item));
     set("prodDesc", item.description || "");
+    const opts = document.getElementById("prodOptions");
+    if (opts) {
+      opts.value = (item.options || [])
+        .map((group) => `${group.name}: ${(group.values || []).join(", ")}`)
+        .join("\n");
+    }
     const view = document.getElementById("prodView");
     if (view) view.href = `produto.html?id=${encodeURIComponent(item.id)}`;
   };
@@ -493,6 +504,19 @@
     if (item) fillProduct(item);
   });
 
+  document.getElementById("optPresets")?.addEventListener("click", (event) => {
+    const btn = event.target.closest("[data-opt-preset]");
+    if (!btn) return;
+    const area = document.getElementById("prodOptions");
+    const presets = {
+      cor: "Cor: Preto, Branco, Cinza, Bege",
+      tam: "Cor: Preto, Branco, Cinza, Bege\nTamanho: P, M, G, GG",
+      mod: "Cor: Preto, Branco, Azul, Rosa\nModelo: iPhone 13, iPhone 14, iPhone 15, iPhone 16",
+    };
+    const text = presets[btn.getAttribute("data-opt-preset")];
+    if (area && text) area.value = text;
+  });
+
   document.getElementById("productForm")?.addEventListener("submit", async (event) => {
     event.preventDefault();
     const token = sessionStorage.getItem(tokenKey);
@@ -517,6 +541,7 @@
           blurb: form.elements.blurb.value,
           supplierUrl: form.elements.supplierUrl?.value || "",
           description: form.elements.description.value,
+          optionsText: form.elements.optionsText?.value || "",
         }),
       });
       const data = await res.json();

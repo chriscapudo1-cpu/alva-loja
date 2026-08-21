@@ -57,6 +57,117 @@
 
   const parcel = (price) => brl(Number(price) / 3);
 
+  const choiceLabel = (options) => {
+    if (!options) return "";
+    if (typeof options === "string") return options;
+    return Object.values(options)
+      .filter(Boolean)
+      .join(" · ");
+  };
+
+  const optionKey = (options) => {
+    const opts = options && typeof options === "object" ? options : {};
+    return Object.keys(opts)
+      .sort()
+      .map((name) => `${name}:${opts[name]}`)
+      .join("|");
+  };
+
+  const lineId = (item) => {
+    const key = optionKey(item?.options);
+    return key ? `${item.id}::${key}` : item.id;
+  };
+
+  const pickOptions = (product, chosen) => {
+    const groups = product?.options || [];
+    if (!groups.length) return {};
+    const incoming = chosen && typeof chosen === "object" ? chosen : {};
+    const out = {};
+    groups.forEach((group) => {
+      const values = group.values || [];
+      if (!group.name || !values.length) return;
+      out[group.name] = values.includes(incoming[group.name]) ? incoming[group.name] : values[0];
+    });
+    return out;
+  };
+
+  const COLOR_HEX = {
+    preto: "#1c1c1c",
+    branco: "#f4f1ea",
+    cinza: "#8b8680",
+    bege: "#d7c4a3",
+    marrom: "#6b4423",
+    azul: "#3a5a8c",
+    verde: "#4a7a58",
+    vermelho: "#a33c2c",
+    rosa: "#d48a9b",
+    lilas: "#9b7ab3",
+    dourado: "#c4a36a",
+    prata: "#c5c5c5",
+    inox: "#b8bdc4",
+    amarelo: "#d4b44a",
+    laranja: "#d4783a",
+    roxo: "#6b4a8c",
+    nude: "#e0c8b0",
+    "off-white": "#eee8dc",
+    vinho: "#6e2430",
+    grafite: "#4a4a4a",
+    camel: "#c49a6c",
+    khaki: "#b8a06a",
+    militar: "#4d5c3a",
+    offwhite: "#eee8dc",
+    transparente: "#c8cdd3",
+  };
+
+  const foldColor = (value) =>
+    String(value || "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z]/g, "");
+
+  const colorHex = (value, group) => {
+    const custom = group && group.hex && group.hex[value];
+    if (custom) return custom;
+    return COLOR_HEX[foldColor(value)] || "#8d8578";
+  };
+
+  const isLightHex = (hex) => {
+    const h = String(hex || "").replace("#", "");
+    if (h.length !== 6) return false;
+    const r = parseInt(h.slice(0, 2), 16);
+    const g = parseInt(h.slice(2, 4), 16);
+    const b = parseInt(h.slice(4, 6), 16);
+    return 0.299 * r + 0.587 * g + 0.114 * b > 186;
+  };
+
+  const isColorGroup = (name) => /cor|color/i.test(name || "");
+
+  const optionPreview = (product) => {
+    const groups = product?.options || [];
+    if (!groups.length) return "";
+    return `<div class="product__vars">${groups
+      .map((group) => {
+        const values = group.values || [];
+        if (isColorGroup(group.name)) {
+          const dots = values
+            .map((val) => {
+              const hex = colorHex(val, group);
+              const light = isLightHex(hex) ? " is-light" : "";
+              return `<span class="var-dot${light}" style="background:${hex}" title="${esc(val)}"></span>`;
+            })
+            .join("");
+          return `<div class="var-row"><span class="var-label">${esc(group.name)}</span>${dots}<span class="var-vals">${esc(
+            values.join(" · ")
+          )}</span></div>`;
+        }
+        return `<div class="var-row"><span class="var-label">${esc(group.name)}</span><span class="var-vals">${esc(
+          values.join(" · ")
+        )}</span></div>`;
+      })
+      .join("")}</div>`;
+  };
+
   const read = () => {
     try {
       const data = JSON.parse(localStorage.getItem(KEY) || "[]");
@@ -92,7 +203,13 @@
       .then((data) => {
         catalog = data.products || [];
         window.LumeCart.catalog = catalog;
+        const items = read().map((item) => {
+          const product = catalog.find((entry) => entry.id === item.id);
+          return product ? { ...item, options: pickOptions(product, item.options) } : item;
+        });
+        localStorage.setItem(KEY, JSON.stringify(items));
         document.dispatchEvent(new CustomEvent("alva:catalog", { detail: catalog }));
+        paint();
         drawDrawer();
         return catalog;
       })
@@ -125,13 +242,16 @@
       </a>
       <div class="product__meta">
         <h2><a href="produto.html?id=${encodeURIComponent(product.id)}">${esc(product.name)}</a></h2>
+        ${optionPreview(product)}
         <p class="product__price">
           <strong>${brl(product.price)}</strong>
           <small>ou 3× de ${parcel(product.price)}</small>
         </p>
-        <button class="btn product__add" type="button" data-add="${esc(product.id)}">
-          <span>Adicionar</span>
-        </button>
+        ${
+          (product.options || []).some((group) => !/cor|color/i.test(group.name))
+            ? `<a class="btn product__add" href="produto.html?id=${encodeURIComponent(product.id)}"><span>Escolher</span></a>`
+            : `<button class="btn product__add" type="button" data-add="${esc(product.id)}"><span>Adicionar</span></button>`
+        }
       </div>
     `;
     return el;
@@ -170,12 +290,12 @@
     document.getElementById("cartClose")?.addEventListener("click", close);
     document.getElementById("cartVeil")?.addEventListener("click", close);
     document.getElementById("cartBody")?.addEventListener("click", (event) => {
-      const qty = event.target.closest("[data-qty]");
+      const qty = event.target.closest("[data-line][data-delta]");
       const remove = event.target.closest("[data-remove]");
       if (qty) {
-        const id = qty.getAttribute("data-qty");
-        const current = read().find((item) => item.id === id);
-        window.LumeCart.setQty(id, Number(current?.qty || 1) + Number(qty.getAttribute("data-delta")));
+        const key = qty.getAttribute("data-line");
+        const current = read().find((item) => lineId(item) === key);
+        window.LumeCart.setQty(key, Number(current?.qty || 1) + Number(qty.getAttribute("data-delta")));
       }
       if (remove) window.LumeCart.remove(remove.getAttribute("data-remove"));
     });
@@ -191,7 +311,9 @@
     const lines = read()
       .map((item) => {
         const product = find(item.id);
-        return product ? { ...product, qty: item.qty } : null;
+        if (!product) return null;
+        const options = pickOptions(product, item.options);
+        return { ...product, qty: item.qty, options, line: lineId({ id: item.id, options }) };
       })
       .filter(Boolean);
     if (!lines.length) {
@@ -209,12 +331,13 @@
           </a>
           <div>
             <h3><a href="produto.html?id=${encodeURIComponent(item.id)}">${esc(item.name)}</a></h3>
+            ${choiceLabel(item.options) ? `<p class="opt-line">${esc(choiceLabel(item.options))}</p>` : ""}
             <p>${brl(item.price)}</p>
             <div class="bag__qty">
-              <button type="button" data-qty="${item.id}" data-delta="-1" aria-label="Menos">−</button>
+              <button type="button" data-line="${esc(item.line)}" data-delta="-1" aria-label="Menos">−</button>
               <span>${item.qty}</span>
-              <button type="button" data-qty="${item.id}" data-delta="1" aria-label="Mais">+</button>
-              <button type="button" class="bag__remove" data-remove="${item.id}">Tirar</button>
+              <button type="button" data-line="${esc(item.line)}" data-delta="1" aria-label="Mais">+</button>
+              <button type="button" class="bag__remove" data-remove="${esc(item.line)}">Tirar</button>
             </div>
           </div>
           <strong>${brl(item.price * item.qty)}</strong>
@@ -261,15 +384,23 @@
     open,
     close,
     find,
+    choiceLabel,
+    lineId,
+    pickOptions,
+    colorHex,
+    isLightHex,
+    isColorGroup,
     ready: loadCatalog,
-    add(id, qty = 1) {
-      const items = read();
-      const found = items.find((item) => item.id === id);
-      if (found) found.qty = Math.min(20, Number(found.qty) + qty);
-      else items.push({ id, qty });
-      write(items);
+    add(id, qty = 1, chosen = null) {
       const product = find(id);
-      toast(product ? `${product.name} na sacola` : "Adicionado à sacola");
+      const options = pickOptions(product, chosen);
+      const items = read();
+      const found = items.find((item) => item.id === id && optionKey(item.options) === optionKey(options));
+      if (found) found.qty = Math.min(20, Number(found.qty) + qty);
+      else items.push({ id, qty, options });
+      write(items);
+      const label = choiceLabel(options);
+      toast(product ? `${product.name}${label ? " · " + label : ""} na sacola` : "Adicionado à sacola");
       window.AlvaPixel?.track("AddToCart", {
         content_ids: [id],
         content_name: product?.name || id,
@@ -280,16 +411,24 @@
       });
       open();
     },
-    setQty(id, qty) {
+    setQty(key, qty) {
       const next = Math.max(0, Math.min(20, Number(qty) || 0));
       const items = read().flatMap((item) => {
-        if (item.id !== id) return [item];
-        return next ? [{ id, qty: next }] : [];
+        const product = find(item.id);
+        const options = pickOptions(product, item.options);
+        const current = lineId({ id: item.id, options });
+        if (current !== key && lineId(item) !== key) return [item];
+        return next ? [{ id: item.id, qty: next, options }] : [];
       });
       write(items);
     },
-    remove(id) {
-      write(read().filter((item) => item.id !== id));
+    remove(key) {
+      write(
+        read().filter((item) => {
+          const options = pickOptions(find(item.id), item.options);
+          return lineId({ id: item.id, options }) !== key && lineId(item) !== key;
+        })
+      );
     },
     clear() {
       write([]);

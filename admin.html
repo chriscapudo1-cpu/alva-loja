@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=15" />
+  <link rel="stylesheet" href="css/style.css?v=18" />
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -204,6 +204,16 @@
             <div class="form__row">
               <label for="prodSupplier">Link do produto no AliExpress</label>
               <input id="prodSupplier" name="supplierUrl" type="url" placeholder="https://pt.aliexpress.com/item/0000000000000.html" />
+            </div>
+            <div class="form__row">
+              <label for="prodOptions">Variedades (cor, tamanho etc.)</label>
+              <textarea id="prodOptions" name="optionsText" rows="4" placeholder="Cor: Preto, Branco, Bege&#10;Tamanho: P, M, G, GG"></textarea>
+              <p class="form__hint">Uma linha por tipo. Nome, dois pontos, valores separados por vírgula. Deixe vazio se o produto não tiver variedade.</p>
+              <div class="opt-presets" id="optPresets">
+                <button class="chip" type="button" data-opt-preset="cor">Só cor</button>
+                <button class="chip" type="button" data-opt-preset="tam">Cor e tamanho</button>
+                <button class="chip" type="button" data-opt-preset="mod">Cor e modelo</button>
+              </div>
             </div>
             <div class="form__row">
               <label for="prodDesc">Descrição</label>
@@ -408,7 +418,7 @@
   </main>
 
   <script src="js/look.js?v=15"></script>
-  <script src="js/admin.js?v=16"></script>
+  <script src="js/admin.js?v=17"></script>
   <script>
     const year = document.getElementById("year");
     if (year) year.textContent = String(new Date().getFullYear());

@@ -1,4 +1,54 @@
 (() => {
+  const COLOR_HEX = {
+    preto: "#1c1c1c",
+    branco: "#f4f1ea",
+    cinza: "#8b8680",
+    bege: "#d7c4a3",
+    marrom: "#6b4423",
+    azul: "#3a5a8c",
+    verde: "#4a7a58",
+    vermelho: "#a33c2c",
+    rosa: "#d48a9b",
+    lilas: "#9b7ab3",
+    dourado: "#c4a36a",
+    prata: "#c5c5c5",
+    inox: "#b8bdc4",
+    amarelo: "#d4b44a",
+    laranja: "#d4783a",
+    roxo: "#6b4a8c",
+    nude: "#e0c8b0",
+    vinho: "#6e2430",
+    grafite: "#4a4a4a",
+    camel: "#c49a6c",
+    khaki: "#b8a06a",
+    militar: "#4d5c3a",
+    offwhite: "#eee8dc",
+    transparente: "#c8cdd3",
+  };
+
+  const foldColor = (value) =>
+    String(value || "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z]/g, "");
+
+  const colorHex = (value, group) => {
+    if (window.LumeCart?.colorHex) return window.LumeCart.colorHex(value, group);
+    const custom = group && group.hex && group.hex[value];
+    if (custom) return custom;
+    return COLOR_HEX[foldColor(value)] || "#8d8578";
+  };
+
+  const isLight = (hex) => {
+    const h = String(hex || "").replace("#", "");
+    if (h.length !== 6) return false;
+    const r = parseInt(h.slice(0, 2), 16);
+    const g = parseInt(h.slice(2, 4), 16);
+    const b = parseInt(h.slice(4, 6), 16);
+    return 0.299 * r + 0.587 * g + 0.114 * b > 186;
+  };
+
   const formatDesc = (raw, esc) => {
     const blocks = String(raw || "")
       .split(/\n\n+/)
@@ -77,6 +127,33 @@
             <h1 class="display display--case">${esc(product.name)}</h1>
             <p class="pdp__price">${brl(product.price)}</p>
             <p class="pdp__install">${available ? `ou 3× de ${parcel(product.price)} no cartão` : "Indisponível no momento"}</p>
+            ${
+              (product.options || []).length
+                ? `<div class="pdp__opts">${(product.options || [])
+                    .map((group) => {
+                      const color = /cor|color/i.test(group.name);
+                      const picks = (group.values || [])
+                        .map((val, index) => {
+                          const on = index === 0 ? " is-on" : "";
+                          const hex = colorHex(val, group);
+                          const dot = color
+                            ? `<span class="pdp__dot${isLight(hex) ? " is-light" : ""}" style="background:${hex}"></span>`
+                            : "";
+                          return `<button class="pdp__pick${on}" type="button" data-opt="${esc(
+                            group.name
+                          )}" data-val="${esc(val)}">${dot}${esc(val)}</button>`;
+                        })
+                        .join("");
+                      return `<div class="pdp__opt">
+                        <p class="pdp__opt-name">${esc(group.name)} <span data-opt-current="${esc(group.name)}">${esc(
+                          (group.values || [])[0] || ""
+                        )}</span></p>
+                        <div class="pdp__opt-picks">${picks}</div>
+                      </div>`;
+                    })
+                    .join("")}</div>`
+                : ""
+            }
             <ul class="pdp__trust">
               <li>Pix e cartão no Mercado Pago</li>
               <li>Frete R$ 18,90 · grátis acima de R$ 200</li>
@@ -134,8 +211,27 @@
       const setQty = (value) => {
         if (qtyInput) qtyInput.value = String(clampQty(value));
       };
+      const selected = {};
+      (product.options || []).forEach((group) => {
+        if (group.name && group.values?.[0]) selected[group.name] = group.values[0];
+      });
+      const paintOpts = () => {
+        root.querySelectorAll("[data-opt]").forEach((btn) => {
+          const on = selected[btn.getAttribute("data-opt")] === btn.getAttribute("data-val");
+          btn.classList.toggle("is-on", on);
+        });
+        root.querySelectorAll("[data-opt-current]").forEach((el) => {
+          el.textContent = selected[el.getAttribute("data-opt-current")] || "";
+        });
+      };
+      root.addEventListener("click", (event) => {
+        const btn = event.target.closest("[data-opt]");
+        if (!btn || !root.contains(btn)) return;
+        selected[btn.getAttribute("data-opt")] = btn.getAttribute("data-val");
+        paintOpts();
+      });
       const add = () => {
-        window.LumeCart.add(product.id, clampQty(qtyInput?.value));
+        window.LumeCart.add(product.id, clampQty(qtyInput?.value), { ...selected });
         document.querySelectorAll("#addBtn span, #stickyAdd span").forEach((span) => {
           span.textContent = "Na sacola";
         });

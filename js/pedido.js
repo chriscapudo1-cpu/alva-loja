@@ -57,9 +57,10 @@
                 const img = item.image
                   ? `<img class="order-items__img" src="${item.image}?v=4" alt="" />`
                   : "";
+                const variant = item.optionLabel || window.LumeCart?.choiceLabel?.(item.options) || "";
                 return `<li class="order-items__row">
                   ${img}
-                  <span>${item.qty}× ${title} — ${brl(item.price * item.qty)}</span>
+                  <span>${item.qty}× ${title}${variant ? " · " + variant : ""} — ${brl(item.price * item.qty)}</span>
                   ${link}
                 </li>`;
               })
