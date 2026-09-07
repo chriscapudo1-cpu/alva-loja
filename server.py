@@ -25,12 +25,13 @@ SITE_PATH = DATA / "site.json"
 PAYMENT_PATH = DATA / "payment.json"
 
 DEFAULT_SITE = {
-    "title": "ALVA — essenciais para o cotidiano",
-    "eyebrow": "ALVA · Brasil · Pix e cartão",
-    "hero1": "O essencial do cotidiano.",
-    "hero2": "Escolha, pague",
-    "hero3": "e receba em casa.",
-    "heroLede": "Tech, casa, pet e moda. Pagamento por Pix ou cartão. Acompanhe o envio pelo e-mail.",
+    "title": "ALVA — o essencial do cotidiano, elevado",
+    "eyebrow": "ALVA · Brasil · selecionado com cuidado",
+    "hero1": "O essencial do cotidiano,",
+    "hero2": "",
+    "hero3": "elevado.",
+    "heroLede": "Nós escolhemos o que realmente vale a pena ter. Tech, casa, pet e moda — com acabamento, prazo e atendimento de marca.",
+    "heroCta": "Explorar a coleção",
     "promise1Title": "Pix e cartão",
     "promise1Text": "Mercado Pago",
     "promise2Title": "Frete R$ 18,90",
@@ -686,6 +687,7 @@ class Handler(SimpleHTTPRequestHandler):
                         "image": photos[0] if photos else item.get("image") or "",
                         "images": photos,
                         "tag": item["tag"],
+                        "group": item.get("group") or "",
                         "blurb": item["blurb"],
                         "description": item.get("description") or item.get("blurb") or "",
                         "available": int(item.get("stock") or 0) > 0,
@@ -705,6 +707,9 @@ class Handler(SimpleHTTPRequestHandler):
                 if tag and tag not in seen:
                     seen.add(tag)
                     cats.append(tag)
+            pin = "Tênis de mesa"
+            if pin in cats:
+                cats = [pin] + [name for name in cats if name != pin]
             self.send_json({"categories": cats})
             return
         if parsed.path == "/api/admin/catalog":

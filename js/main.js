@@ -256,13 +256,6 @@
   }
 
   if (!/admin\.html$/i.test(location.pathname)) {
-    const links = document.querySelector(".nav__links");
-    if (links && !links.querySelector('[href="admin.html"]')) {
-      const a = document.createElement("a");
-      a.href = "admin.html";
-      a.textContent = "Admin";
-      links.appendChild(a);
-    }
     const meta = document.querySelector(".nav__meta");
     if (meta && !meta.querySelector('[href="admin.html"]')) {
       const a = document.createElement("a");

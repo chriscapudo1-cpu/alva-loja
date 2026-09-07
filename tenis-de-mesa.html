@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tênis de mesa — ALVA</title>
+  <meta name="description" content="Área só de tênis de mesa na ALVA: raquetes, bolas, mesas, redes e treino. Pix e cartão. Frete grátis acima de R$ 200." />
+  <meta name="theme-color" content="#0b0a09" />
+  <meta property="og:title" content="Tênis de mesa — ALVA" />
+  <meta property="og:description" content="Raquetes, bolas, mesas e treino. Uma loja só disso." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=25" />
+  <link rel="stylesheet" href="css/premium.css?v=25" />
+</head>
+<body class="is-premium">
+  <a class="skip" href="#conteudo">Ir ao conteúdo</a>
+  <p class="announce" role="note">Pix e cartão · Frete grátis acima de R$ 200 · Envio rastreado para todo o Brasil</p>
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <span class="wordmark loader__mark">ALVA</span>
+      <div class="loader__bar" aria-hidden="true"><i></i></div>
+    </div>
+  </div>
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <span class="cursor__dot"></span>
+    <span class="cursor__ring"></span>
+    <span class="cursor__label"></span>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <a class="wordmark nav__logo" href="index.html">ALVA</a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="index.html">Início</a>
+      <a href="loja.html">Coleção</a>
+      <a href="tenis-de-mesa.html" aria-current="page">Tênis de mesa</a>
+      <a href="loja.html?cat=Tech">Tech</a>
+      <a href="loja.html?cat=Casa">Casa</a>
+      <a href="index.html#contato">Contato</a>
+    </nav>
+    <div class="nav__meta">
+      <a class="cart-link" href="checkout.html">Sacola <span class="cart-count" data-cart-count hidden>0</span></a>
+      <button class="nav__burger" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
+    </div>
+  </header>
+  <div class="menu" id="menu" hidden>
+    <nav class="menu__nav" aria-label="Mobile">
+      <a href="index.html" data-index="01">Início</a>
+      <a href="tenis-de-mesa.html" data-index="02">Tênis de mesa</a>
+      <a href="loja.html" data-index="03">Coleção</a>
+      <a href="loja.html?cat=Tech" data-index="04">Tech</a>
+      <a href="loja.html?cat=Casa" data-index="05">Casa</a>
+      <a href="checkout.html" data-index="06">Sacola</a>
+      <a href="index.html#contato" data-index="07">Contato</a>
+    </nav>
+    <p class="menu__note">alvaloja.com</p>
+  </div>
+
+  <main id="conteudo">
+    <section class="hero hero--cinematic ping-hero">
+      <div class="hero__media">
+        <img class="is-on" src="assets/img/brand/hero-pingpong.jpg" alt="Mesa de tênis de mesa com raquetes e bola" />
+        <div class="hero__veil"></div>
+      </div>
+      <div class="hero__copy">
+        <p class="eyebrow reveal">ALVA · área exclusiva</p>
+        <h1 class="display reveal">Tênis de mesa.</h1>
+        <p class="hero__lede reveal">Raquetes, bolas, redes, mesa e treino — nada misturado com o resto da loja. Só o jogo.</p>
+        <div class="hero__foot reveal">
+          <div class="hero__actions">
+            <a class="btn btn--solid btn--lg magnetic" href="#catalogo">
+              <span>Ver os produtos</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="btn" href="#caminhos"><span>Como começar</span></a>
+          </div>
+          <p class="hero__micro">Pix e cartão · Frete grátis acima de R$ 200 · Envio rastreado</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ping-paths" id="caminhos">
+      <div class="section-head">
+        <p class="num reveal">01</p>
+        <div>
+          <h2 class="reveal">Três jeitos de montar o jogo</h2>
+          <p class="lede reveal">Toque no caminho e a lista já filtra o que serve para você.</p>
+        </div>
+      </div>
+      <div class="ping-paths__grid">
+        <button class="ping-path reveal" type="button" data-group="Raquetes">
+          <h3>Jogar em casa</h3>
+          <p>Kit de raquetes, bolas e a rede retrátil que gruda na mesa de jantar.</p>
+          <span>Raquetes</span>
+        </button>
+        <button class="ping-path reveal" type="button" data-group="Mesa e rede">
+          <h3>Mesa completa</h3>
+          <p>Mesa dobrável, rede oficial e capa para guardar sem poeira.</p>
+          <span>Mesa e rede</span>
+        </button>
+        <button class="ping-path reveal" type="button" data-group="Treino">
+          <h3>Treinar sozinho</h3>
+          <p>Robô lançador, bolas de treino, coletor e marcador de pontos.</p>
+          <span>Treino</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="shop ping-shop" id="catalogo">
+      <header class="shop__hero">
+        <p class="eyebrow reveal">Catálogo · tênis de mesa</p>
+        <h2 class="display display--case reveal" id="shopHeading">Tudo da área</h2>
+        <p class="lede reveal" id="shopLede">Só produtos de tênis de mesa. Pix, cartão · frete grátis acima de R$ 200</p>
+      </header>
+      <div class="shop__toolbar">
+        <div class="chips" id="pingChips"></div>
+        <label class="shop__sort">
+          <span>Ordem</span>
+          <select id="shopSort">
+            <option value="nome">Nome</option>
+            <option value="menor">Menor preço</option>
+            <option value="maior">Maior preço</option>
+          </select>
+        </label>
+      </div>
+      <p class="shop__note reveal" id="shopNote" hidden></p>
+      <p class="shop__empty" id="shopEmpty" hidden></p>
+      <div class="shop__grid" id="shopGrid"></div>
+    </section>
+  </main>
+
+  <footer class="footer footer--rich">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="wordmark" href="index.html">ALVA</a>
+        <p data-site="footer">Selecionamos o que vale a pena ter. Você escolhe, paga e recebe em casa.</p>
+      </div>
+      <div class="footer__cols">
+        <div>
+          <h3>Loja</h3>
+          <a href="tenis-de-mesa.html">Tênis de mesa</a>
+          <a href="loja.html">Todos os produtos</a>
+          <a href="loja.html?cat=Tech">Tech</a>
+          <a href="loja.html?cat=Casa">Casa</a>
+        </div>
+        <div>
+          <h3>Ajuda</h3>
+          <a href="envio.html">Envio e frete</a>
+          <a href="trocas.html">Trocas</a>
+          <a href="index.html#contato">Contato</a>
+        </div>
+        <div>
+          <h3>Conta</h3>
+          <a href="checkout.html">Sacola</a>
+          <a href="admin.html">Pedidos</a>
+        </div>
+      </div>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> ALVA · alvaloja.com</p>
+  </footer>
+  <script src="js/cart.js?v=25"></script>
+  <script src="js/look.js?v=15"></script>
+  <script src="js/main.js?v=25"></script>
+  <script src="js/tenis.js?v=1"></script>
+</body>
+</html>

@@ -9,9 +9,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=18" />
+  <link rel="stylesheet" href="css/style.css?v=24" />
+  <link rel="stylesheet" href="css/premium.css?v=24" />
 </head>
-<body>
+<body class="is-premium">
+  <p class="announce" role="note">Pix e cartão · Frete grátis acima de R$ 200 · Envio rastreado para todo o Brasil</p>
   <a class="skip" href="#conteudo">Ir ao conteúdo</a>
   <div class="loader" id="loader" aria-hidden="true">
     <div class="loader__inner">
@@ -30,8 +32,8 @@
     <nav class="nav__links" aria-label="Principal">
       <a href="index.html">Início</a>
       <a href="loja.html">Loja</a>
+      <a href="tenis-de-mesa.html">Tênis de mesa</a>
       <a href="checkout.html" aria-current="page">Sacola</a>
-      <a href="index.html#contato">Contato</a>
     </nav>
     <div class="nav__meta">
       <a class="cart-link" href="checkout.html">Sacola <span class="cart-count" data-cart-count hidden>0</span></a>
@@ -41,9 +43,9 @@
   <div class="menu" id="menu" hidden>
     <nav class="menu__nav" aria-label="Mobile">
       <a href="index.html" data-index="01">Início</a>
-      <a href="loja.html" data-index="02">Loja</a>
-      <a href="checkout.html" data-index="03">Sacola</a>
-      <a href="index.html#contato" data-index="04">Contato</a>
+      <a href="tenis-de-mesa.html" data-index="02">Tênis de mesa</a>
+      <a href="loja.html" data-index="03">Loja</a>
+      <a href="checkout.html" data-index="04">Sacola</a>
     </nav>
   </div>
 
@@ -144,7 +146,7 @@
     </div>
     <p class="footer__copy">© <span id="year"></span> ALVA · alvaloja.com</p>
   </footer>
-  <script src="js/cart.js?v=22"></script>
+  <script src="js/cart.js?v=24"></script>
   <script src="js/look.js?v=15"></script>
   <script src="js/main.js?v=15"></script>
   <script src="js/checkout.js?v=13"></script>

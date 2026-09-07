@@ -1,5 +1,333 @@
 [
   {
+    "id": "pingpong-001",
+    "name": "Kit 2 Raquetes + 3 Bolas",
+    "cost": 45.0,
+    "price": 90.0,
+    "image": "assets/img/ali/pingpong-001.jpg",
+    "tag": "Tênis de mesa",
+    "group": "Raquetes",
+    "blurb": "Tênis de mesa · raquetes · envio após a confirmação do pagamento.",
+    "stock": 54,
+    "supplier": "AliExpress",
+    "supplierUrl": "https://pt.aliexpress.com/w/wholesale-table-tennis-paddle-set-2-player.html",
+    "search": "table tennis paddle set 2 player",
+    "images": [
+      "assets/img/ali/pingpong-001.jpg"
+    ],
+    "description": "Kit para começar o jogo em casa: duas raquetes de madeira com borracha vermelha e preta e três bolas brancas.\n\nCaracterísticas\n- Pronto para duas pessoas jogarem no mesmo dia.\n- Empunhadura clássica, confortável para iniciante.\n\nEspecificações\n- Tipo: kit iniciante\n- Conteúdo: 2 raquetes + 3 bolas 40 mm\n- Uso: casa, condomínio, clube\n\nO que acompanha\n- 2 raquetes\n- 3 bolas\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
+    "options": []
+  },
+  {
+    "id": "pingpong-002",
+    "name": "Raquete Carbono Profissional",
+    "cost": 89.0,
+    "price": 178.0,
+    "image": "assets/img/ali/pingpong-002.jpg",
+    "tag": "Tênis de mesa",
+    "group": "Raquetes",
+    "blurb": "Tênis de mesa · raquetes · envio após a confirmação do pagamento.",
+    "stock": 38,
+    "supplier": "AliExpress",
+    "supplierUrl": "https://pt.aliexpress.com/w/wholesale-carbon-table-tennis-paddle-professional.html",
+    "search": "carbon table tennis paddle professional",
+    "images": [
+      "assets/img/ali/pingpong-002.jpg"
+    ],
+    "description": "Raquete de ataque com lâmina em carbono, resposta rápida e mais controle no efeito.\n\nCaracterísticas\n- Lâmina rígida para quem já treina com regularidade.\n- Borracha lisa de alta aderência.\n\nEspecificações\n- Tipo: raquete profissional\n- Construção: carbono + madeira\n- Uso: treino e jogo avançado\n\nO que acompanha\n- 1 raquete\n- Capa simples, quando o lote incluir\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
+    "options": [
+      {
+        "name": "Borracha",
+        "values": [
+          "Preta",
+          "Vermelha"
+        ],
+        "hex": {
+          "Preta": "#1a1a1a",
+          "Vermelha": "#b42318"
+        }
+      }
+    ]
+  },
+  {
+    "id": "pingpong-003",
+    "name": "Raquete 7 Madeiras",
+    "cost": 62.0,
+    "price": 124.0,
+    "image": "assets/img/ali/pingpong-003.jpg",
+    "tag": "Tênis de mesa",
+    "group": "Raquetes",
+    "blurb": "Tênis de mesa · raquetes · envio após a confirmação do pagamento.",
+    "stock": 47,
+    "supplier": "AliExpress",
+    "supplierUrl": "https://pt.aliexpress.com/w/wholesale-7-ply-wood-table-tennis-racket.html",
+    "search": "7 ply wood table tennis racket",
+    "images": [
+      "assets/img/ali/pingpong-003.jpg"
+    ],
+    "description": "Raquete clássica de sete camadas de madeira. Equilíbrio entre ataque e defesa, boa para evoluir o golpe.\n\nCaracterísticas\n- Cabo anatômico.\n- Peso confortável para sessões longas.\n\nEspecificações\n- Tipo: raquete intermediária\n- Lâmina: 7 madeiras\n- Uso: treino e jogo recreativo\n\nO que acompanha\n- 1 raquete\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
+    "options": []
+  },
+  {
+    "id": "pingpong-004",
+    "name": "Bolas 3 Estrelas — 6 un.",
+    "cost": 22.0,
+    "price": 44.0,
+    "image": "assets/img/ali/pingpong-004.jpg",
+    "tag": "Tênis de mesa",
+    "group": "Bolas",
+    "blurb": "Tênis de mesa · bolas · envio após a confirmação do pagamento.",
+    "stock": 80,
+    "supplier": "AliExpress",
+    "supplierUrl": "https://pt.aliexpress.com/w/wholesale-3-star-table-tennis-balls-6-pack-40mm.html",
+    "search": "3 star table tennis balls 6 pack 40mm",
+    "images": [
+      "assets/img/ali/pingpong-004.jpg"
+    ],
+    "description": "Pacote com 6 bolas 40 mm padrão 3 estrelas. Salto regular para jogo e treino sério.\n\nCaracterísticas\n- Costura e peso consistentes.\n- Branca, fácil de ler na mesa verde.\n\nEspecificações\n- Tipo: bola 3 estrelas\n- Diâmetro: 40 mm\n- Quantidade: 6 unidades\n\nO que acompanha\n- 6 bolas\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
+    "options": []
+  },
+  {
+    "id": "pingpong-005",
+    "name": "Bolas de Treino — 50 un.",
+    "cost": 38.0,
+    "price": 76.0,
+    "image": "assets/img/ali/pingpong-005.jpg",
+    "tag": "Tênis de mesa",
+    "group": "Bolas",
+    "blurb": "Tênis de mesa · bolas · envio após a confirmação do pagamento.",
+    "stock": 62,
+    "supplier": "AliExpress",
+    "supplierUrl": "https://pt.aliexpress.com/w/wholesale-table-tennis-training-balls-50-pack.html",
+    "search": "table tennis training balls 50 pack",
+    "images": [
+      "assets/img/ali/pingpong-005.jpg"
+    ],
+    "description": "Saco com 50 bolas de treino. Para robô, cestos e sessões que gastam bola sem dó.\n\nCaracterísticas\n- Volume alto, preço por unidade baixo.\n- Serve para iniciação e treino repetido.\n\nEspecificações\n- Tipo: bola de treino\n- Diâmetro: 40 mm\n- Quantidade: 50 unidades\n\nO que acompanha\n- 50 bolas\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
+    "options": []
+  },
+  {
+    "id": "pingpong-006",
+    "name": "Rede Retrátil para Mesa",
+    "cost": 35.0,
+    "price": 70.0,
+    "image": "assets/img/ali/pingpong-006.jpg",
+    "tag": "Tênis de mesa",
+    "group": "Mesa e rede",
+    "blurb": "Tênis de mesa · mesa e rede · envio após a confirmação do pagamento.",
+    "stock": 71,
+    "supplier": "AliExpress",
+    "supplierUrl": "https://pt.aliexpress.com/w/wholesale-retractable-table-tennis-net-clamp.html",
+    "search": "retractable table tennis net clamp",
+    "images": [
+      "assets/img/ali/pingpong-006.jpg"
+    ],
+    "description": "Rede portátil com grampo. Encaixa na mesa de jantar ou no escritório e vira uma quadra em um minuto.\n\nCaracterísticas\n- Grampo ajustável para tampo comum.\n- Rede recolhe para guardar na gaveta.\n\nEspecificações\n- Tipo: rede retrátil\n- Fixação: clip / parafuso\n- Uso: mesa doméstica\n\nO que acompanha\n- 1 rede retrátil com grampo\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
+    "options": []
+  },
+  {
+    "id": "pingpong-007",
+    "name": "Rede Oficial com Grampos",
+    "cost": 48.0,
+    "price": 96.0,
+    "image": "assets/img/ali/pingpong-007.jpg",
+    "tag": "Tênis de mesa",
+    "group": "Mesa e rede",
+    "blurb": "Tênis de mesa · mesa e rede · envio após a confirmação do pagamento.",
+    "stock": 44,
+    "supplier": "AliExpress",
+    "supplierUrl": "https://pt.aliexpress.com/w/wholesale-official-table-tennis-net-posts-clamps.html",
+    "search": "official table tennis net posts clamps",
+    "images": [
+      "assets/img/ali/pingpong-007.jpg"
+    ],
+    "description": "Conjunto de rede e postes com grampos, no estilo de mesa oficial. Tensão ajustável, linha reta.\n\nCaracterísticas\n- Postes com parafuso de aperto.\n- Rede de malha firme.\n\nEspecificações\n- Tipo: rede com postes\n- Fixação: grampos laterais\n- Uso: mesa de tênis de mesa\n\nO que acompanha\n- 1 rede\n- 2 postes com grampos\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
+    "options": []
+  },
+  {
+    "id": "pingpong-008",
+    "name": "Mesa Dobrável Indoor",
+    "cost": 420.0,
+    "price": 840.0,
+    "image": "assets/img/ali/pingpong-008.jpg",
+    "tag": "Tênis de mesa",
+    "group": "Mesa e rede",
+    "blurb": "Tênis de mesa · mesa e rede · envio após a confirmação do pagamento.",
+    "stock": 12,
+    "supplier": "AliExpress",
+    "supplierUrl": "https://pt.aliexpress.com/w/wholesale-folding-indoor-table-tennis-table.html",
+    "search": "folding indoor table tennis table",
+    "images": [
+      "assets/img/ali/pingpong-008.jpg"
+    ],
+    "description": "Mesa indoor que dobra na vertical e anda em rodízios. Superfície verde com linhas brancas, pronta para o apartamento ou a área de lazer.\n\nCaracterísticas\n- Dobra para guardar em pouco espaço.\n- Rodízios para mover sem arrastar.\n\nEspecificações\n- Tipo: mesa dobrável indoor\n- Uso: interior\n- Montagem: desdobrar e travar\n\nO que acompanha\n- 1 mesa (rede vendida à parte, conforme o lote)\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
+    "options": []
+  },
+  {
+    "id": "pingpong-009",
+    "name": "Capa para Mesa",
+    "cost": 55.0,
+    "price": 110.0,
+    "image": "assets/img/ali/pingpong-009.jpg",
+    "tag": "Tênis de mesa",
+    "group": "Mesa e rede",
+    "blurb": "Tênis de mesa · mesa e rede · envio após a confirmação do pagamento.",
+    "stock": 33,
+    "supplier": "AliExpress",
+    "supplierUrl": "https://pt.aliexpress.com/w/wholesale-table-tennis-table-cover-waterproof.html",
+    "search": "table tennis table cover waterproof",
+    "images": [
+      "assets/img/ali/pingpong-009.jpg"
+    ],
+    "description": "Capa para proteger a mesa da poeira e da umidade quando ela não está em jogo.\n\nCaracterísticas\n- Tecido resistente à água.\n- Cobre a mesa aberta ou dobrada, conforme o modelo.\n\nEspecificações\n- Tipo: capa de mesa\n- Uso: indoor / cobertura leve outdoor\n\nO que acompanha\n- 1 capa\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
+    "options": []
+  },
+  {
+    "id": "pingpong-010",
+    "name": "Robô Lançador de Bolas",
+    "cost": 280.0,
+    "price": 560.0,
+    "image": "assets/img/ali/pingpong-010.jpg",
+    "tag": "Tênis de mesa",
+    "group": "Treino",
+    "blurb": "Tênis de mesa · treino · envio após a confirmação do pagamento.",
+    "stock": 18,
+    "supplier": "AliExpress",
+    "supplierUrl": "https://pt.aliexpress.com/w/wholesale-table-tennis-robot-ball-machine.html",
+    "search": "table tennis robot ball machine",
+    "images": [
+      "assets/img/ali/pingpong-010.jpg"
+    ],
+    "description": "Máquina de treino que lança bolas com ritmo e giro. Treina sozinho: forehand, backhand e regularidade.\n\nCaracterísticas\n- Reservatório para dezenas de bolas.\n- Controles de frequência e efeito.\n\nEspecificações\n- Tipo: robô de tênis de mesa\n- Alimentação: elétrica\n- Uso: treino individual\n\nO que acompanha\n- 1 lançador\n- Cabo de alimentação\n- Manual básico\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
+    "options": []
+  },
+  {
+    "id": "pingpong-011",
+    "name": "Capa para Raquete",
+    "cost": 18.0,
+    "price": 36.0,
+    "image": "assets/img/ali/pingpong-011.jpg",
+    "tag": "Tênis de mesa",
+    "group": "Acessórios",
+    "blurb": "Tênis de mesa · acessórios · envio após a confirmação do pagamento.",
+    "stock": 66,
+    "supplier": "AliExpress",
+    "supplierUrl": "https://pt.aliexpress.com/w/wholesale-table-tennis-paddle-case-bag.html",
+    "search": "table tennis paddle case bag",
+    "images": [
+      "assets/img/ali/pingpong-011.jpg"
+    ],
+    "description": "Estojo com zíper para levar a raquete sem amassar a borracha na mochila.\n\nCaracterísticas\n- Formato da paleta.\n- Protege a borracha no transporte.\n\nEspecificações\n- Tipo: capa de raquete\n- Fecho: zíper\n\nO que acompanha\n- 1 capa\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
+    "options": []
+  },
+  {
+    "id": "pingpong-012",
+    "name": "Kit Família 4 Raquetes",
+    "cost": 78.0,
+    "price": 156.0,
+    "image": "assets/img/ali/pingpong-012.jpg",
+    "tag": "Tênis de mesa",
+    "group": "Raquetes",
+    "blurb": "Tênis de mesa · raquetes · envio após a confirmação do pagamento.",
+    "stock": 41,
+    "supplier": "AliExpress",
+    "supplierUrl": "https://pt.aliexpress.com/w/wholesale-table-tennis-set-4-paddles-family.html",
+    "search": "table tennis set 4 paddles family",
+    "images": [
+      "assets/img/ali/pingpong-012.jpg"
+    ],
+    "description": "Quatro raquetes e bolas para a casa inteira. Duplas na mesa de jantar ou no clube.\n\nCaracterísticas\n- Jogo para quatro pessoas.\n- Raquetes de madeira com borracha dos dois lados.\n\nEspecificações\n- Tipo: kit família\n- Conteúdo: 4 raquetes + bolas\n\nO que acompanha\n- 4 raquetes\n- Bolas do kit\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
+    "options": []
+  },
+  {
+    "id": "pingpong-013",
+    "name": "Marcador de Pontuação",
+    "cost": 24.0,
+    "price": 48.0,
+    "image": "assets/img/ali/pingpong-013.jpg",
+    "tag": "Tênis de mesa",
+    "group": "Treino",
+    "blurb": "Tênis de mesa · treino · envio após a confirmação do pagamento.",
+    "stock": 58,
+    "supplier": "AliExpress",
+    "supplierUrl": "https://pt.aliexpress.com/w/wholesale-table-tennis-flip-scoreboard.html",
+    "search": "table tennis flip scoreboard",
+    "images": [
+      "assets/img/ali/pingpong-013.jpg"
+    ],
+    "description": "Placar de palhetas para marcar o set sem discutir o número. Vai na borda da mesa.\n\nCaracterísticas\n- Números grandes, leitura de longe.\n- Vira com um toque.\n\nEspecificações\n- Tipo: marcador de pontos\n- Material: plástico\n\nO que acompanha\n- 1 marcador\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
+    "options": []
+  },
+  {
+    "id": "pingpong-014",
+    "name": "Coletor de Bolas",
+    "cost": 42.0,
+    "price": 84.0,
+    "image": "assets/img/ali/pingpong-014.jpg",
+    "tag": "Tênis de mesa",
+    "group": "Treino",
+    "blurb": "Tênis de mesa · treino · envio após a confirmação do pagamento.",
+    "stock": 29,
+    "supplier": "AliExpress",
+    "supplierUrl": "https://pt.aliexpress.com/w/wholesale-table-tennis-ball-picker-collector.html",
+    "search": "table tennis ball picker collector",
+    "images": [
+      "assets/img/ali/pingpong-014.jpg"
+    ],
+    "description": "Cesto com cabo para recolher as bolas do chão sem se abaixar a cada ponto. Útil com robô e com criança no treino.\n\nCaracterísticas\n- Cesto em tela.\n- Cabo longo.\n\nEspecificações\n- Tipo: coletor de bolas\n- Uso: treino\n\nO que acompanha\n- 1 coletor\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
+    "options": []
+  },
+  {
+    "id": "pingpong-015",
+    "name": "Fita de Empunhadura",
+    "cost": 12.0,
+    "price": 24.0,
+    "image": "assets/img/ali/pingpong-015.jpg",
+    "tag": "Tênis de mesa",
+    "group": "Acessórios",
+    "blurb": "Tênis de mesa · acessórios · envio após a confirmação do pagamento.",
+    "stock": 90,
+    "supplier": "AliExpress",
+    "supplierUrl": "https://pt.aliexpress.com/w/wholesale-table-tennis-grip-tape-overgrip.html",
+    "search": "table tennis grip tape overgrip",
+    "images": [
+      "assets/img/ali/pingpong-015.jpg"
+    ],
+    "description": "Overgrip para o cabo da raquete. Melhora o suor e a pegada no jogo longo.\n\nCaracterísticas\n- Enrolar no cabo em um minuto.\n- Toque seco.\n\nEspecificações\n- Tipo: fita de empunhadura\n- Quantidade: rolo / unidade do modelo\n\nO que acompanha\n- 1 fita (ou kit do lote)\n\nA cor e o acabamento podem variar levemente conforme o lote. Envio após a confirmação do pagamento.",
+    "options": [
+      {
+        "name": "Cor",
+        "values": [
+          "Preto",
+          "Branco"
+        ],
+        "hex": {
+          "Preto": "#111111",
+          "Branco": "#f3ece0"
+        }
+      }
+    ]
+  },
+  {
+    "id": "pingpong-016",
+    "name": "Borracha de Raquete",
+    "cost": 32.0,
+    "price": 64.0,
+    "image": "assets/img/ali/pingpong-016.jpg",
+    "tag": "Tênis de mesa",
+    "group": "Acessórios",
+    "blurb": "Tênis de mesa · acessórios · envio após a confirmação do pagamento.",
+    "stock": 51,
+    "supplier": "AliExpress",
+    "supplierUrl": "https://pt.aliexpress.com/w/wholesale-table-tennis-rubber-sheet-red-black.html",
+    "search": "table tennis rubber sheet red black",
+    "images": [
+      "assets/img/ali/pingpong-016.jpg"
+    ],
+    "description": "Folha de borracha para trocar o revestimento da paleta. Vermelha e preta, o par clássico.\n\nCaracterísticas\n- Superfície lisa para efeito.\n- Corta no tamanho da lâmina.\n\nEspecificações\n- Tipo: borracha de reposição\n- Cores: vermelha e preta\n\nO que acompanha\n- Folha(s) de borracha do modelo\n\nCola vendida à parte, se o lote não incluir. A cor e o acabamento podem variar levemente. Envio após a confirmação do pagamento.",
+    "options": []
+  },
+  {
     "id": "tech-001",
     "name": "Fone TWS Pulse",
     "cost": 28.44,

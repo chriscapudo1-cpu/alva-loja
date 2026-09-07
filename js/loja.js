@@ -25,7 +25,10 @@
 
   const paintChips = (categories) => {
     if (!chips) return;
-    const items = ["Todas", ...categories];
+    const pin = "Tênis de mesa";
+    const rest = (categories || []).filter((name) => name !== pin);
+    const ordered = (categories || []).includes(pin) ? [pin, ...rest] : rest;
+    const items = ["Todas", ...ordered];
     chips.innerHTML = items
       .map((name) => {
         const value = name === "Todas" ? "" : name;

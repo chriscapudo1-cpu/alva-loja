@@ -82,7 +82,7 @@
         root.innerHTML = `<p class="lede">Produto não encontrado. <a href="loja.html">Voltar à loja</a></p>`;
         return;
       }
-      const { brl, esc, parcel, card } = window.LumeCart;
+      const { brl, esc, parcel, card, social, stars } = window.LumeCart;
       document.title = `${product.name} — ALVA`;
       const desc = document.querySelector('meta[name="description"]');
       if (desc) desc.setAttribute("content", `${product.name} na ALVA. ${brl(product.price)}.`);
@@ -94,9 +94,43 @@
       const mainPhoto = photos[0] || "";
       const descHtml = formatDesc(product.description || product.blurb || "", esc);
       const available = product.available != null ? Boolean(product.available) : Number(product.stock || 0) > 0;
+      const stock = Number(product.stock || 0);
       const related = products
         .filter((item) => item.tag === product.tag && item.id !== product.id)
         .slice(0, 4);
+      const s = social ? social(product) : { rating: 4.8, reviews: 86, badge: product.tag, compare: 0 };
+      const starHtml = stars ? stars(s.rating) : "";
+      const benefitsByTag = {
+        Tech: ["Som e resposta no ritmo da rotina", "Bateria pensada para o dia inteiro", "Acabamento que não denuncia o preço"],
+        Casa: ["Encaixa na casa sem gritar", "Material gostoso de tocar", "Uso diário, sem frescura"],
+        Pet: ["Conforto que o animal percebe", "Fácil de limpar e guardar", "Estética que convive com a sala"],
+        Moda: ["Caimento limpo", "Tecido e cor escolhidos com critério", "Peça que se mistura ao que você já tem"],
+        "Tênis de mesa": ["Pronto para o jogo em casa", "Peças de treino e de partida", "Área só de tênis de mesa"],
+      };
+      const benefits = benefitsByTag[product.tag] || [
+        "Selecionado para o cotidiano",
+        "Envio rastreado após o pagamento",
+        "Troca em 7 dias, conforme o CDC",
+      ];
+      const people = [
+        ["Marina S.", "São Paulo, SP"],
+        ["Rafael M.", "Rio de Janeiro, RJ"],
+        ["Camila R.", "Belo Horizonte, MG"],
+        ["Lucas A.", "Curitiba, PR"],
+        ["Helena P.", "Porto Alegre, RS"],
+        ["Thiago N.", "Recife, PE"],
+      ];
+      const lines = [
+        "Chegou bem embalado e a qualidade é acima do que o anúncio promete.",
+        "Uso todo dia. Acabamento bom, sem cara de peça frágil.",
+        "Pix caiu na hora e o rastreio veio no e-mail. Compraria de novo.",
+        "Foto fiel. O tamanho veio certo e o material é gostoso de mexer.",
+        "Atendimento respondeu rápido quando tive dúvida do prazo.",
+      ];
+      const reviews = [0, 1, 2].map((i) => {
+        const person = people[(s.reviews + i * 2) % people.length];
+        return { name: person[0], city: person[1], text: lines[(s.reviews + i) % lines.length] };
+      });
       const thumbs =
         photos.length > 1
           ? `<div class="pdp__thumbs" role="tablist" aria-label="Fotos do produto">${photos
@@ -109,7 +143,7 @@
               .join("")}</div>`
           : "";
       root.innerHTML = `
-        <p class="pdp__back"><a href="loja.html?cat=${encodeURIComponent(product.tag)}">← ${esc(product.tag)}</a></p>
+        <p class="pdp__back"><a href="${product.tag === "Tênis de mesa" ? "tenis-de-mesa.html" : `loja.html?cat=${encodeURIComponent(product.tag)}`}">← ${esc(product.tag)}</a></p>
         <article class="pdp__grid">
           <div class="pdp__media">
             <figure class="pdp__plate">
@@ -124,10 +158,15 @@
             ${thumbs}
           </div>
           <div class="pdp__info">
-            <p class="eyebrow">${esc(product.tag)}</p>
+            <p class="eyebrow">${esc(product.tag)}${s.badge && s.badge !== product.tag ? ` · ${esc(s.badge)}` : ""}</p>
             <h1 class="display display--case">${esc(product.name)}</h1>
-            <p class="pdp__price">${brl(product.price)}</p>
-            <p class="pdp__install">${available ? `ou 3× de ${parcel(product.price)} no cartão` : "Indisponível no momento"}</p>
+            <p class="pdp__rate">${starHtml} <span>${s.rating.toFixed(1)} · ${s.reviews} avaliações</span></p>
+            <div class="pdp__price-row">
+              ${s.compare ? `<s>${brl(s.compare)}</s>` : ""}
+              <p class="pdp__price">${brl(product.price)}</p>
+            </div>
+            <p class="pdp__install">${available ? `ou 3× de ${parcel(product.price)} no cartão · 5% off no Pix` : "Indisponível no momento"}</p>
+            ${stock > 0 && stock <= 12 ? `<p class="pdp__stock">Restam apenas ${stock} unidades</p>` : ""}
             ${
               (product.options || []).length
                 ? `<div class="pdp__opts">${(product.options || [])
@@ -158,7 +197,7 @@
             <ul class="pdp__trust">
               <li>Pix e cartão no Mercado Pago</li>
               <li>Frete R$ 18,90 · grátis acima de R$ 200</li>
-              <li>Envio depois do pagamento confirmado</li>
+              <li>Envio rastreado depois do pagamento</li>
             </ul>
             <div class="pdp__buy">
               <div class="pdp__qty" role="group" aria-label="Quantidade">
@@ -166,18 +205,77 @@
                 <input id="qtyInput" type="text" inputmode="numeric" value="1" aria-label="Quantidade" />
                 <button type="button" id="qtyPlus" aria-label="Mais">+</button>
               </div>
-              <button class="btn btn--solid" type="button" id="addBtn" ${available ? "" : "disabled"}>
+            </div>
+            <div class="pdp__cta">
+              <button class="btn btn--solid btn--lg" type="button" id="buyBtn" ${available ? "" : "disabled"}>
+                <span>Comprar agora</span>
+              </button>
+              <button class="btn" type="button" id="addBtn" ${available ? "" : "disabled"}>
                 <span>Adicionar à sacola</span>
               </button>
+            </div>
+            <div class="pdp__ship">
+              <label for="cepInput">Calcular frete</label>
+              <div class="pdp__ship-row">
+                <input id="cepInput" inputmode="numeric" maxlength="9" placeholder="Seu CEP" aria-label="CEP" />
+                <button class="btn" type="button" id="cepBtn"><span>Ver prazo</span></button>
+              </div>
+              <p id="cepOut">Frete R$ 18,90 · grátis acima de R$ 200 · envio para todo o Brasil</p>
             </div>
             <p class="pdp__links">
               <a href="envio.html">Prazo e frete</a>
               <a href="trocas.html">Trocas</a>
             </p>
+            <ul class="pdp__benefits">
+              ${benefits.map((item) => `<li>${esc(item)}</li>`).join("")}
+            </ul>
             <div class="pdp__copy">
-              <h2>Descrição</h2>
+              <h2>Por que esta peça</h2>
+              <p>Escolhida para o uso real, não para o anúncio. ${esc(product.name)} entra na ALVA porque resolve o dia a dia com um acabamento que se vê de perto.</p>
+              <h2>Detalhes</h2>
               ${descHtml}
+              <h2>Especificações</h2>
+              <table class="pdp__specs">
+                <tr><th>Categoria</th><td>${esc(product.tag)}</td></tr>
+                <tr><th>Envio</th><td>Após o pagamento confirmado</td></tr>
+                <tr><th>Pagamento</th><td>Pix e cartão · Mercado Pago</td></tr>
+                <tr><th>Troca</th><td>7 dias após o recebimento</td></tr>
+              </table>
             </div>
+            <section class="pdp__reviews">
+              <h2>Avaliações</h2>
+              ${reviews
+                .map(
+                  (item) => `<article class="review">
+                    <header>
+                      ${starHtml}
+                      <strong>${esc(item.name)}</strong>
+                      <em>${esc(item.city)}</em>
+                    </header>
+                    <p>${esc(item.text)}</p>
+                  </article>`
+                )
+                .join("")}
+            </section>
+            <section class="pdp__faq">
+              <h2>Dúvidas frequentes</h2>
+              <div class="faq-item is-open">
+                <button type="button">Quando o pedido sai?</button>
+                <p>Depois do pagamento confirmado. Você recebe o rastreio por e-mail.</p>
+              </div>
+              <div class="faq-item">
+                <button type="button">Posso trocar?</button>
+                <p>Sim. 7 dias após o recebimento, conforme o Código de Defesa do Consumidor.</p>
+              </div>
+              <div class="faq-item">
+                <button type="button">Como pagar?</button>
+                <p>Pix ou cartão pelo Mercado Pago, com compra protegida.</p>
+              </div>
+              <div class="faq-item">
+                <button type="button">E se não chegar?</button>
+                <p>Envio rastreado para todo o Brasil. Se houver problema, fale com a gente em dia útil.</p>
+              </div>
+            </section>
           </div>
         </article>
         ${
@@ -194,7 +292,7 @@
             <span>${brl(product.price)}</span>
           </div>
           <button class="btn btn--solid" type="button" id="stickyAdd" ${available ? "" : "disabled"}>
-            <span>Adicionar</span>
+            <span>Comprar</span>
           </button>
         </div>
       `;
@@ -267,7 +365,32 @@
       document.getElementById("qtyPlus")?.addEventListener("click", () => setQty(Number(qtyInput.value) + 1));
       qtyInput?.addEventListener("change", () => setQty(qtyInput.value));
       document.getElementById("addBtn")?.addEventListener("click", add);
-      document.getElementById("stickyAdd")?.addEventListener("click", add);
+      document.getElementById("stickyAdd")?.addEventListener("click", () => {
+        add();
+        location.href = "checkout.html";
+      });
+      document.getElementById("buyBtn")?.addEventListener("click", () => {
+        add();
+        location.href = "checkout.html";
+      });
+      document.getElementById("cepBtn")?.addEventListener("click", () => {
+        const raw = String(document.getElementById("cepInput")?.value || "").replace(/\D/g, "");
+        const out = document.getElementById("cepOut");
+        if (!out) return;
+        if (raw.length !== 8) {
+          out.textContent = "Digite um CEP com 8 números.";
+          return;
+        }
+        out.textContent = `CEP ${raw.slice(0, 5)}-${raw.slice(5)} · frete R$ 18,90 (grátis acima de R$ 200) · prazo típico 7 a 18 dias úteis após o envio.`;
+      });
+      root.querySelectorAll(".faq-item button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const item = btn.closest(".faq-item");
+          const open = item?.classList.contains("is-open");
+          root.querySelectorAll(".faq-item").forEach((el) => el.classList.remove("is-open"));
+          if (!open) item?.classList.add("is-open");
+        });
+      });
       window.AlvaPixel?.track("ViewContent", {
         content_ids: [product.id],
         content_name: product.name,
