@@ -780,8 +780,8 @@ class Handler(SimpleHTTPRequestHandler):
             self.wfile.write(body)
             return
         if parsed.path == "/sitemap.xml":
-            pages = ["/", "/loja.html", "/index.html", "/envio.html", "/trocas.html"]
-            for tag in ("Tech", "Casa", "Pet", "Moda", "Carro", "Beleza", "Esporte", "Bebê", "Escritório", "Cozinha"):
+            pages = ["/", "/loja.html", "/index.html", "/envio.html", "/trocas.html", "/tenis-de-mesa.html"]
+            for tag in ("Tênis de mesa", "Tech", "Casa", "Pet", "Moda", "Carro", "Beleza", "Esporte", "Bebê", "Escritório", "Cozinha"):
                 pages.append(f"/loja.html?cat={tag}")
             urls = "".join(
                 f"<url><loc>{PUBLIC_URL}{path}</loc></url>" for path in pages

@@ -200,6 +200,10 @@ html {
   gap: 0.7rem;
 }
 
+.cat-card--wide {
+  grid-column: span 2;
+}
+
 .cat-card {
   position: relative;
   overflow: hidden;
@@ -842,7 +846,12 @@ body.is-premium .product__add:hover {
   }
 
   .cat-card {
-    min-height: 28rem;
+    min-height: 18rem;
+  }
+
+  .cat-card--wide {
+    grid-column: span 2;
+    min-height: 22rem;
   }
 
   .why__grid {

@@ -9,9 +9,12 @@
   const empty = document.getElementById("shopEmpty");
   const sortEl = document.getElementById("shopSort");
   const params = new URLSearchParams(location.search);
+  const PAGE = 48;
   let group = params.get("grupo") || "";
   let sort = params.get("sort") || "nome";
   let all = [];
+  let shown = PAGE;
+  const more = document.getElementById("shopMore");
   if (sortEl) sortEl.value = sort;
 
   const paintChips = () => {
@@ -49,19 +52,23 @@
 
   const paint = () => {
     const list = filtered();
-    if (heading) heading.textContent = group || "Tudo da área";
+    const slice = list.slice(0, shown);
+    if (heading) heading.textContent = group || `Tênis de mesa · ${list.length} produtos`;
     if (lede) {
       lede.textContent = group
-        ? `${group} · só tênis de mesa · frete grátis acima de R$ 200`
-        : "Só produtos de tênis de mesa. Pix, cartão · frete grátis acima de R$ 200";
+        ? `${group} · ${list.length} itens · frete grátis acima de R$ 200`
+        : `${list.length} produtos só de tênis de mesa. Pix, cartão · frete grátis acima de R$ 200`;
     }
     if (grid) {
       grid.innerHTML = "";
-      list.forEach((product) => grid.appendChild(window.LumeCart.card(product)));
+      slice.forEach((product) => grid.appendChild(window.LumeCart.card(product)));
     }
     if (empty) {
       empty.hidden = list.length > 0;
       empty.textContent = "Nenhum produto neste grupo.";
+    }
+    if (more) {
+      more.hidden = slice.length >= list.length;
     }
     chips?.querySelectorAll("[data-group]").forEach((btn) => {
       btn.classList.toggle("is-on", btn.getAttribute("data-group") === group);
@@ -73,6 +80,7 @@
 
   const applyGroup = (value) => {
     group = value || "";
+    shown = PAGE;
     writeUrl();
     paint();
   };
@@ -92,7 +100,13 @@
 
   sortEl?.addEventListener("change", () => {
     sort = sortEl.value || "nome";
+    shown = PAGE;
     writeUrl();
+    paint();
+  });
+
+  more?.addEventListener("click", () => {
+    shown += PAGE;
     paint();
   });
 
