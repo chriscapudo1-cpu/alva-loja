@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=18" />
+  <link rel="stylesheet" href="css/style.css?v=26" />
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -204,6 +204,16 @@
             <div class="form__row">
               <label for="prodSupplier">Link do produto no AliExpress</label>
               <input id="prodSupplier" name="supplierUrl" type="url" placeholder="https://pt.aliexpress.com/item/0000000000000.html" />
+            </div>
+            <div class="form__row">
+              <label>Foto do produto</label>
+              <div class="prod-photo" id="prodPhotoWrap">
+                <img id="prodPhoto" alt="Foto atual" hidden />
+                <p class="form__hint" id="prodPhotoHint">Escolha um produto para ver a foto.</p>
+              </div>
+              <label class="prod-photo__btn" for="prodPhotoFile">Escolher nova foto</label>
+              <input id="prodPhotoFile" type="file" accept="image/jpeg,image/png,image/webp" />
+              <p class="form__hint">A foto de agora continua na galeria. A nova entra na frente, no card e na página do produto.</p>
             </div>
             <div class="form__row">
               <label for="prodOptions">Variedades (cor, tamanho etc.)</label>
@@ -418,7 +428,7 @@
   </main>
 
   <script src="js/look.js?v=15"></script>
-  <script src="js/admin.js?v=18"></script>
+  <script src="js/admin.js?v=19"></script>
   <script>
     const year = document.getElementById("year");
     if (year) year.textContent = String(new Date().getFullYear());

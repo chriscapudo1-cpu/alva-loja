@@ -9,6 +9,7 @@
   const loginErr = document.getElementById("loginErr");
   const tokenKey = "lume-admin-token";
   let catalog = [];
+  let pendingPhoto = "";
 
   const esc = (value) =>
     String(value ?? "")
@@ -387,6 +388,20 @@
     }
     const view = document.getElementById("prodView");
     if (view) view.href = `produto.html?id=${encodeURIComponent(item.id)}`;
+    pendingPhoto = "";
+    const file = document.getElementById("prodPhotoFile");
+    if (file) file.value = "";
+    const img = document.getElementById("prodPhoto");
+    const hint = document.getElementById("prodPhotoHint");
+    const src = item.image || (item.images || [])[0] || "";
+    if (img && src) {
+      img.src = `${src}?v=${Date.now()}`;
+      img.hidden = false;
+    } else if (img) {
+      img.removeAttribute("src");
+      img.hidden = true;
+    }
+    if (hint) hint.hidden = Boolean(src);
   };
 
   const paintProductList = () => {
@@ -506,6 +521,30 @@
     if (item) fillProduct(item);
   });
 
+  document.getElementById("prodPhotoFile")?.addEventListener("change", (event) => {
+    const file = event.target.files && event.target.files[0];
+    pendingPhoto = "";
+    if (!file) return;
+    if (file.size > 6_000_000) {
+      const err = document.getElementById("prodErr");
+      if (err) err.textContent = "A foto pode ter no máximo 6 MB.";
+      event.target.value = "";
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      pendingPhoto = String(reader.result || "");
+      const img = document.getElementById("prodPhoto");
+      const hint = document.getElementById("prodPhotoHint");
+      if (img && pendingPhoto) {
+        img.src = pendingPhoto;
+        img.hidden = false;
+      }
+      if (hint) hint.hidden = true;
+    };
+    reader.readAsDataURL(file);
+  });
+
   document.getElementById("optPresets")?.addEventListener("click", (event) => {
     const btn = event.target.closest("[data-opt-preset]");
     if (!btn) return;
@@ -544,6 +583,7 @@
           supplierUrl: form.elements.supplierUrl?.value || "",
           description: form.elements.description.value,
           optionsText: form.elements.optionsText?.value || "",
+          imageData: pendingPhoto,
         }),
       });
       const data = await res.json();

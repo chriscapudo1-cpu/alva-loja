@@ -3,12 +3,14 @@
 
 from __future__ import annotations
 
+import base64
 import hashlib
 import hmac
 import json
 import os
 import re
 import sqlite3
+import time
 import uuid
 from datetime import datetime, timezone
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -309,8 +311,57 @@ def save_product(payload: dict) -> dict:
         found["options"] = parsed
     elif "options" in payload:
         found["options"] = clean_option_groups(payload.get("options"))
+    image_data = str(payload.get("imageData") or "").strip()
+    if image_data:
+        apply_product_photo(found, image_data)
     write_products(products)
     return found
+
+
+def apply_product_photo(item: dict, image_data: str) -> None:
+    match = re.match(r"data:image/(jpeg|jpg|png|webp);base64,(.+)$", image_data, re.I | re.S)
+    if not match:
+        raise ValueError("Envie uma foto JPG, PNG ou WEBP.")
+    try:
+        raw = base64.b64decode(match.group(2), validate=False)
+    except Exception as exc:
+        raise ValueError("Não deu para ler a foto.") from exc
+    if len(raw) < 4000:
+        raise ValueError("A foto está pequena demais.")
+    if len(raw) > 6_000_000:
+        raise ValueError("A foto pode ter no máximo 6 MB.")
+    dest_dir = ROOT / "assets" / "img" / "ali"
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    dest = dest_dir / f"{item['id']}-nova-{int(time.time())}.jpg"
+    kind = match.group(1).lower()
+    if kind in {"png", "webp"}:
+        try:
+            from PIL import Image
+            import io
+
+            image = Image.open(io.BytesIO(raw)).convert("RGB")
+            image.save(dest, format="JPEG", quality=88)
+        except Exception as exc:
+            raise ValueError("Não deu para converter a foto.") from exc
+    else:
+        if raw[:3] != b"\xff\xd8\xff":
+            raise ValueError("A foto precisa ser JPG, PNG ou WEBP.")
+        dest.write_bytes(raw)
+    if dest.stat().st_size < 4000:
+        dest.unlink(missing_ok=True)
+        raise ValueError("A foto não gravou direito.")
+    rel = f"assets/img/ali/{dest.name}"
+    old = str(item.get("image") or "").strip()
+    gallery = [src for src in ([old] + list(item.get("images") or [])) if src]
+    seen: set[str] = set()
+    kept: list[str] = []
+    for src in [rel] + gallery:
+        if not src or src in seen:
+            continue
+        seen.add(src)
+        kept.append(src)
+    item["image"] = rel
+    item["images"] = kept[:8]
 
 
 def public_images(item: dict) -> list[str]:
@@ -1064,6 +1115,8 @@ class Handler(SimpleHTTPRequestHandler):
                             "supplierUrl": item.get("supplierUrl") or "",
                             "description": item.get("description") or "",
                             "options": clean_option_groups(item.get("options")),
+                            "image": item.get("image") or "",
+                            "images": item.get("images") or [],
                         },
                     }
                 )
