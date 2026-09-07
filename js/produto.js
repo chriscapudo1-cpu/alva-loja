@@ -94,7 +94,6 @@
       const mainPhoto = photos[0] || "";
       const descHtml = formatDesc(product.description || product.blurb || "", esc);
       const available = product.available != null ? Boolean(product.available) : Number(product.stock || 0) > 0;
-      const stock = Number(product.stock || 0);
       const related = products
         .filter((item) => item.tag === product.tag && item.id !== product.id)
         .slice(0, 4);
@@ -166,7 +165,6 @@
               <p class="pdp__price">${brl(product.price)}</p>
             </div>
             <p class="pdp__install">${available ? `ou 3× de ${parcel(product.price)} no cartão · 5% off no Pix` : "Indisponível no momento"}</p>
-            ${stock > 0 && stock <= 12 ? `<p class="pdp__stock">Restam apenas ${stock} unidades</p>` : ""}
             ${
               (product.options || []).length
                 ? `<div class="pdp__opts">${(product.options || [])

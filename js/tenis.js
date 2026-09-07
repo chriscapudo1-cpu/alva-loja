@@ -53,11 +53,11 @@
   const paint = () => {
     const list = filtered();
     const slice = list.slice(0, shown);
-    if (heading) heading.textContent = group || `Tênis de mesa · ${list.length} produtos`;
+    if (heading) heading.textContent = group || "Tênis de mesa";
     if (lede) {
       lede.textContent = group
-        ? `${group} · ${list.length} itens · frete grátis acima de R$ 200`
-        : `${list.length} produtos só de tênis de mesa. Pix, cartão · frete grátis acima de R$ 200`;
+        ? `${group} · Pix, cartão · frete grátis acima de R$ 200`
+        : "Só produtos de tênis de mesa. Pix, cartão · frete grátis acima de R$ 200";
     }
     if (grid) {
       grid.innerHTML = "";
