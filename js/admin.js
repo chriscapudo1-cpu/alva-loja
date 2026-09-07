@@ -24,8 +24,10 @@
       .replace(/[\u0300-\u036f]/g, "");
 
   const itemLink = (item) => {
-    const url = String(item?.supplierUrl || "");
-    return /aliexpress\.com\/item\/\d+/i.test(url) ? url : "";
+    const url = String(item?.supplierUrl || "").trim();
+    if (/aliexpress\.com\/(?:item|i)\/\d+/i.test(url)) return url;
+    if (/aliexpress\.com\//i.test(url)) return url;
+    return "";
   };
 
   const paintCatalog = () => {
@@ -142,8 +144,8 @@
                     ? `<a class="order-items__link" href="produto.html?id=${encodeURIComponent(item.id)}">ver na loja</a>`
                     : "";
                   const buy =
-                    /aliexpress\.com\/item\/\d+/i.test(item.supplierUrl || "")
-                      ? `<a class="order-items__link" href="${item.supplierUrl}" target="_blank" rel="noopener">comprar no AliExpress</a>`
+                    /aliexpress\.com\//i.test(item.supplierUrl || "")
+                      ? `<a class="order-items__link" href="${esc(item.supplierUrl)}" target="_blank" rel="noopener">comprar no AliExpress</a>`
                       : "";
                   const variant = item.optionLabel || "";
                   return `<li class="order-items__row">
